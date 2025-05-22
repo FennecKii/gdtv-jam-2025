@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://r24vfslkhd5i"]
+[gd_scene load_steps=10 format=3 uid="uid://r24vfslkhd5i"]
 
 [ext_resource type="Texture2D" uid="uid://4mv6lqlh4kfl" path="res://little guy/assets/Little_Guy_Idle-Sheet.png" id="1_5wie2"]
+[ext_resource type="Script" uid="uid://b0cgj3rdmj041" path="res://little guy/little_guy.gd" id="1_ue54g"]
 [ext_resource type="Texture2D" uid="uid://cg2cp4twkwarh" path="res://little guy/assets/Little_Guy_Walk-Sheet.png" id="2_l2mb4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_66oti"]
@@ -47,6 +48,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_yo3nh"]
 
 [node name="Little Guy" type="CharacterBody2D"]
+script = ExtResource("1_ue54g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -1.82461e-05
@@ -55,5 +57,6 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.560425, 1.08043)
+position = Vector2(0, 5)
+scale = Vector2(0.57571, 0.591952)
 shape = SubResource("CircleShape2D_yo3nh")
