@@ -55,8 +55,9 @@ rotation = -1.82461e-05
 sprite_frames = SubResource("SpriteFrames_4rir4")
 animation = &"idle"
 autoplay = "idle"
+offset = Vector2(0, -7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, -1)
 scale = Vector2(0.57571, 0.591952)
 shape = SubResource("CircleShape2D_yo3nh")
