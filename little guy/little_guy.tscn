@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://r24vfslkhd5i"]
+
+[ext_resource type="Texture2D" uid="uid://4mv6lqlh4kfl" path="res://little guy/assets/Little_Guy_Idle-Sheet.png" id="1_5wie2"]
+[ext_resource type="Texture2D" uid="uid://cg2cp4twkwarh" path="res://little guy/assets/Little_Guy_Walk-Sheet.png" id="2_l2mb4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66oti"]
+atlas = ExtResource("1_5wie2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g803"]
+atlas = ExtResource("1_5wie2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq7wc"]
+atlas = ExtResource("2_l2mb4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vce2"]
+atlas = ExtResource("2_l2mb4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4rir4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66oti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g803")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq7wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vce2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yo3nh"]
+
+[node name="Little Guy" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.82461e-05
+sprite_frames = SubResource("SpriteFrames_4rir4")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.560425, 1.08043)
+shape = SubResource("CircleShape2D_yo3nh")
