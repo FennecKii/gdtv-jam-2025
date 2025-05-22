@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://bcochyyalqao3"]
+
+[ext_resource type="Texture2D" uid="uid://dy0iwrxiwxaqx" path="res://poop/Poop_Idle-Sheet.png" id="1_8hggl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16ku5"]
+atlas = ExtResource("1_8hggl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpuem"]
+atlas = ExtResource("1_8hggl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpyyc"]
+atlas = ExtResource("1_8hggl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37tpf"]
+atlas = ExtResource("1_8hggl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5e7qa"]
+atlas = ExtResource("1_8hggl")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds6km"]
+atlas = ExtResource("1_8hggl")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs586"]
+atlas = ExtResource("1_8hggl")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxab4"]
+atlas = ExtResource("1_8hggl")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkd0f"]
+atlas = ExtResource("1_8hggl")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oop6g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16ku5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpuem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpyyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37tpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5e7qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds6km")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs586")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxab4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkd0f")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[node name="Poop" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_oop6g")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.216973
