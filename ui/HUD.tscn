@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://jkrbnuakia71"]
+
+[ext_resource type="Texture2D" uid="uid://la4u5ppsx3vl" path="res://poop/Poop-Sheet (Small).png" id="1_1x8ju"]
+[ext_resource type="Script" uid="uid://dmqyymrsbdruw" path="res://ui/hud.gd" id="1_aaqae"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aaqae"]
+atlas = ExtResource("1_1x8ju")
+region = Rect2(0, 0, 32, 32)
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="HUD Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_aaqae")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD Control"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HUD Control/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_aaqae")
+
+[node name="Poops" type="Label" parent="HUD Control/HBoxContainer"]
+layout_mode = 2
+text = "Poops"

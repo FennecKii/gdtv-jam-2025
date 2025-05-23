@@ -1,0 +1,111 @@
+[gd_scene load_steps=10 format=3 uid="uid://bn6uqs2beldtn"]
+
+[ext_resource type="Texture2D" uid="uid://crhjk3n1rufss" path="res://resources/assets/tilesets/Isometric Tileset Soft Border.png" id="1_7qvuf"]
+[ext_resource type="Texture2D" uid="uid://bqy3ffbftiea8" path="res://resources/assets/tilesets/Isometric Tileset Soft Ground.png" id="1_gb8hc"]
+[ext_resource type="Texture2D" uid="uid://d1xxp1h1845i4" path="res://resources/assets/tilesets/Isometric Tileset Vibrant Border.png" id="3_pwi1x"]
+[ext_resource type="Texture2D" uid="uid://egmrypi12p4y" path="res://resources/assets/tilesets/Isometric Tileset Vibrant Ground.png" id="4_2ftku"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pwi1x"]
+texture = ExtResource("1_7qvuf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/y_sort_origin = -8
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)
+0:1/0 = 0
+0:1/0/y_sort_origin = -8
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ftku"]
+texture = ExtResource("1_gb8hc")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/y_sort_origin = -8
+1:0/0 = 0
+1:0/0/y_sort_origin = -8
+2:0/0 = 0
+2:0/0/y_sort_origin = -8
+3:0/0 = 0
+3:0/0/y_sort_origin = -8
+4:0/0 = 0
+4:0/0/y_sort_origin = -8
+5:0/0 = 0
+5:0/0/y_sort_origin = -8
+6:0/0 = 0
+6:0/0/y_sort_origin = -8
+7:0/0 = 0
+7:0/0/y_sort_origin = -8
+7:1/0 = 0
+7:1/0/y_sort_origin = -8
+6:1/0 = 0
+6:1/0/y_sort_origin = -8
+5:1/0 = 0
+5:1/0/y_sort_origin = -8
+4:1/0 = 0
+4:1/0/y_sort_origin = -8
+3:1/0 = 0
+3:1/0/y_sort_origin = -8
+2:1/0 = 0
+2:1/0/y_sort_origin = -8
+1:1/0 = 0
+1:1/0/y_sort_origin = -8
+0:1/0 = 0
+0:1/0/y_sort_origin = -8
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lll68"]
+texture = ExtResource("3_pwi1x")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/y_sort_origin = -8
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)
+0:1/0 = 0
+0:1/0/y_sort_origin = -8
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sc31e"]
+texture = ExtResource("4_2ftku")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/y_sort_origin = -8
+1:0/0 = 0
+1:0/0/y_sort_origin = -8
+2:0/0 = 0
+2:0/0/y_sort_origin = -8
+3:0/0 = 0
+3:0/0/y_sort_origin = -8
+4:0/0 = 0
+4:0/0/y_sort_origin = -8
+5:0/0 = 0
+5:0/0/y_sort_origin = -8
+6:0/0 = 0
+6:0/0/y_sort_origin = -8
+7:0/0 = 0
+7:0/0/y_sort_origin = -8
+7:1/0 = 0
+7:1/0/y_sort_origin = -8
+6:1/0 = 0
+6:1/0/y_sort_origin = -8
+5:1/0 = 0
+5:1/0/y_sort_origin = -8
+4:1/0 = 0
+4:1/0/y_sort_origin = -8
+3:1/0 = 0
+3:1/0/y_sort_origin = -8
+2:1/0 = 0
+2:1/0/y_sort_origin = -8
+1:1/0 = 0
+1:1/0/y_sort_origin = -8
+0:1/0 = 0
+0:1/0/y_sort_origin = -8
+
+[sub_resource type="TileSet" id="TileSet_lgst8"]
+tile_shape = 1
+tile_size = Vector2i(32, 16)
+physics_layer_0/collision_layer = 2
+sources/0 = SubResource("TileSetAtlasSource_pwi1x")
+sources/1 = SubResource("TileSetAtlasSource_2ftku")
+sources/2 = SubResource("TileSetAtlasSource_lll68")
+sources/3 = SubResource("TileSetAtlasSource_sc31e")
+
+[node name="Isometric Layer" type="TileMapLayer"]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_lgst8")

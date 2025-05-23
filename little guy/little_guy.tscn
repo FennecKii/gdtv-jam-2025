@@ -48,16 +48,26 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_yo3nh"]
 
 [node name="Little Guy" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_mask = 2
 script = ExtResource("1_ue54g")
 
+[node name="State" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -20.0
+offset_top = -46.0
+offset_right = 20.0
+offset_bottom = -23.0
+text = "State"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = -1.82461e-05
 sprite_frames = SubResource("SpriteFrames_4rir4")
 animation = &"idle"
 autoplay = "idle"
-offset = Vector2(0, -7)
+offset = Vector2(0, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, -4)
 scale = Vector2(0.57571, 0.591952)
 shape = SubResource("CircleShape2D_yo3nh")

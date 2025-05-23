@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy0iwrxiwxaqx"
-path="res://.godot/imported/Poop_Idle-Sheet.png-a23b34bf398102ad5ee7ec63640ec045.ctex"
+uid="uid://egmrypi12p4y"
+path="res://.godot/imported/Isometric Tileset Vibrant Ground.png-135b4262ee61cf46e92672bf90b8799c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://poop/Poop_Idle-Sheet.png"
-dest_files=["res://.godot/imported/Poop_Idle-Sheet.png-a23b34bf398102ad5ee7ec63640ec045.ctex"]
+source_file="res://resources/assets/tilesets/Isometric Tileset Vibrant Ground.png"
+dest_files=["res://.godot/imported/Isometric Tileset Vibrant Ground.png-135b4262ee61cf46e92672bf90b8799c.ctex"]
 
 [params]
 
