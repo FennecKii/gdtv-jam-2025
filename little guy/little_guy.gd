@@ -8,11 +8,9 @@ enum State {
 	REST,
 }
 
-const SPEED = 100.0
-
 var direction: Vector2
 var next_food_position: Vector2
-var slip_factor: float = 5 #upgrade: little guy slides into consecutive foods ("piercing upgrade", the lower the more slip)
+var slip_factor: float = 7
 
 var current_state: State
 var previous_state: State
@@ -30,8 +28,8 @@ var pooping: bool = false
 
 
 func _ready() -> void:
+	add_to_group("little guy")
 	current_state = State.COLLECT
-	Global.little_guy_node = self
 	SignalBus.food_collected.connect(_on_food_collected)
 
 
@@ -49,7 +47,7 @@ func _physics_process(delta: float) -> void:
 
 func _handle_movement(delta: float) -> void:
 	if direction != Vector2.ZERO:
-		velocity = lerp(velocity, direction.normalized() * SPEED, slip_factor * delta)
+		velocity = lerp(velocity, direction.normalized() * Global.littleguy_speed, slip_factor * delta)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, slip_factor * delta)
 
@@ -77,7 +75,7 @@ func _update_animation() -> void:
 
 func _update_state(delta: float) -> void:
 	if previous_state != State.REST and current_state == State.COLLECT:
-		if randf_range(0, 1) <= 0.1 * delta:
+		if randf_range(0, 1) <= Global.rest_chance * delta:
 			previous_state = current_state
 			current_state = State.REST
 
@@ -98,7 +96,7 @@ func _update_state_action() -> void:
 		resting = true
 		collecting = false
 		direction = Vector2.ZERO
-		await get_tree().create_timer(randf_range(5, 10)).timeout
+		await get_tree().create_timer(randf_range(Global.rest_time - 1, Global.rest_time + 1)).timeout
 		resting = false
 		current_state = previous_state
 		previous_state = State.REST
@@ -112,9 +110,9 @@ func _update_state_action() -> void:
 		state_label.text = "POOPING"
 		pooping = true
 		direction = Vector2.ZERO
-		await get_tree().create_timer(randf_range(5, 7)).timeout
+		await get_tree().create_timer(randf_range(Global.poop_time - 1, Global.poop_time + 1)).timeout
 		pooping = false
-		if randf_range(0, 1) <= 0.5:
+		if randf_range(0, 1) <= Global.poop_chance:
 			var poop_instance: Node = Global.poop_scene.instantiate()
 			poop_instance.global_position = global_position
 			Global.poop_group.add_child(poop_instance)

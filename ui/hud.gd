@@ -1,15 +1,16 @@
 extends Control
 
 @onready var poops_label: Label = $VBoxContainer/Poop/Poops
-@onready var foods_label: Label = $VBoxContainer/Food/Foods
+@onready var crops_label: Label = $VBoxContainer/Crop/Crops
 
 func _ready() -> void:
 	SignalBus.poop_collected.connect(_on_poop_connected)
+	crops_label.text = str(": %s" %Global.crops_collected)
 	poops_label.text = str(": %s" %Global.poops_collected)
 
 
 func _process(delta: float) -> void:
-	foods_label.text = str(": %s" %Global.food_amount)
+	crops_label.text = str(": %s" %Global.crops_collected)
 	poops_label.text = str(": %s" %Global.poops_collected)
 
 

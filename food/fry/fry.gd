@@ -13,6 +13,6 @@ func _process(delta: float) -> void:
 
 
 func _on_little_guy_detection_body_entered(body: Node2D) -> void:
-	if body == Global.little_guy_node:
+	if body.is_in_group("little guy"):
 		SignalBus.food_collected.emit(tile_coord)
-		self.queue_free()
+		queue_free()

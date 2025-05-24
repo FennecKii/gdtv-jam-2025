@@ -1,12 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://jkrbnuakia71"]
+[gd_scene load_steps=4 format=3 uid="uid://jkrbnuakia71"]
 
-[ext_resource type="Texture2D" uid="uid://la4u5ppsx3vl" path="res://poop/Poop-Sheet (Small).png" id="1_1x8ju"]
 [ext_resource type="Script" uid="uid://dmqyymrsbdruw" path="res://ui/hud.gd" id="1_aaqae"]
-[ext_resource type="Texture2D" uid="uid://jp7205db1clh" path="res://food/fry/Fry.png" id="3_jd13s"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aaqae"]
-atlas = ExtResource("1_1x8ju")
-region = Rect2(0, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://dgw24flarvgs6" path="res://poop/Poop.png" id="2_jd13s"]
+[ext_resource type="Texture2D" uid="uid://b5yjcbp07psos" path="res://crop/wheat/Wheat.png" id="3_jd13s"]
 
 [node name="HUD Control" type="Control"]
 layout_mode = 3
@@ -25,22 +21,22 @@ layout_mode = 2
 
 [node name="PoopTexture" type="TextureRect" parent="VBoxContainer/Poop"]
 layout_mode = 2
-texture = SubResource("AtlasTexture_aaqae")
+texture = ExtResource("2_jd13s")
 
 [node name="Poops" type="Label" parent="VBoxContainer/Poop"]
 layout_mode = 2
 text = "Poops"
 
-[node name="Food" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Crop" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="FoodTexture" type="TextureRect" parent="VBoxContainer/Food"]
+[node name="CropTexture" type="TextureRect" parent="VBoxContainer/Crop"]
 layout_mode = 2
 texture = ExtResource("3_jd13s")
 
-[node name="Foods" type="Label" parent="VBoxContainer/Food"]
+[node name="Crops" type="Label" parent="VBoxContainer/Crop"]
 layout_mode = 2
-text = "Foods"
+text = "Crop"
 
 [connection signal="mouse_entered" from="VBoxContainer/Poop" to="." method="_on_poop_mouse_entered"]
 [connection signal="mouse_entered" from="VBoxContainer/Poop" to="." method="_on_mouse_interaction_entered"]

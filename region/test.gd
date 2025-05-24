@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var spawner_component: SpawnerComponent
-@export var food_wait_time: float = 5.0
 
 var food_spawned: bool = false
 
@@ -14,9 +13,10 @@ var poop_instance: Node
 
 
 func _ready() -> void:
+	spawner_component.spawn_littleguy()
 	if not spawner_component:
 		assert(spawner_component, "%s not found." %spawner_component)
-	food_timer.wait_time = food_wait_time
+	food_timer.wait_time = randf_range(Global.food_spawn_time - 1, Global.food_spawn_time + 1)
 	food_timer.start()
 	Global.food_group = food_group
 	Global.poop_group = poop_group
@@ -36,7 +36,8 @@ func _process_food() -> void:
 	if food_spawned:
 		return
 	elif not food_spawned:
-		spawner_component.spawn_food()
+		for food_count in range(Global.food_spawn_amount):
+			spawner_component.spawn_food()
 		food_spawned = true
 		food_timer.start()
 
