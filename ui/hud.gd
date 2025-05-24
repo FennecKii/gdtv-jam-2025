@@ -2,6 +2,7 @@ extends Control
 
 @onready var poops_label: Label = $VBoxContainer/Poop/Poops
 @onready var crops_label: Label = $VBoxContainer/Crop/Crops
+@onready var add_little_guy: Button = $"GridContainer/Add Little Guy"
 
 func _ready() -> void:
 	SignalBus.poop_collected.connect(_on_poop_connected)
@@ -19,7 +20,7 @@ func _on_poop_connected() -> void:
 
 
 func _on_mouse_interaction_entered() -> void:
-	Global.cursor_interacted = true
+	Global.cursor_interacted = true 
 
 
 func _on_mouse_interaction_exited() -> void:
@@ -28,3 +29,10 @@ func _on_mouse_interaction_exited() -> void:
 
 func _on_poop_mouse_entered() -> void:
 	Global.cursor_poop_interacted = true
+
+
+func _on_add_little_guy_pressed() -> void:
+	print("upgrade!")
+	if Global.poops_collected >= 5:
+		Global.poops_collected -= 5
+		SignalBus.add_little_guy.emit()

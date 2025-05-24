@@ -20,6 +20,7 @@ func _ready() -> void:
 	food_timer.start()
 	Global.food_group = food_group
 	Global.poop_group = poop_group
+	SignalBus.add_little_guy.connect(_on_add_little_guy)
 
 
 func _process(delta: float) -> void:
@@ -67,3 +68,7 @@ func _release_item() -> void:
 				Global.poops_collected += 1
 		Global.poop_grabbed = false
 		Global.cursor_grabbing = false
+
+
+func _on_add_little_guy() -> void:
+	spawner_component.spawn_littleguy()

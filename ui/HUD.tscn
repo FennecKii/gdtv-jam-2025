@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://jkrbnuakia71"]
+[gd_scene load_steps=5 format=3 uid="uid://jkrbnuakia71"]
 
 [ext_resource type="Script" uid="uid://dmqyymrsbdruw" path="res://ui/hud.gd" id="1_aaqae"]
+[ext_resource type="Theme" uid="uid://dudw4v7l7mn73" path="res://resources/themes/main_theme.tres" id="1_wxbmk"]
 [ext_resource type="Texture2D" uid="uid://dgw24flarvgs6" path="res://poop/Poop.png" id="2_jd13s"]
 [ext_resource type="Texture2D" uid="uid://b5yjcbp07psos" path="res://crop/wheat/Wheat.png" id="3_jd13s"]
 
 [node name="HUD Control" type="Control"]
+z_index = 1
+z_as_relative = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_wxbmk")
 script = ExtResource("1_aaqae")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -36,8 +43,26 @@ texture = ExtResource("3_jd13s")
 
 [node name="Crops" type="Label" parent="VBoxContainer/Crop"]
 layout_mode = 2
-text = "Crop"
+text = "Crops"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 3
+
+[node name="Add Little Guy" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Little Guy +1
+Cost: 5"
 
 [connection signal="mouse_entered" from="VBoxContainer/Poop" to="." method="_on_poop_mouse_entered"]
 [connection signal="mouse_entered" from="VBoxContainer/Poop" to="." method="_on_mouse_interaction_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Poop" to="." method="_on_mouse_interaction_exited"]
+[connection signal="pressed" from="GridContainer/Add Little Guy" to="." method="_on_add_little_guy_pressed"]

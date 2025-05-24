@@ -27,12 +27,12 @@ var poop_grabbed: bool = false
 
 # Little guy parameters
 var littleguy_count: int = 1
-var littleguy_speed: float = 25.0	# Little guy speed
+var littleguy_speed: float = 50.0	# Little guy speed
 var poop_time: float = 7			# Average time it takes for little guy to poop when in poop state
-var poop_chance: float = 0.05		# Chance for little guy to poop when in poop state
+var poop_chance: float = 1.0		# Chance for little guy to poop when in poop state
 var rest_time: float = 7			# Average time it takes for little guy to rest when in rest state
-var rest_chance: float = 0.25		# Chance for little guy to take a rest when in collect state
+var rest_chance: float = 0.20		# Chance for little guy to take a rest when in collect state
 
 # Fry parameters
-var food_spawn_time: float = 10.0					# Average time it takes for food to spawn on the map
+var food_spawn_time: float = 20.0					# Average time it takes for food to spawn on the map
 var food_spawn_amount: int = 1				# Number of food that spawns

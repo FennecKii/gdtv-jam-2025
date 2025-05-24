@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://cfearnoeejuck" path="res://ui/cursor/cursor.gd" id="2_o2uqn"]
 
 [node name="Cursor" type="Sprite2D"]
+z_index = 4096
+z_as_relative = false
 texture = ExtResource("1_o2uqn")
 offset = Vector2(15, 20)
 hframes = 3

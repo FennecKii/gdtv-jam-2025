@@ -6,7 +6,10 @@ enum State {
 	COLLECT,
 	POOP,
 	REST,
+	WAIT
 }
+
+var next_food: Node
 
 var direction: Vector2
 var next_food_position: Vector2
@@ -21,6 +24,7 @@ var collected: bool = false
 var collecting: bool = false
 var pooped: bool = false
 var pooping: bool = false
+var food_found: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_label: Label = $State
@@ -37,8 +41,11 @@ func _process(delta: float) -> void:
 	_update_state(delta)
 	_update_state_action()
 	
-	if not next_food_position:
+	if not next_food:
 		collecting = false
+		food_found = false
+	elif next_food:
+		food_found = true
 
 
 func _physics_process(delta: float) -> void:
@@ -79,6 +86,11 @@ func _update_state(delta: float) -> void:
 			previous_state = current_state
 			current_state = State.REST
 
+	if current_state == State.COLLECT and not food_found:
+		previous_state = current_state
+		current_state = State.WAIT
+		return
+
 	if current_state == State.COLLECT and collected:
 		previous_state = current_state
 		current_state = State.POOP
@@ -86,12 +98,21 @@ func _update_state(delta: float) -> void:
 
 	if current_state == State.POOP and not pooping:
 		previous_state = current_state
+		current_state = State.WAIT
+		return
+
+	if current_state == State.WAIT and food_found:
+		previous_state = current_state
 		current_state = State.COLLECT
 		return
 
 
 func _update_state_action() -> void:
-	if current_state == State.REST and not resting:
+	if current_state == State.WAIT:
+		state_label.text = "WAITING"
+		next_food = _get_food()
+		direction = Vector2.ZERO
+	elif current_state == State.REST and not resting:
 		state_label.text = "RESTING"
 		resting = true
 		collecting = false
@@ -104,7 +125,8 @@ func _update_state_action() -> void:
 		state_label.text = "COLLECTING"
 		collecting = true
 		collected = false
-		next_food_position = _get_food().global_position
+		next_food = _get_food()
+		next_food_position = next_food.global_position
 		direction = next_food_position - global_position
 	elif current_state == State.POOP and not pooping:
 		state_label.text = "POOPING"
@@ -125,9 +147,10 @@ func _get_food() -> Node:
 	if food:
 		return food.pick_random()
 	else:
-		return self
+		return null
 
 
-func _on_food_collected(_tile_coord: Vector2i) -> void:
-	collected = true
-	collecting = false
+func _on_food_collected(little_guy: Node2D, _tile_coord: Vector2i) -> void:
+	if little_guy == self:
+		collected = true
+		collecting = false

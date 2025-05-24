@@ -30,7 +30,7 @@ func _food_pool_remove(tile_coord: Vector2i) -> void:
 		food_pool.erase(tile_coord)
 
 
-func _on_food_collected(tile_coord: Vector2i) -> void:
+func _on_food_collected(_little_guy: Node2D, tile_coord: Vector2i) -> void:
 	_food_pool_remove(tile_coord)
 
 
