@@ -16,5 +16,12 @@ const tileset_vibrant_ground_atlas_size: Vector2i = Vector2i(7, 1)
 var food_position: Vector2
 var little_guy_node: CharacterBody2D
 var poop_group: Node2D
+var food_group: Node2D
 
 var poops_collected: int = 0
+var food_amount: int = 100
+
+var cursor_interacted: bool = false
+var cursor_grabbing: bool = false
+var cursor_poop_interacted: bool = false
+var poop_grabbed: bool = false

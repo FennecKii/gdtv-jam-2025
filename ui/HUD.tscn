@@ -1,30 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://jkrbnuakia71"]
+[gd_scene load_steps=5 format=3 uid="uid://jkrbnuakia71"]
 
 [ext_resource type="Texture2D" uid="uid://la4u5ppsx3vl" path="res://poop/Poop-Sheet (Small).png" id="1_1x8ju"]
 [ext_resource type="Script" uid="uid://dmqyymrsbdruw" path="res://ui/hud.gd" id="1_aaqae"]
+[ext_resource type="Texture2D" uid="uid://jp7205db1clh" path="res://food/fry/Fry.png" id="3_jd13s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aaqae"]
 atlas = ExtResource("1_1x8ju")
 region = Rect2(0, 0, 32, 32)
 
-[node name="HUD" type="CanvasLayer"]
-
-[node name="HUD Control" type="Control" parent="."]
+[node name="HUD Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_aaqae")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 128.0
+offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="HUD Control/HBoxContainer"]
+[node name="Poop" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PoopTexture" type="TextureRect" parent="VBoxContainer/Poop"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_aaqae")
 
-[node name="Poops" type="Label" parent="HUD Control/HBoxContainer"]
+[node name="Poops" type="Label" parent="VBoxContainer/Poop"]
 layout_mode = 2
 text = "Poops"
+
+[node name="Food" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="FoodTexture" type="TextureRect" parent="VBoxContainer/Food"]
+layout_mode = 2
+texture = ExtResource("3_jd13s")
+
+[node name="Foods" type="Label" parent="VBoxContainer/Food"]
+layout_mode = 2
+text = "Foods"
+
+[connection signal="mouse_entered" from="VBoxContainer/Poop" to="." method="_on_poop_mouse_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/Poop" to="." method="_on_mouse_interaction_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Poop" to="." method="_on_mouse_interaction_exited"]

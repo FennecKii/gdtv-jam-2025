@@ -5,9 +5,12 @@ extends Node2D
 
 var food_spawned: bool = false
 
+var poop_instance: Node
+
 @onready var food_timer: Timer = $"Food Timer"
 @onready var food_group: Node2D = $"Y-Sort/Food Group"
 @onready var poop_group: Node2D = $"Y-Sort/Poop Group"
+@onready var cursor: Sprite2D = $Viewport/Cursor
 
 
 func _ready() -> void:
@@ -15,12 +18,18 @@ func _ready() -> void:
 		assert(spawner_component, "%s not found." %spawner_component)
 	food_timer.wait_time = food_wait_time
 	food_timer.start()
+	Global.food_group = food_group
 	Global.poop_group = poop_group
 
 
 func _process(delta: float) -> void:
 	_process_food()
 	_update_timer()
+	
+	_grab_item()
+	_release_item()
+	if Global.cursor_grabbing and Global.poop_grabbed:
+			poop_instance.global_position = lerp(poop_instance.global_position, get_global_mouse_position(), 15 * delta)
 
 
 func _process_food() -> void:
@@ -37,3 +46,23 @@ func _update_timer() -> void:
 		return
 	elif food_timer.is_stopped():
 		food_spawned = false
+
+
+func _grab_item() -> void:
+	if Global.cursor_interacted and Input.is_action_just_pressed("Click"):
+		if Global.cursor_poop_interacted and Global.poops_collected > 0:
+			Global.poops_collected -= 1
+			Global.poop_grabbed = true
+			poop_instance = Global.poop_scene.instantiate()
+			poop_instance.global_position = get_global_mouse_position()
+			poop_group.add_child(poop_instance)
+
+
+func _release_item() -> void:
+	if Global.cursor_grabbing and Input.is_action_just_released("Click"):
+		if Global.cursor_interacted and Global.poop_grabbed:
+			if Global.cursor_poop_interacted:
+				poop_instance.queue_free()
+				Global.poops_collected += 1
+		Global.poop_grabbed = false
+		Global.cursor_grabbing = false

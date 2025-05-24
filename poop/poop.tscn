@@ -62,7 +62,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_16ku5"]
 
-[node name="Poop" type="Node2D" groups=["poop"]]
+[node name="Poop" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_16ku5")
 
@@ -76,7 +76,7 @@ offset = Vector2(0, -2)
 [node name="Mouse Detection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse Detection"]
-scale = Vector2(0.895375, 0.516312)
+scale = Vector2(0.96061, 0.847699)
 shape = SubResource("CircleShape2D_16ku5")
 
 [connection signal="mouse_entered" from="Mouse Detection" to="." method="_on_mouse_detection_mouse_entered"]

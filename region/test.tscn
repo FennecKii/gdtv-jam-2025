@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://bua81pngig75l"]
+[gd_scene load_steps=7 format=4 uid="uid://bua81pngig75l"]
 
 [ext_resource type="Script" uid="uid://dsqu2gjr64jco" path="res://region/test.gd" id="1_tuhxp"]
 [ext_resource type="PackedScene" uid="uid://bn6uqs2beldtn" path="res://globals/components/isometric.tscn" id="2_01ot4"]
 [ext_resource type="PackedScene" uid="uid://r24vfslkhd5i" path="res://little guy/little_guy.tscn" id="2_rl40f"]
 [ext_resource type="PackedScene" uid="uid://cqp174fo1kiq3" path="res://globals/components/spawner_component.tscn" id="2_u03et"]
 [ext_resource type="PackedScene" uid="uid://jkrbnuakia71" path="res://ui/HUD.tscn" id="5_u03et"]
+[ext_resource type="PackedScene" uid="uid://hu3v1yubkx76" path="res://ui/cursor/cursor.tscn" id="6_nk0gi"]
 
 [node name="Test" type="Node2D" node_paths=PackedStringArray("spawner_component")]
 script = ExtResource("1_tuhxp")
@@ -37,4 +38,10 @@ y_sort_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="HUD" parent="." instance=ExtResource("5_u03et")]
+[node name="Viewport" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Cursor" parent="Viewport" instance=ExtResource("6_nk0gi")]
+
+[node name="HUD" parent="Viewport" instance=ExtResource("5_u03et")]
+z_index = 4096

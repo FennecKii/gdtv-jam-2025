@@ -3,27 +3,26 @@ extends CharacterBody2D
 #TODO poop is the currency :)
 
 enum State {
-	SCAVENGE,
 	COLLECT,
-	EAT,
 	POOP,
-	TIRED,
+	REST,
 }
 
 const SPEED = 100.0
 
 var direction: Vector2
 var next_food_position: Vector2
-var slip_factor: float = 1 #upgrade: little guy slides into consecutive foods ("piercing upgrade", the lower the more slip)
+var slip_factor: float = 5 #upgrade: little guy slides into consecutive foods ("piercing upgrade", the lower the more slip)
 
 var current_state: State
 var previous_state: State
 
-var determining_state: bool = false
-var tracking_food: bool = false
-var food_collected: bool = true
-var food_ate: bool = false
-var poop_produced: bool = false
+var performing_action: bool = false
+var resting: bool = false
+var collected: bool = false
+var collecting: bool = false
+var pooped: bool = false
+var pooping: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_label: Label = $State
@@ -31,38 +30,34 @@ var poop_produced: bool = false
 
 
 func _ready() -> void:
-	current_state = State.SCAVENGE
+	current_state = State.COLLECT
 	Global.little_guy_node = self
 	SignalBus.food_collected.connect(_on_food_collected)
 
 
 func _process(delta: float) -> void:
-	#_update_state_action()
-	#_update_state()
-
-	if food_collected:
-		direction = Vector2.ZERO
-		food_collected = false
-		await get_tree().create_timer(randf_range(1, 3)).timeout
-		next_food_position = _get_food().global_position
-		direction = (next_food_position - global_position).normalized()
+	_update_state(delta)
+	_update_state_action()
+	
+	if not next_food_position:
+		collecting = false
 
 
 func _physics_process(delta: float) -> void:
-	_handle_movement()
+	_handle_movement(delta)
 
 
-func _handle_movement() -> void:
+func _handle_movement(delta: float) -> void:
 	if direction != Vector2.ZERO:
-		velocity = lerp(velocity, direction * SPEED, slip_factor)
+		velocity = lerp(velocity, direction.normalized() * SPEED, slip_factor * delta)
 	else:
-		velocity = lerp(velocity, Vector2.ZERO, slip_factor)
-	
+		velocity = lerp(velocity, Vector2.ZERO, slip_factor * delta)
+
 	if (next_food_position - global_position).length() <= 5:
 		collision.disabled = false
 	else:
 		collision.disabled = true
-	
+
 	_update_animation()
 
 	move_and_slide()
@@ -80,57 +75,51 @@ func _update_animation() -> void:
 		animated_sprite.flip_h = false
 
 
-func _update_state() -> void:
-	if previous_state != State.TIRED and randf_range(0, 1) <= 0.5:
-		previous_state = current_state
-		current_state = State.TIRED
+func _update_state(delta: float) -> void:
+	if previous_state != State.REST and current_state == State.COLLECT:
+		if randf_range(0, 1) <= 0.1 * delta:
+			previous_state = current_state
+			current_state = State.REST
 
-	if current_state == State.SCAVENGE and randf_range(0, 1) <= 0.5:
-		previous_state = current_state
-		current_state = State.COLLECT
-		food_collected = false
-		return
-
-	if current_state == State.COLLECT and food_collected:
-		previous_state = current_state
-		current_state = State.SCAVENGE
-		poop_produced = false
-		return
-
-	if current_state == State.EAT and food_ate:
+	if current_state == State.COLLECT and collected:
 		previous_state = current_state
 		current_state = State.POOP
-		food_collected = false
 		return
 
-	if current_state == State.POOP and poop_produced:
+	if current_state == State.POOP and not pooping:
 		previous_state = current_state
-		current_state = State.SCAVENGE
-		food_ate = false
+		current_state = State.COLLECT
 		return
 
 
 func _update_state_action() -> void:
-	if not determining_state:
-		return
-	if current_state == State.TIRED:
-		direction = Vector2.ZERO
+	if current_state == State.REST and not resting:
 		state_label.text = "RESTING"
+		resting = true
+		collecting = false
+		direction = Vector2.ZERO
 		await get_tree().create_timer(randf_range(5, 10)).timeout
+		resting = false
 		current_state = previous_state
-		previous_state = State.TIRED
-	elif current_state == State.SCAVENGE:
-		direction = Vector2(randf_range(10, 25), randf_range(10, 25))
-		state_label.text = "SCAVENGING"
-	elif current_state == State.COLLECT:
-		direction = (_get_food().global_position - global_position).normalized()
+		previous_state = State.REST
+	elif current_state == State.COLLECT and not collecting:
 		state_label.text = "COLLECTING"
-	elif current_state == State.EAT:
-		direction = Vector2.ZERO
-		state_label.text = "EATING"
-	elif current_state == State.POOP:
-		direction = Vector2.ZERO
+		collecting = true
+		collected = false
+		next_food_position = _get_food().global_position
+		direction = next_food_position - global_position
+	elif current_state == State.POOP and not pooping:
 		state_label.text = "POOPING"
+		pooping = true
+		direction = Vector2.ZERO
+		await get_tree().create_timer(randf_range(5, 7)).timeout
+		pooping = false
+		if randf_range(0, 1) <= 0.5:
+			var poop_instance: Node = Global.poop_scene.instantiate()
+			poop_instance.global_position = global_position
+			Global.poop_group.add_child(poop_instance)
+			pooped = true
+			state_label.text = "POOPED"
 
 
 func _get_food() -> Node:
@@ -141,9 +130,6 @@ func _get_food() -> Node:
 		return self
 
 
-func _on_food_collected(tile_coord: Vector2i) -> void:
-	food_collected = true
-	if randf_range(0, 1) <= 0.5:
-		var poop_instance: Node = Global.poop_scene.instantiate()
-		poop_instance.global_position = global_position
-		Global.poop_group.add_child(poop_instance)
+func _on_food_collected(_tile_coord: Vector2i) -> void:
+	collected = true
+	collecting = false

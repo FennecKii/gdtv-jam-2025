@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var grabbed: bool = false
+
 var can_pickup: bool = false
 
 
@@ -8,7 +10,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if can_pickup and Input.is_action_just_pressed("Collect"):
+	if can_pickup and Input.is_action_just_pressed("Click"):
 		Global.poops_collected += 1
 		SignalBus.poop_collected.emit()
 		queue_free()

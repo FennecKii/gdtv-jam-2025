@@ -2,6 +2,8 @@ extends Node2D
 
 @export var tile_coord: Vector2i
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 func _ready() -> void:
 	add_to_group("food")
 
