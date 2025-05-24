@@ -16,7 +16,7 @@ func _ready() -> void:
 	spawner_component.spawn_littleguy()
 	if not spawner_component:
 		assert(spawner_component, "%s not found." %spawner_component)
-	food_timer.wait_time = randf_range(Global.food_spawn_time - 1, Global.food_spawn_time + 1)
+	food_timer.wait_time = Global.food_spawn_time
 	food_timer.start()
 	Global.food_group = food_group
 	Global.poop_group = poop_group

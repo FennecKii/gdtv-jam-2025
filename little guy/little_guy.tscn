@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://r24vfslkhd5i"]
+[gd_scene load_steps=11 format=3 uid="uid://r24vfslkhd5i"]
 
 [ext_resource type="Texture2D" uid="uid://4mv6lqlh4kfl" path="res://little guy/assets/Little_Guy_Idle-Sheet.png" id="1_5wie2"]
 [ext_resource type="Script" uid="uid://b0cgj3rdmj041" path="res://little guy/little_guy.gd" id="1_ue54g"]
+[ext_resource type="Theme" uid="uid://dudw4v7l7mn73" path="res://resources/themes/main_theme.tres" id="2_fat7f"]
 [ext_resource type="Texture2D" uid="uid://cg2cp4twkwarh" path="res://little guy/assets/Little_Guy_Walk-Sheet.png" id="2_l2mb4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_66oti"]
@@ -52,13 +53,31 @@ y_sort_enabled = true
 collision_mask = 2
 script = ExtResource("1_ue54g")
 
-[node name="State" type="Label" parent="."]
+[node name="Control" type="Control" parent="."]
 z_index = 1
-offset_left = -20.0
-offset_top = -46.0
-offset_right = 20.0
-offset_bottom = -23.0
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_fat7f")
+
+[node name="State" type="Label" parent="Control"]
+offset_left = -39.0
+offset_top = -42.0
+offset_right = 39.0
+offset_bottom = -26.0
 text = "State"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Food Collected" type="Label" parent="Control"]
+offset_left = -41.0
+offset_top = -58.0
+offset_right = 41.0
+offset_bottom = -42.0
+text = "Food Ate: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4rir4")

@@ -14,6 +14,7 @@ var next_food: Node
 var direction: Vector2
 var next_food_position: Vector2
 var slip_factor: float = 7
+var food_pool: int = 0
 
 var current_state: State
 var previous_state: State
@@ -25,10 +26,12 @@ var collecting: bool = false
 var pooped: bool = false
 var pooping: bool = false
 var food_found: bool = false
+var guaranteed_poop: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var state_label: Label = $State
+@onready var state_label: Label = $Control/State
 @onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var food_collected_label: Label = $"Control/Food Collected"
 
 
 func _ready() -> void:
@@ -38,6 +41,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	food_collected_label.text = str("Food Ate: %s" %food_pool)
+	
 	_update_state(delta)
 	_update_state_action()
 	
@@ -46,6 +51,9 @@ func _process(delta: float) -> void:
 		food_found = false
 	elif next_food:
 		food_found = true
+	
+	if food_pool == Global.littleguy_max_food_pool:
+		guaranteed_poop = true
 
 
 func _physics_process(delta: float) -> void:
@@ -117,7 +125,7 @@ func _update_state_action() -> void:
 		resting = true
 		collecting = false
 		direction = Vector2.ZERO
-		await get_tree().create_timer(randf_range(Global.rest_time - 1, Global.rest_time + 1)).timeout
+		await get_tree().create_timer(Global.rest_time).timeout
 		resting = false
 		current_state = previous_state
 		previous_state = State.REST
@@ -132,13 +140,15 @@ func _update_state_action() -> void:
 		state_label.text = "POOPING"
 		pooping = true
 		direction = Vector2.ZERO
-		await get_tree().create_timer(randf_range(Global.poop_time - 1, Global.poop_time + 1)).timeout
+		await get_tree().create_timer(Global.poop_time).timeout
 		pooping = false
-		if randf_range(0, 1) <= Global.poop_chance:
+		if randf_range(0, 1) <= Global.poop_chance or guaranteed_poop:
 			var poop_instance: Node = Global.poop_scene.instantiate()
 			poop_instance.global_position = global_position
 			Global.poop_group.add_child(poop_instance)
 			pooped = true
+			guaranteed_poop = false
+			food_pool = 0
 			state_label.text = "POOPED"
 
 
@@ -152,5 +162,6 @@ func _get_food() -> Node:
 
 func _on_food_collected(little_guy: Node2D, _tile_coord: Vector2i) -> void:
 	if little_guy == self:
+		food_pool += 1
 		collected = true
 		collecting = false
