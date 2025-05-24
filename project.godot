@@ -35,6 +35,10 @@ food="For all the foods"
 poop="For all the poop"
 "little guy"=""
 
+[gui]
+
+theme/custom_font="uid://bedk7okttikpg"
+
 [input]
 
 Click={
