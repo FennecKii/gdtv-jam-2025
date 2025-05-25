@@ -17,13 +17,13 @@ func _grow_carrot() -> void:
 func _on_poop_detection_area_entered(area: Area2D) -> void:
 	if area == Global.poop_detection_area and area.is_in_group("poop"):
 		SignalBus.carrot_fertilized.emit(area)
-		poop_collision.disabled = true
+		poop_collision.set_deferred("disabled", true)
 		for i in range(3):
 			await _grow_carrot()
 		await get_tree().create_timer(1).timeout
 		frame = 0
 		SignalBus.spawn_carrot.emit(global_position)
-		poop_collision.disabled = false
+		poop_collision.set_deferred("disabled", false)
 
 
 func _on_poop_detection_mouse_entered() -> void:
