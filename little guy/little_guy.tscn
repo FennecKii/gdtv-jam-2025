@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://4mv6lqlh4kfl" path="res://little guy/assets/Little_Guy_Idle-Sheet.png" id="1_5wie2"]
 [ext_resource type="Script" uid="uid://b0cgj3rdmj041" path="res://little guy/little_guy.gd" id="1_ue54g"]
-[ext_resource type="Theme" uid="uid://dudw4v7l7mn73" path="res://resources/themes/main_theme.tres" id="2_fat7f"]
+[ext_resource type="Theme" uid="uid://fdpmfrapgg3p" path="res://resources/themes/game_theme.tres" id="2_fat7f"]
 [ext_resource type="Texture2D" uid="uid://cg2cp4twkwarh" path="res://little guy/assets/Little_Guy_Walk-Sheet.png" id="2_l2mb4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_66oti"]
@@ -56,9 +56,14 @@ script = ExtResource("1_ue54g")
 [node name="Control" type="Control" parent="."]
 z_index = 1
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -12.155
+offset_bottom = -12.155
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("2_fat7f")
 
 [node name="State" type="Label" parent="Control"]

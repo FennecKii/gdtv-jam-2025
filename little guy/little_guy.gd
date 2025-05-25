@@ -13,8 +13,9 @@ var next_food: Node
 
 var direction: Vector2
 var next_food_position: Vector2
-var slip_factor: float = 7
+var slip_factor: float = 20
 var food_pool: int = 0
+var guaranteed_poops: int = 1
 
 var current_state: State
 var previous_state: State
@@ -41,7 +42,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	food_collected_label.text = str("Food Ate: %s" %food_pool)
+	food_collected_label.text = str("Food Ate: %s" %food_pool, "/%s" %Global.littleguy_max_food_pool)
 	
 	_update_state(delta)
 	_update_state_action()
@@ -52,8 +53,9 @@ func _process(delta: float) -> void:
 	elif next_food:
 		food_found = true
 	
-	if food_pool == Global.littleguy_max_food_pool:
+	if food_pool >= Global.littleguy_max_food_pool:
 		guaranteed_poop = true
+		guaranteed_poops = food_pool % Global.littleguy_max_food_pool
 
 
 func _physics_process(delta: float) -> void:
@@ -66,7 +68,7 @@ func _handle_movement(delta: float) -> void:
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, slip_factor * delta)
 
-	if (next_food_position - global_position).length() <= 5:
+	if (next_food_position - global_position).length() <= 1:
 		collision.disabled = false
 	else:
 		collision.disabled = true
@@ -97,21 +99,25 @@ func _update_state(delta: float) -> void:
 	if current_state == State.COLLECT and not food_found:
 		previous_state = current_state
 		current_state = State.WAIT
+		collision.disabled = true
 		return
 
 	if current_state == State.COLLECT and collected:
 		previous_state = current_state
 		current_state = State.POOP
+		collision.disabled = true
 		return
 
 	if current_state == State.POOP and not pooping:
 		previous_state = current_state
 		current_state = State.WAIT
+		collision.disabled = true
 		return
 
 	if current_state == State.WAIT and food_found:
 		previous_state = current_state
 		current_state = State.COLLECT
+		collision.disabled = true
 		return
 
 
@@ -143,13 +149,14 @@ func _update_state_action() -> void:
 		await get_tree().create_timer(Global.poop_time).timeout
 		pooping = false
 		if randf_range(0, 1) <= Global.poop_chance or guaranteed_poop:
-			var poop_instance: Node = Global.poop_scene.instantiate()
-			poop_instance.global_position = global_position
-			Global.poop_group.add_child(poop_instance)
+			for i in range(guaranteed_poops):
+				var poop_instance: Node = Global.poop_scene.instantiate()
+				poop_instance.global_position = global_position
+				Global.poop_group.add_child(poop_instance)
 			pooped = true
 			guaranteed_poop = false
+			guaranteed_poops = 1
 			food_pool = 0
-			state_label.text = "POOPED"
 
 
 func _get_food() -> Node:

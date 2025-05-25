@@ -1,21 +1,26 @@
 extends Control
 
-@onready var poops_label: Label = $VBoxContainer/Poop/Poops
-@onready var crops_label: Label = $VBoxContainer/Crop/Crops
+@onready var common_poops_label: Label = $VBoxContainer/Poop/Poops
+@onready var common_foods_label: Label = $VBoxContainer/Food/Foods
+@onready var upgrades_panel: Panel = $Panel
+@onready var upgrades_panel_down_position: Vector2 = Vector2(upgrades_panel.position.x, upgrades_panel.position.y + upgrades_panel.size.y)
+@onready var upgrades_panel_up_position: Vector2 = upgrades_panel.position
+
+var upgrades_panel_down: bool = false
 
 func _ready() -> void:
 	SignalBus.poop_collected.connect(_on_poop_connected)
-	crops_label.text = str(": %s" %Global.crops_collected)
-	poops_label.text = str(": %s" %Global.poops_collected)
+	common_foods_label.text = str(": %s" %Global.common_food_amount)
+	common_poops_label.text = str(": %s" %Global.common_poops_collected)
 
 
 func _process(delta: float) -> void:
-	crops_label.text = str(": %s" %Global.crops_collected)
-	poops_label.text = str(": %s" %Global.poops_collected)
+	common_foods_label.text = str(": %s" %Global.common_food_amount)
+	common_poops_label.text = str(": %s" %Global.common_poops_collected)
 
 
 func _on_poop_connected() -> void:
-	poops_label.text = str(": %s" %Global.poops_collected)
+	common_poops_label.text = str(": %s" %Global.common_poops_collected)
 
 
 func _on_mouse_interaction_entered() -> void:
@@ -26,8 +31,20 @@ func _on_mouse_interaction_exited() -> void:
 	Global.cursor_interacted = false
 
 
-func _on_poop_mouse_entered() -> void:
-	Global.cursor_poop_interacted = true
+func _on_common_poop_mouse_entered() -> void:
+	Global.cursor_common_poop_interacted = true
+
+
+func _on_common_food_mouse_entered() -> void:
+	Global.cursor_common_food_interacted = true
+
+
+func _on_common_poop_mouse_exited() -> void:
+	Global.cursor_common_poop_interacted = false
+
+
+func _on_common_food_mouse_exited() -> void:
+	Global.cursor_common_food_interacted = false
 
 
 func _on_add_little_guy_pressed() -> void:
@@ -77,3 +94,13 @@ func _on_increase_food_spawn_amount_pressed() -> void:
 	if Global.poops_collected >= 25:
 		Global.poops_collected -= 25
 		Global.food_spawn_amount += 1
+
+
+func _on_hide_upgrades_pressed() -> void:
+	var tween: Tween = create_tween()
+	if not upgrades_panel_down:
+		tween.tween_property(upgrades_panel, "position", upgrades_panel_down_position, 0.25).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_IN_OUT)
+		upgrades_panel_down = true
+	elif upgrades_panel_down:
+		tween.tween_property(upgrades_panel, "position", upgrades_panel_up_position, 0.25).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_IN_OUT)
+		upgrades_panel_down = false

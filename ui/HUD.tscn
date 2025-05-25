@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://jkrbnuakia71"]
+[gd_scene load_steps=6 format=3 uid="uid://jkrbnuakia71"]
 
 [ext_resource type="Script" uid="uid://dmqyymrsbdruw" path="res://ui/hud.gd" id="1_aaqae"]
 [ext_resource type="Theme" uid="uid://dudw4v7l7mn73" path="res://resources/themes/main_theme.tres" id="1_wxbmk"]
-[ext_resource type="Texture2D" uid="uid://dgw24flarvgs6" path="res://poop/Poop.png" id="2_jd13s"]
-[ext_resource type="Texture2D" uid="uid://b5yjcbp07psos" path="res://crop/wheat/Wheat.png" id="3_jd13s"]
+[ext_resource type="Texture2D" uid="uid://la4u5ppsx3vl" path="res://poop/Poop-Sheet (Small).png" id="3_pom5v"]
+[ext_resource type="Texture2D" uid="uid://jp7205db1clh" path="res://food/fry/Fry.png" id="4_pfnlp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q2by"]
+atlas = ExtResource("3_pom5v")
+region = Rect2(0, 0, 32, 32)
 
 [node name="HUD Control" type="Control"]
 z_index = 1
-z_as_relative = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,103 +23,290 @@ script = ExtResource("1_aaqae")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 96.0
+offset_bottom = 68.0
 
 [node name="Poop" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="PoopTexture" type="TextureRect" parent="VBoxContainer/Poop"]
 layout_mode = 2
-texture = ExtResource("2_jd13s")
+texture = SubResource("AtlasTexture_3q2by")
 
 [node name="Poops" type="Label" parent="VBoxContainer/Poop"]
 layout_mode = 2
-text = "Poops"
+text = "Common Poops"
 
-[node name="Crop" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Food" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="CropTexture" type="TextureRect" parent="VBoxContainer/Crop"]
+[node name="FoodTexture" type="TextureRect" parent="VBoxContainer/Food"]
 layout_mode = 2
-texture = ExtResource("3_jd13s")
+texture = ExtResource("4_pfnlp")
 
-[node name="Crops" type="Label" parent="VBoxContainer/Crop"]
+[node name="Foods" type="Label" parent="VBoxContainer/Food"]
 layout_mode = 2
-text = "Crops"
+text = "Common Food"
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(100, 100, 100, 1)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -84.0
+offset_left = 271.0
+offset_top = -155.0
+offset_right = -271.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(640, 0)
+[node name="Hide Upgrades" type="Button" parent="Panel"]
 layout_mode = 2
-alignment = 1
+offset_left = 306.0
+offset_top = -25.0
+offset_right = 440.0
+offset_bottom = -1.0
+theme_override_colors/font_color = Color(0.831955, 0.535952, 0.433528, 1)
+text = "Hide Upgrades"
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer2"]
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel/CenterContainer"]
 layout_mode = 2
 theme = ExtResource("1_wxbmk")
 columns = 10
 
-[node name="Add Little Guy" type="Button" parent="CenterContainer/VBoxContainer2/GridContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Add Little Guy" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
 text = "Little Guy +1
 Cost: 10"
 
-[node name="Increase Little Guy Speed" type="Button" parent="CenterContainer/VBoxContainer2/GridContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/CenterContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buy 1" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Buy 1"
+
+[node name="Buy 10" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Buy 10"
+
+[node name="Buy 100" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Buy 100"
+
+[node name="Increase Little Guy Speed" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
 text = "Increase Speed
 Cost: 10"
 
-[node name="Increase Poop Chance" type="Button" parent="CenterContainer/VBoxContainer2/GridContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/CenterContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buy 1" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Buy 1"
+
+[node name="Buy 10" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Buy 10"
+
+[node name="Buy 100" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Buy 100"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Increase Poop Chance" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Poop Chance
 Cost: 2"
 
-[node name="Increase Food Spawn Amount" type="Button" parent="CenterContainer/VBoxContainer2/GridContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/CenterContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Food Spawn +1
-Cost: 25"
+alignment = 1
 
-[node name="GridContainer2" type="GridContainer" parent="CenterContainer/VBoxContainer2"]
+[node name="Buy 1" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer2/HBoxContainer3"]
 layout_mode = 2
-columns = 10
+text = "Buy 1"
 
-[node name="Decrease Poop Time" type="Button" parent="CenterContainer/VBoxContainer2/GridContainer2"]
+[node name="Buy 10" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+text = "Buy 10"
+
+[node name="Buy 100" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+text = "Buy 100"
+
+[node name="Decrease Poop Time" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Poop Time
 Cost: 5"
 
-[node name="Decrease Rest Time" type="Button" parent="CenterContainer/VBoxContainer2/GridContainer2"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/CenterContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Rest Time
-Cost: 5"
+alignment = 1
 
-[node name="Decrease Rest Chance" type="Button" parent="CenterContainer/VBoxContainer2/GridContainer2"]
+[node name="Buy 1" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+text = "Buy 1"
+
+[node name="Buy 10" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+text = "Buy 10"
+
+[node name="Buy 100" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+text = "Buy 100"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Panel/CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Decrease Rest Chance" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer3"]
 layout_mode = 2
 text = "Rest Chance
 Cost: 10"
 
-[node name="Decrease Food Spawn Time" type="Button" parent="CenterContainer/VBoxContainer2/GridContainer2"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="Panel/CenterContainer/GridContainer/VBoxContainer3"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buy 1" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer3/HBoxContainer5"]
+layout_mode = 2
+text = "Buy 1"
+
+[node name="Buy 10" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer3/HBoxContainer5"]
+layout_mode = 2
+text = "Buy 10"
+
+[node name="Buy 100" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer3/HBoxContainer5"]
+layout_mode = 2
+text = "Buy 100"
+
+[node name="Decrease Rest Time" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Rest Time
+Cost: 5"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Panel/CenterContainer/GridContainer/VBoxContainer3"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buy 1" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer3/HBoxContainer6"]
+layout_mode = 2
+text = "Buy 1"
+
+[node name="Buy 10" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer3/HBoxContainer6"]
+layout_mode = 2
+text = "Buy 10"
+
+[node name="Buy 100" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer3/HBoxContainer6"]
+layout_mode = 2
+text = "Buy 100"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Panel/CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Increase Food Spawn Amount" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Food Spawn +1
+Cost: 25"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Panel/CenterContainer/GridContainer/VBoxContainer4"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buy 1" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer4/HBoxContainer7"]
+layout_mode = 2
+text = "Buy 1"
+
+[node name="Buy 10" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer4/HBoxContainer7"]
+layout_mode = 2
+text = "Buy 10"
+
+[node name="Buy 100" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer4/HBoxContainer7"]
+layout_mode = 2
+text = "Buy 100"
+
+[node name="Decrease Food Spawn Time" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer4"]
 layout_mode = 2
 text = "Food Spawn Time
 Cost: 15"
 
+[node name="HBoxContainer8" type="HBoxContainer" parent="Panel/CenterContainer/GridContainer/VBoxContainer4"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buy 1" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer4/HBoxContainer8"]
+layout_mode = 2
+text = "Buy 1"
+
+[node name="Buy 10" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer4/HBoxContainer8"]
+layout_mode = 2
+text = "Buy 10"
+
+[node name="Buy 100" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer4/HBoxContainer8"]
+layout_mode = 2
+text = "Buy 100"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="Panel/CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Panel/CenterContainer/GridContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/CenterContainer/GridContainer/VBoxContainer5"]
+layout_mode = 2
+
+[node name="Auto Collect" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer5/HBoxContainer"]
+layout_mode = 2
+text = "Auto Collect"
+
+[node name="HBoxContainer9" type="VBoxContainer" parent="Panel/CenterContainer/GridContainer/VBoxContainer5/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buy 1" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer5/HBoxContainer/HBoxContainer9"]
+layout_mode = 2
+text = "Buy 1"
+
+[node name="Buy 10" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer5/HBoxContainer/HBoxContainer9"]
+layout_mode = 2
+text = "Buy 10"
+
+[node name="Buy 100" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer5/HBoxContainer/HBoxContainer9"]
+layout_mode = 2
+text = "Buy 100"
+
 [connection signal="mouse_entered" from="VBoxContainer/Poop" to="." method="_on_mouse_interaction_entered"]
-[connection signal="mouse_entered" from="VBoxContainer/Poop" to="." method="_on_poop_mouse_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/Poop" to="." method="_on_common_poop_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Poop" to="." method="_on_mouse_interaction_exited"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer2/GridContainer/Add Little Guy" to="." method="_on_add_little_guy_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer2/GridContainer/Increase Little Guy Speed" to="." method="_on_increase_little_guy_speed_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer2/GridContainer/Increase Poop Chance" to="." method="_on_increase_poop_chance_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer2/GridContainer/Increase Food Spawn Amount" to="." method="_on_increase_food_spawn_amount_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer2/GridContainer2/Decrease Poop Time" to="." method="_on_decrease_poop_time_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer2/GridContainer2/Decrease Rest Time" to="." method="_on_decrease_rest_time_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer2/GridContainer2/Decrease Rest Chance" to="." method="_on_decrease_rest_chance_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer2/GridContainer2/Decrease Food Spawn Time" to="." method="_on_decrease_food_spawn_time_pressed"]
+[connection signal="mouse_exited" from="VBoxContainer/Poop" to="." method="_on_common_poop_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/Food" to="." method="_on_mouse_interaction_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/Food" to="." method="_on_common_food_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Food" to="." method="_on_mouse_interaction_exited"]
+[connection signal="mouse_exited" from="VBoxContainer/Food" to="." method="_on_common_food_mouse_exited"]
+[connection signal="pressed" from="Panel/Hide Upgrades" to="." method="_on_hide_upgrades_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer/Add Little Guy" to="." method="_on_add_little_guy_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer/Increase Little Guy Speed" to="." method="_on_increase_little_guy_speed_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer2/Increase Poop Chance" to="." method="_on_increase_poop_chance_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer2/Decrease Poop Time" to="." method="_on_decrease_poop_time_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer3/Decrease Rest Chance" to="." method="_on_decrease_rest_chance_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer3/Decrease Rest Time" to="." method="_on_decrease_rest_time_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer4/Increase Food Spawn Amount" to="." method="_on_increase_food_spawn_amount_pressed"]
+[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer4/Decrease Food Spawn Time" to="." method="_on_decrease_food_spawn_time_pressed"]

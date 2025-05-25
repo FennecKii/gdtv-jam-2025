@@ -44,10 +44,12 @@ func spawn_food() -> void:
 		var food_instance: Node2D = Global.fry_scene.instantiate()
 		food_instance.global_position = spawn_position
 		food_instance.tile_coord = spawn_coord
+		food_instance.detectable = true
 		food_group.add_child(food_instance)
 		tilemap_layer_ground.set_cell(spawn_coord, Global.tileset_soft_ground_source_id, Vector2i(randi_range(0, Global.tileset_soft_ground_atlas_size.x), randi_range(0, Global.tileset_soft_ground_atlas_size.y)))
 
 func spawn_littleguy() -> void:
 	var littleguy_instance: Node2D = Global.littleguy_scene.instantiate()
-	littleguy_instance.global_position = Vector2.ZERO + Vector2(2 * 20 * cos(randf_range(0, 2*PI)), 20 * sin(randf_range(0, 2*PI)))
+	var rand_angle: float = randf_range(0, 2*PI)
+	littleguy_instance.global_position = Vector2.ZERO + Vector2(2 * 20 * cos(rand_angle), 20 * sin(rand_angle))
 	littleguy_group.add_child(littleguy_instance)

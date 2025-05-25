@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcyn81qq2gvpa"]
+
+[ext_resource type="PackedScene" uid="uid://bua81pngig75l" path="res://region/test.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://jkrbnuakia71" path="res://ui/HUD.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://hu3v1yubkx76" path="res://ui/cursor/cursor.tscn" id="3_1bvp3"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Test" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD Control" parent="CanvasLayer" instance=ExtResource("2_h2yge")]
+
+[node name="Cursor" parent="CanvasLayer" instance=ExtResource("3_1bvp3")]
+scale = Vector2(2, 2)

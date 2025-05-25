@@ -7,11 +7,12 @@ var can_pickup: bool = false
 
 func _ready() -> void:
 	add_to_group("poop")
+	Global.play_squash_stretch(self)
 
 
 func _process(delta: float) -> void:
 	if can_pickup and Input.is_action_just_pressed("Click"):
-		Global.poops_collected += 1
+		Global.common_poops_collected += 1
 		SignalBus.poop_collected.emit()
 		queue_free()
 

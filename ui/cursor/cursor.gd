@@ -1,9 +1,9 @@
 extends Sprite2D
 
 var mouse_accel: float = 20
-var click_rotation: float = -200
-var click_scale: Vector2 = Vector2(0.0075, 0.0075)
-var default_scale: Vector2 = Vector2(0.5, 0.5)
+var click_rotation: float = -180
+var click_scale: Vector2 = Vector2(0.015, 0.015)
+var default_scale: Vector2 = Vector2(1, 1)
 
 
 func _ready() -> void:

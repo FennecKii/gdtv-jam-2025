@@ -4,12 +4,12 @@ extends Node2D
 
 var food_spawned: bool = false
 
-var poop_instance: Node
+var common_poop_instance: Node
+var common_food_instance: Node
 
 @onready var food_timer: Timer = $"Food Timer"
 @onready var food_group: Node2D = $"Y-Sort/Food Group"
 @onready var poop_group: Node2D = $"Y-Sort/Poop Group"
-@onready var cursor: Sprite2D = $Viewport/Cursor
 
 
 func _ready() -> void:
@@ -24,13 +24,16 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	_process_food()
-	_update_timer()
+	if Global.food_spawn_auto:
+		_process_food()
+		_update_timer()
 	
 	_grab_item()
 	_release_item()
-	if Global.cursor_grabbing and Global.poop_grabbed:
-			poop_instance.global_position = lerp(poop_instance.global_position, get_global_mouse_position(), 15 * delta)
+	if Global.cursor_grabbing and Global.common_poop_grabbed:
+		common_poop_instance.global_position = lerp(common_poop_instance.global_position, get_global_mouse_position(), 17 * delta)
+	if Global.cursor_grabbing and Global.common_food_grabbed and common_food_instance:
+		common_food_instance.global_position = lerp(common_food_instance.global_position, get_global_mouse_position() + Vector2(0, 10), 17 * delta)
 
 
 func _process_food() -> void:
@@ -52,21 +55,38 @@ func _update_timer() -> void:
 
 func _grab_item() -> void:
 	if Global.cursor_interacted and Input.is_action_just_pressed("Click"):
-		if Global.cursor_poop_interacted and Global.poops_collected > 0:
-			Global.poops_collected -= 1
-			Global.poop_grabbed = true
-			poop_instance = Global.poop_scene.instantiate()
-			poop_instance.global_position = get_global_mouse_position()
-			poop_group.add_child(poop_instance)
+		if Global.cursor_common_poop_interacted and Global.common_poops_collected > 0:
+			Global.common_poops_collected -= 1
+			Global.common_poop_grabbed = true
+			common_poop_instance = Global.poop_scene.instantiate()
+			common_poop_instance.global_position = get_global_mouse_position()
+			poop_group.add_child(common_poop_instance)
+		elif Global.cursor_common_food_interacted:
+			Global.common_food_grabbed = true
+			common_food_instance = Global.fry_scene.instantiate()
+			common_food_instance.global_position = get_global_mouse_position()
+			common_food_instance.detectable = false
+			food_group.add_child(common_food_instance)
 
 
 func _release_item() -> void:
 	if Global.cursor_grabbing and Input.is_action_just_released("Click"):
-		if Global.cursor_interacted and Global.poop_grabbed:
-			if Global.cursor_poop_interacted:
-				poop_instance.queue_free()
-				Global.poops_collected += 1
-		Global.poop_grabbed = false
+		if not Global.cursor_interacted and Global.common_poop_grabbed:
+			Global.play_squash_stretch(common_poop_instance)
+			Global.common_poop_grabbed = false
+		elif Global.cursor_interacted and Global.common_poop_grabbed:
+			if Global.cursor_common_poop_interacted:
+				common_poop_instance.queue_free()
+				Global.common_poops_collected += 1
+				Global.common_poop_grabbed = false
+		if not Global.cursor_interacted and Global.common_food_grabbed and common_food_instance:
+			Global.play_squash_stretch(common_food_instance)
+			common_food_instance.detectable = true
+			Global.common_food_grabbed = false
+		elif Global.cursor_interacted and Global.common_food_grabbed:
+			if Global.cursor_common_food_interacted:
+				common_food_instance.queue_free()
+				Global.common_food_grabbed = false
 		Global.cursor_grabbing = false
 
 
