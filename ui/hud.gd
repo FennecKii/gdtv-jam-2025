@@ -48,51 +48,51 @@ func _on_common_food_mouse_exited() -> void:
 
 
 func _on_add_little_guy_pressed() -> void:
-	if Global.poops_collected >= 10:
-		Global.poops_collected -= 10
+	if Global.common_poops_collected >= 10:
+		Global.common_poops_collected -= 10
 		Global.littleguy_count += 1
 		SignalBus.add_little_guy.emit()
 
 
 func _on_increase_little_guy_speed_pressed() -> void:
-	if Global.poops_collected >= 10:
-		Global.poops_collected -= 10
+	if Global.common_poops_collected >= 10:
+		Global.common_poops_collected -= 10
 		Global.littleguy_speed += Global.littleguy_speed * 0.25
 
 
 func _on_decrease_poop_time_pressed() -> void:
-	if Global.poops_collected >= 5:
-		Global.poops_collected -= 5
+	if Global.common_poops_collected >= 5:
+		Global.common_poops_collected -= 5
 		Global.poop_time -= Global.poop_time * 0.25
 
 
 func _on_increase_poop_chance_pressed() -> void:
-	if Global.poops_collected >= 2:
-		Global.poops_collected -= 2
+	if Global.common_poops_collected >= 2:
+		Global.common_poops_collected -= 2
 		Global.poop_chance += Global.poop_chance * 0.25
 
 
 func _on_decrease_rest_time_pressed() -> void:
-	if Global.poops_collected >= 5:
-		Global.poops_collected -= 5
+	if Global.common_poops_collected >= 5:
+		Global.common_poops_collected -= 5
 		Global.rest_time -= Global.rest_time * 0.25
 
 
 func _on_decrease_rest_chance_pressed() -> void:
-	if Global.poops_collected >= 10:
-		Global.poops_collected -= 10
+	if Global.common_poops_collected >= 10:
+		Global.common_poops_collected -= 10
 		Global.rest_chance += Global.rest_chance * 0.25
 
 
 func _on_decrease_food_spawn_time_pressed() -> void:
-	if Global.poops_collected >= 15:
-		Global.poops_collected -= 15
+	if Global.common_poops_collected >= 15:
+		Global.common_poops_collected -= 15
 		Global.food_spawn_time -= Global.food_spawn_time * 0.25
 
 
 func _on_increase_food_spawn_amount_pressed() -> void:
-	if Global.poops_collected >= 25:
-		Global.poops_collected -= 25
+	if Global.common_poops_collected >= 25:
+		Global.common_poops_collected -= 25
 		Global.food_spawn_amount += 1
 
 
@@ -104,3 +104,7 @@ func _on_hide_upgrades_pressed() -> void:
 	elif upgrades_panel_down:
 		tween.tween_property(upgrades_panel, "position", upgrades_panel_up_position, 0.25).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_IN_OUT)
 		upgrades_panel_down = false
+
+
+func _on_farm_pressed() -> void:
+	SignalBus.farm_pressed.emit()

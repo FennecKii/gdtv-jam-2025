@@ -62,9 +62,10 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_16ku5"]
 
-[node name="Poop" type="Node2D"]
+[node name="Poop" type="Node2D" node_paths=PackedStringArray("detection_area")]
 y_sort_enabled = true
 script = ExtResource("1_16ku5")
+detection_area = NodePath("Mouse Detection")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oop6g")
@@ -74,9 +75,12 @@ frame_progress = 0.216973
 offset = Vector2(0, -2)
 
 [node name="Mouse Detection" type="Area2D" parent="."]
+scale = Vector2(0.7517, 0.646832)
+collision_layer = 8
+collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse Detection"]
-scale = Vector2(0.96061, 0.847699)
+[node name="Mouse Detection" type="CollisionShape2D" parent="Mouse Detection"]
+scale = Vector2(0.752038, 0.630262)
 shape = SubResource("CircleShape2D_16ku5")
 
 [connection signal="mouse_entered" from="Mouse Detection" to="." method="_on_mouse_detection_mouse_entered"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm4eyjkq1av43"]
+
+[ext_resource type="Texture2D" uid="uid://b8lagwiet804u" path="res://crop/carrot/Carrot_Common-Sheet.png" id="1_2pgmj"]
+[ext_resource type="Script" uid="uid://dam2b2u32tbsv" path="res://crop/carrot/carrot_tile.gd" id="2_4mx81"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2pgmj"]
+
+[node name="Carrot Tile" type="Sprite2D"]
+y_sort_enabled = true
+texture = ExtResource("1_2pgmj")
+offset = Vector2(0, -8)
+hframes = 4
+script = ExtResource("2_4mx81")
+
+[node name="Poop Detection" type="Area2D" parent="."]
+scale = Vector2(0.428813, 0.439924)
+collision_layer = 16
+collision_mask = 8
+
+[node name="Poop Collision" type="CollisionShape2D" parent="Poop Detection"]
+scale = Vector2(0.921777, 0.687492)
+shape = SubResource("CircleShape2D_2pgmj")
+
+[connection signal="area_entered" from="Poop Detection" to="." method="_on_poop_detection_area_entered"]
+[connection signal="mouse_entered" from="Poop Detection" to="." method="_on_poop_detection_mouse_entered"]
+[connection signal="mouse_exited" from="Poop Detection" to="." method="_on_poop_detection_mouse_exited"]

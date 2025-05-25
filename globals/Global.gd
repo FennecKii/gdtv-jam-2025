@@ -3,6 +3,8 @@ extends Node
 @onready var littleguy_scene: PackedScene = preload("res://little guy/little_guy.tscn")
 @onready var poop_scene: PackedScene = preload("res://poop/poop.tscn")
 @onready var fry_scene: PackedScene = preload("res://food/fry/fry.tscn")
+@onready var carrot_crop_scene: PackedScene = preload("res://crop/carrot/carrot_tile.tscn")
+
 
 const tileset_soft_collision_source_id: int = 0
 const tileset_soft_ground_source_id: int = 1
@@ -14,6 +16,7 @@ const tileset_vibrant_ground_atlas_size: Vector2i = Vector2i(7, 1)
 
 var food_position: Vector2
 var poop_group: Node2D
+var poop_detection_area: Area2D
 var food_group: Node2D
 
 var common_poops_collected: int = 0

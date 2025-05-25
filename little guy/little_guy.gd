@@ -15,7 +15,7 @@ var direction: Vector2
 var next_food_position: Vector2
 var slip_factor: float = 20
 var food_pool: int = 0
-var guaranteed_poops: int = 1
+var guaranteed_poops: int = 0
 
 var current_state: State
 var previous_state: State
@@ -55,7 +55,6 @@ func _process(delta: float) -> void:
 	
 	if food_pool >= Global.littleguy_max_food_pool:
 		guaranteed_poop = true
-		guaranteed_poops = food_pool % Global.littleguy_max_food_pool
 
 
 func _physics_process(delta: float) -> void:
@@ -148,14 +147,24 @@ func _update_state_action() -> void:
 		direction = Vector2.ZERO
 		await get_tree().create_timer(Global.poop_time).timeout
 		pooping = false
-		if randf_range(0, 1) <= Global.poop_chance or guaranteed_poop:
+		if guaranteed_poop:
+			guaranteed_poops = food_pool % Global.littleguy_max_food_pool
 			for i in range(guaranteed_poops):
 				var poop_instance: Node = Global.poop_scene.instantiate()
 				poop_instance.global_position = global_position
+				poop_instance.detectable = true
 				Global.poop_group.add_child(poop_instance)
 			pooped = true
 			guaranteed_poop = false
-			guaranteed_poops = 1
+			guaranteed_poops = 0
+			food_pool = 0
+		elif randf_range(0, 1) <= Global.poop_chance:
+			var poop_instance: Node = Global.poop_scene.instantiate()
+			poop_instance.global_position = global_position
+			poop_instance.detectable = true
+			Global.poop_group.add_child(poop_instance)
+			pooped = true
+			guaranteed_poops = 0
 			food_pool = 0
 
 

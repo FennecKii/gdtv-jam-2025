@@ -1,8 +1,42 @@
-[gd_scene load_steps=2 format=4 uid="uid://1i6rou5sxjbj"]
+[gd_scene load_steps=4 format=4 uid="uid://1i6rou5sxjbj"]
 
 [ext_resource type="PackedScene" uid="uid://bn6uqs2beldtn" path="res://globals/components/isometric.tscn" id="1_d7ib4"]
+[ext_resource type="Script" uid="uid://cvbm2vbbr0v0w" path="res://farm_land_minigame.gd" id="1_ombsc"]
+[ext_resource type="Theme" uid="uid://fdpmfrapgg3p" path="res://resources/themes/game_theme.tres" id="2_bdh6n"]
 
-[node name="Farm Land Minigame" type="Node2D"]
+[node name="Farm Land Minigame" type="Node2D" node_paths=PackedStringArray("carrot_crops_node", "dirt_tilemap_layer")]
+z_index = 1
+script = ExtResource("1_ombsc")
+carrot_crops_node = NodePath("Y-sort/Carrot Crops")
+dirt_tilemap_layer = NodePath("Y-sort/Dirt Layer")
 
-[node name="Isometric Layer" parent="." instance=ExtResource("1_d7ib4")]
-tile_map_data = PackedByteArray("AAD/////BAABAAAAAAD///7/BAABAAAAAAD///3/BAABAAAAAAAAAP7/BAABAAAAAAAAAP//BAABAAAAAAAAAAAABAABAAAAAAD//wEABAABAAAAAAD//wAABAABAAAAAAD+////BAABAAAAAAD+//7/BAABAAAAAAD+//3/BAABAAAAAAD///z/BAABAAAAAAD///v/BAABAAAAAAAAAPz/BAABAAAAAAAAAP3/BAABAAAAAAABAP7/BAABAAAAAAABAP//BAABAAAAAAABAAAABAABAAAAAAAAAAEABAABAAAAAAAAAAIABAABAAAAAAD//wMABAABAAAAAAD//wIABAABAAAAAAD+/wEABAABAAAAAAD+/wAABAABAAAAAAD9////BAABAAAAAAD///r/AwAGAAEAAAD+//v/AwAGAAEAAAD+//z/AwAGAAEAAAD9//3/AwAGAAEAAAD9//7/AwAGAAEAAAD9/wAAAwAGAAEAAAD9/wEAAwAGAAEAAAD+/wIAAwAGAAEAAAD+/wMAAwAGAAEAAAD//wQAAwAGAAEAAAAAAAQAAwAGAAEAAAAAAAMAAwAGAAEAAAABAAIAAwAGAAEAAAABAAEAAwAGAAEAAAACAAAAAwAGAAEAAAAAAPr/AwAGAAEAAAAAAPv/AwAGAAEAAAABAPz/AwAGAAEAAAABAP3/AwAGAAEAAAACAP7/AwAGAAEAAAA=")
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(4.945, 13.641, 9.728, 1)
+offset_left = -128.0
+offset_top = -99.0
+offset_right = 129.0
+offset_bottom = 72.0
+mouse_filter = 2
+theme = ExtResource("2_bdh6n")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 15.0
+offset_right = 148.0
+offset_bottom = 31.0
+text = "Farm"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Y-sort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Border Layer" parent="Y-sort" instance=ExtResource("1_d7ib4")]
+tile_map_data = PackedByteArray("AAD///r/AQAGAAEAAAD+//v/AQAGAAEAAAD+//z/AQAGAAEAAAD9//3/AQAGAAEAAAD9//7/AQAGAAEAAAD9/wAAAQAGAAEAAAD9/wEAAQAGAAEAAAD+/wIAAQAGAAEAAAD+/wMAAQAGAAEAAAD//wQAAQAGAAEAAAAAAAQAAQAGAAEAAAAAAAMAAQAGAAEAAAABAAIAAQAGAAEAAAABAAEAAQAGAAEAAAACAAAAAQAGAAEAAAACAP7/AQAGAAEAAAABAP3/AQAGAAEAAAABAPz/AQAGAAEAAAAAAPv/AQAGAAEAAAAAAPr/AQAGAAEAAAA=")
+
+[node name="Dirt Layer" parent="Y-sort" instance=ExtResource("1_d7ib4")]
+tile_map_data = PackedByteArray("AAD/////BAAAAAAAAAD///7/BAAAAAAAAAD///3/BAAAAAAAAAAAAP7/BAAAAAAAAAAAAP//BAAAAAAAAAAAAAAABAAAAAAAAAD//wEABAAAAAAAAAD//wAABAAAAAAAAAD+////BAAAAAAAAAD+//7/BAAAAAAAAAD+//3/BAAAAAAAAAD///z/BAAAAAAAAAD///v/BAAAAAAAAAAAAPz/BAAAAAAAAAAAAP3/BAAAAAAAAAABAAAABAAAAAAAAAAAAAEABAAAAAAAAAAAAAIABAAAAAAAAAD//wMABAAAAAAAAAD//wIABAAAAAAAAAD+/wEABAAAAAAAAAD+/wAABAAAAAAAAAD9////BAAAAAAAAAABAP7/BAAAAAAAAAABAP//BAAAAAAAAAA=")
+
+[node name="Carrot Crops" type="Node2D" parent="Y-sort"]
+y_sort_enabled = true

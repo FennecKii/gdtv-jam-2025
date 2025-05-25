@@ -60,6 +60,9 @@ func _grab_item() -> void:
 			Global.common_poop_grabbed = true
 			common_poop_instance = Global.poop_scene.instantiate()
 			common_poop_instance.global_position = get_global_mouse_position()
+			common_poop_instance.detectable = false
+			common_poop_instance.z_index = 2
+			Global.poop_detection_area = common_poop_instance.detection_area
 			poop_group.add_child(common_poop_instance)
 		elif Global.cursor_common_food_interacted:
 			Global.common_food_grabbed = true
@@ -73,6 +76,7 @@ func _release_item() -> void:
 	if Global.cursor_grabbing and Input.is_action_just_released("Click"):
 		if not Global.cursor_interacted and Global.common_poop_grabbed:
 			Global.play_squash_stretch(common_poop_instance)
+			common_poop_instance.detectable = true
 			Global.common_poop_grabbed = false
 		elif Global.cursor_interacted and Global.common_poop_grabbed:
 			if Global.cursor_common_poop_interacted:
