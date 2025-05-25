@@ -67,7 +67,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b7sn1"]
-radius = 9.0
+radius = 7.0
 
 [node name="Fry" type="Node2D"]
 y_sort_enabled = true

@@ -48,6 +48,23 @@ func spawn_food() -> void:
 		food_group.add_child(food_instance)
 		tilemap_layer_ground.set_cell(spawn_coord, Global.tileset_soft_ground_source_id, Vector2i(randi_range(0, Global.tileset_soft_ground_atlas_size.x), randi_range(0, Global.tileset_soft_ground_atlas_size.y)))
 
+
+func spawn_carrot() -> void:
+	var spawn_coord: Vector2i = tilemap_coords.pick_random()
+	while food_pool.has(spawn_coord) == true:
+		spawn_coord = tilemap_coords.pick_random()
+	if food_pool.has(spawn_coord) == false and Global.common_carrot_amount > 0:
+		Global.common_carrot_amount -= 1
+		food_pool.append(spawn_coord)
+		var spawn_position: Vector2 = tilemap_layer_ground.to_global(tilemap_layer_ground.map_to_local(spawn_coord))
+		var food_instance: Node2D = Global.carrot_scene.instantiate()
+		food_instance.global_position = spawn_position
+		food_instance.tile_coord = spawn_coord
+		food_instance.detectable = true
+		food_group.add_child(food_instance)
+		tilemap_layer_ground.set_cell(spawn_coord, Global.tileset_soft_ground_source_id, Vector2i(randi_range(0, Global.tileset_soft_ground_atlas_size.x), randi_range(0, Global.tileset_soft_ground_atlas_size.y)))
+
+
 func spawn_littleguy() -> void:
 	var littleguy_instance: Node2D = Global.littleguy_scene.instantiate()
 	var rand_angle: float = randf_range(0, 2*PI)

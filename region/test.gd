@@ -3,11 +3,14 @@ extends Node2D
 @export var spawner_component: SpawnerComponent
 
 var food_spawned: bool = false
+var carrot_spawned: bool = false
 
 var common_poop_instance: Node
 var common_food_instance: Node
+var common_carrot_instance: Node
 
 @onready var food_timer: Timer = $"Food Timer"
+@onready var carrot_timer: Timer = $"Carrot Timer"
 @onready var food_group: Node2D = $"Y-Sort/Food Group"
 @onready var poop_group: Node2D = $"Y-Sort/Poop Group"
 
@@ -17,16 +20,25 @@ func _ready() -> void:
 	if not spawner_component:
 		assert(spawner_component, "%s not found." %spawner_component)
 	food_timer.wait_time = Global.food_spawn_time
+	carrot_timer.wait_time = Global.carrot_spawn_time
 	food_timer.start()
+	carrot_timer.start()
 	Global.food_group = food_group
 	Global.poop_group = poop_group
 	SignalBus.add_little_guy.connect(_on_add_little_guy)
 
 
 func _process(delta: float) -> void:
+	food_timer.wait_time = Global.food_spawn_time
+	carrot_timer.wait_time = Global.carrot_spawn_time
+	
 	if Global.food_spawn_auto:
 		_process_food()
 		_update_timer()
+	
+	if Global.carrot_spawn_auto:
+		_process_carrot()
+		_update_carrot_timer()
 	
 	_grab_item()
 	_release_item()
@@ -34,7 +46,8 @@ func _process(delta: float) -> void:
 		common_poop_instance.global_position = lerp(common_poop_instance.global_position, get_global_mouse_position(), 17 * delta)
 	if Global.cursor_grabbing and Global.common_food_grabbed and common_food_instance:
 		common_food_instance.global_position = lerp(common_food_instance.global_position, get_global_mouse_position() + Vector2(0, 10), 17 * delta)
-
+	if Global.cursor_grabbing and Global.common_carrot_grabbed and common_carrot_instance:
+		common_carrot_instance.global_position = lerp(common_carrot_instance.global_position, get_global_mouse_position() + Vector2(0, 5), 17 * delta)
 
 func _process_food() -> void:
 	if food_spawned:
@@ -51,6 +64,23 @@ func _update_timer() -> void:
 		return
 	elif food_timer.is_stopped():
 		food_spawned = false
+
+
+func _process_carrot() -> void:
+	if carrot_spawned:
+		return
+	elif not carrot_spawned:
+		for carrot_count in range(Global.carrot_spawn_amount):
+			spawner_component.spawn_carrot()
+		carrot_spawned = true
+		carrot_timer.start()
+
+
+func _update_carrot_timer() -> void:
+	if not carrot_timer.is_stopped():
+		return
+	elif carrot_timer.is_stopped():
+		carrot_spawned = false
 
 
 func _grab_item() -> void:
@@ -70,6 +100,13 @@ func _grab_item() -> void:
 			common_food_instance.global_position = get_global_mouse_position()
 			common_food_instance.detectable = false
 			food_group.add_child(common_food_instance)
+		elif Global.cursor_common_carrot_interacted and Global.common_carrot_amount > 0:
+			Global.common_carrot_amount -= 1
+			Global.common_carrot_grabbed = true
+			common_carrot_instance = Global.carrot_scene.instantiate()
+			common_carrot_instance.global_position = get_global_mouse_position()
+			common_carrot_instance.detectable = false
+			food_group.add_child(common_carrot_instance)
 
 
 func _release_item() -> void:
@@ -91,6 +128,15 @@ func _release_item() -> void:
 			if Global.cursor_common_food_interacted:
 				common_food_instance.queue_free()
 				Global.common_food_grabbed = false
+		if not Global.cursor_interacted and Global.common_carrot_grabbed and common_carrot_instance:
+			Global.play_squash_stretch(common_carrot_instance)
+			common_carrot_instance.detectable = true
+			Global.common_carrot_grabbed = false
+		elif Global.cursor_interacted and Global.common_carrot_grabbed:
+			if Global.cursor_common_carrot_interacted:
+				common_carrot_instance.queue_free()
+				Global.common_carrot_amount += 1
+				Global.common_carrot_grabbed = false
 		Global.cursor_grabbing = false
 
 

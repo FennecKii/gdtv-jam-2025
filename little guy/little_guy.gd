@@ -148,7 +148,7 @@ func _update_state_action() -> void:
 		await get_tree().create_timer(Global.poop_time).timeout
 		pooping = false
 		if guaranteed_poop:
-			guaranteed_poops = food_pool % Global.littleguy_max_food_pool
+			guaranteed_poops = int(food_pool / Global.littleguy_max_food_pool)
 			for i in range(guaranteed_poops):
 				var poop_instance: Node = Global.poop_scene.instantiate()
 				poop_instance.global_position = global_position

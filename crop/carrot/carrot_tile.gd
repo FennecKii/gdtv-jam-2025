@@ -1,27 +1,29 @@
 extends Sprite2D
 
-@export var growth_time: float = 10.0
+
+@onready var poop_collision: CollisionShape2D = $"Poop Detection/Poop Collision"
+
+@export var growth_time: float = 8
 
 func _ready() -> void:
 	frame = 0
 
 
 func _grow_carrot() -> void:
-	await get_tree().create_timer(growth_time/4).timeout
+	await get_tree().create_timer(randf_range(growth_time/4 - 1, growth_time/4 +1)).timeout
 	frame += 1
 
 
 func _on_poop_detection_area_entered(area: Area2D) -> void:
-	if area.is_in_group("poop"):
-		print("woah")
 	if area == Global.poop_detection_area and area.is_in_group("poop"):
 		SignalBus.carrot_fertilized.emit(area)
+		poop_collision.disabled = true
 		for i in range(3):
 			await _grow_carrot()
-		await get_tree().create_timer(growth_time/4).timeout
+		await get_tree().create_timer(1).timeout
 		frame = 0
-		print("got carrot!")
-		# Spawn carrot item
+		SignalBus.spawn_carrot.emit(global_position)
+		poop_collision.disabled = false
 
 
 func _on_poop_detection_mouse_entered() -> void:

@@ -3,6 +3,7 @@ extends Node
 @onready var littleguy_scene: PackedScene = preload("res://little guy/little_guy.tscn")
 @onready var poop_scene: PackedScene = preload("res://poop/poop.tscn")
 @onready var fry_scene: PackedScene = preload("res://food/fry/fry.tscn")
+@onready var carrot_scene: PackedScene = preload("res://crop/carrot/carrot.tscn")
 @onready var carrot_crop_scene: PackedScene = preload("res://crop/carrot/carrot_tile.tscn")
 
 
@@ -19,16 +20,19 @@ var poop_group: Node2D
 var poop_detection_area: Area2D
 var food_group: Node2D
 
-var common_poops_collected: int = 0
+var common_poops_collected: int = 10
 var common_food_amount: float = INF
+var common_carrot_amount: int = 0
 
 # UI interaction
 var cursor_interacted: bool = false
 var cursor_grabbing: bool = false
 var cursor_common_poop_interacted: bool = false
 var cursor_common_food_interacted: bool = false
+var cursor_common_carrot_interacted: bool = false
 var common_poop_grabbed: bool = false
 var common_food_grabbed: bool = false
+var common_carrot_grabbed: bool = false
 
 #TODO implement all the buttons and buying
 
@@ -44,10 +48,13 @@ var poop_auto_collect_time: float = 10		# Time it takes for poop to get collecte
 var rest_time: float = 9					# Time it takes for little guy to rest when in rest state
 var rest_chance: float = 0.20				# Chance for little guy to take a rest when in collect state
 
-# Fry parameters
+# Food parameters
 var food_spawn_auto: bool = false		# If food gets auto spawned #TODO implement 
 var food_spawn_time: float = 20.0		# Time it takes for food to spawn on the map
 var food_spawn_amount: int = 1			# Number of food that spawns
+var carrot_spawn_auto: bool = false		# If carrot gets auto spawned #TODO implement 
+var carrot_spawn_time: float = 20.0		# Time it takes for carrot to spawn on the map #TODO implement 
+var carrot_spawn_amount: int = 1		# Number of carrot that spawns #TODO implement 
 
 func play_squash_stretch(object: Node):
 	var tween = create_tween()

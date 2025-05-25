@@ -1,7 +1,8 @@
 extends Control
 
-@onready var common_poops_label: Label = $VBoxContainer/Poop/Poops
-@onready var common_foods_label: Label = $VBoxContainer/Food/Foods
+@onready var common_poops_label: Label = %Poops
+@onready var common_foods_label: Label = %Foods
+@onready var common_carrots_label: Label = %Carrot
 @onready var upgrades_panel: Panel = $Panel
 @onready var upgrades_panel_down_position: Vector2 = Vector2(upgrades_panel.position.x, upgrades_panel.position.y + upgrades_panel.size.y)
 @onready var upgrades_panel_up_position: Vector2 = upgrades_panel.position
@@ -12,11 +13,13 @@ func _ready() -> void:
 	SignalBus.poop_collected.connect(_on_poop_connected)
 	common_foods_label.text = str(": %s" %Global.common_food_amount)
 	common_poops_label.text = str(": %s" %Global.common_poops_collected)
+	common_carrots_label.text = str(": %s" %Global.common_carrot_amount)
 
 
 func _process(delta: float) -> void:
 	common_foods_label.text = str(": %s" %Global.common_food_amount)
 	common_poops_label.text = str(": %s" %Global.common_poops_collected)
+	common_carrots_label.text = str(": %s" %Global.common_carrot_amount)
 
 
 func _on_poop_connected() -> void:
@@ -45,6 +48,14 @@ func _on_common_poop_mouse_exited() -> void:
 
 func _on_common_food_mouse_exited() -> void:
 	Global.cursor_common_food_interacted = false
+
+
+func _on_common_carrot_mouse_entered() -> void:
+	Global.cursor_common_carrot_interacted = true
+
+
+func _on_common_carrot_mouse_exited() -> void:
+	Global.cursor_common_carrot_interacted = false
 
 
 func _on_add_little_guy_pressed() -> void:

@@ -1,9 +1,108 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxuvwm640hqpj"]
+[gd_scene load_steps=8 format=3 uid="uid://dxuvwm640hqpj"]
 
+[ext_resource type="Script" uid="uid://cuf1b04x6xvmh" path="res://crop/carrot/carrot.gd" id="1_g2xw8"]
 [ext_resource type="Texture2D" uid="uid://bix8rbl7s0jru" path="res://crop/carrot/Common Carrot.png" id="1_wxtyv"]
 
+[sub_resource type="Animation" id="Animation_g2xw8"]
+resource_name = "idle"
+length = 0.857157
+loop_mode = 1
+step = 0.142857
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_wxtyv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, -5.5), Vector2(0, -7), Vector2(0, -5.5), Vector2(0, -2), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dosg1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_wxtyv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dosg1"]
+_data = {
+&"RESET": SubResource("Animation_dosg1"),
+&"idle": SubResource("Animation_g2xw8")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2xw8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dosg1"]
+radius = 11.6585
+
 [node name="Carrot" type="Node2D"]
+z_index = 1
 y_sort_enabled = true
+script = ExtResource("1_g2xw8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_wxtyv")
+offset = Vector2(0, -7)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dosg1")
+}
+autoplay = "idle"
+
+[node name="Mouse Detection" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 32768
+
+[node name="Mouse Detection" type="CollisionShape2D" parent="Mouse Detection"]
+position = Vector2(0, -4)
+scale = Vector2(1.11374, 0.780665)
+shape = SubResource("CircleShape2D_g2xw8")
+
+[node name="Little Guy Detection" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="Little Guy Detection" type="CollisionShape2D" parent="Little Guy Detection"]
+position = Vector2(0, -4)
+scale = Vector2(0.660513, 0.525465)
+shape = SubResource("CircleShape2D_dosg1")
+
+[connection signal="mouse_entered" from="Mouse Detection" to="." method="_on_mouse_detection_mouse_entered"]
+[connection signal="mouse_exited" from="Mouse Detection" to="." method="_on_mouse_detection_mouse_exited"]
+[connection signal="body_entered" from="Little Guy Detection" to="." method="_on_little_guy_detection_body_entered"]

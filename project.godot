@@ -34,6 +34,7 @@ enabled=PackedStringArray("res://addons/script-ide/plugin.cfg", "res://addons/si
 food="For all the foods"
 poop="For all the poop"
 "little guy"=""
+carrot=""
 
 [gui]
 

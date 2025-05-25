@@ -4,11 +4,12 @@
 [ext_resource type="Script" uid="uid://cvbm2vbbr0v0w" path="res://farm_land_minigame.gd" id="1_ombsc"]
 [ext_resource type="Theme" uid="uid://fdpmfrapgg3p" path="res://resources/themes/game_theme.tres" id="2_bdh6n"]
 
-[node name="Farm Land Minigame" type="Node2D" node_paths=PackedStringArray("carrot_crops_node", "dirt_tilemap_layer")]
+[node name="Farm Land Minigame" type="Node2D" node_paths=PackedStringArray("carrot_crops_node", "dirt_tilemap_layer", "y_sort_node")]
 z_index = 1
 script = ExtResource("1_ombsc")
 carrot_crops_node = NodePath("Y-sort/Carrot Crops")
 dirt_tilemap_layer = NodePath("Y-sort/Dirt Layer")
+y_sort_node = NodePath("Y-sort")
 
 [node name="Panel" type="Panel" parent="."]
 self_modulate = Color(4.945, 13.641, 9.728, 1)
