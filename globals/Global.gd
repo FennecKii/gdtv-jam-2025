@@ -22,10 +22,10 @@ var food_group: Node2D
 
 var common_poops_collected: int = 0
 var common_food_amount: float = INF
-var common_carrot_amount: int = 0
+var common_carrot_amount: int = 10
 
 var golden_poops_collected: int = 0
-var golden_poop_chance: float = 0.0001
+var golden_poop_chance: float = 1
 var golden_poop_group: Node2D
 const carrot_pool_max: int = 10
 
@@ -233,3 +233,9 @@ func play_squash_stretch(object: Node):
 	tween.tween_property(object, "scale", Vector2(0.8, 1.3), 0.15)
 	tween.tween_property(object, "scale", Vector2(1.1, 0.8), 0.1)
 	tween.tween_property(object, "scale", Vector2(1.0, 1.0), 0.2).set_trans(Tween.TRANS_BOUNCE)
+
+func play_3x_squash_stretch(object: Node):
+	var tween = create_tween()
+	tween.tween_property(object, "scale", Vector2(2.8, 3.3), 0.15)
+	tween.tween_property(object, "scale", Vector2(3.1, 2.8), 0.1)
+	tween.tween_property(object, "scale", Vector2(3.0, 3.0), 0.2).set_trans(Tween.TRANS_BOUNCE)

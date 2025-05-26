@@ -11,7 +11,7 @@ var next_food: Node
 
 var direction: Vector2
 var next_food_position: Vector2
-var slip_factor: float = 20
+var slip_factor: float = 12
 var food_pool: int = 0
 var carrot_pool: int = 0
 var guaranteed_poops: int = 0
@@ -28,7 +28,7 @@ var pooping: bool = false
 var food_found: bool = false
 var guaranteed_poop: bool = false
 var is_golden_poop_chance: bool = false
-var poop_multiplier: float = 1
+var poop_multiplier: float = 1.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_label: Label = $Control/State
@@ -173,9 +173,9 @@ func _update_state_action() -> void:
 			guaranteed_poop = false
 			guaranteed_poops = 0
 			food_pool = 0
-		if randf_range(0, 1) <= Global.poop_chance * poop_multiplier:
-			if Global.poop_chance >= 1:
-				for i in range(int(floori(Global.poop_chance))):
+		if randf_range(0, 1) <= Global.poop_chance * poop_multiplier + carrot_pool/2:
+			if Global.poop_chance * poop_multiplier + carrot_pool/2 >= 1:
+				for i in range(int(floori(Global.poop_chance * poop_multiplier + carrot_pool/3))):
 					_poop()
 			else:
 				_poop()

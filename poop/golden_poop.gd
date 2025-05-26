@@ -12,7 +12,7 @@ var can_pickup: bool = false
 func _ready() -> void:
 	add_to_group("poop")
 	mouse_detection_area.add_to_group("poop")
-	Global.play_squash_stretch(self)
+	Global.play_3x_squash_stretch(self)
 
 
 func _process(_delta: float) -> void:
