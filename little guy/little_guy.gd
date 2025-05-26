@@ -222,7 +222,7 @@ func _on_food_collected(area: Area2D, is_carrot: bool, _tile_coord: Vector2i) ->
 		collecting = false
 	if is_carrot:
 		carrot_pool += 1
-		poop_multiplier = 2.5
+		poop_multiplier += 1
 
 
 func _on_collection_safety_timer_timeout() -> void:
