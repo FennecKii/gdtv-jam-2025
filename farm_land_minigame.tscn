@@ -15,7 +15,7 @@ y_sort_node = NodePath("Y-sort")
 offset_left = -128.0
 offset_top = -144.0
 offset_right = 128.0
-offset_bottom = 41.0
+offset_bottom = 34.0
 mouse_filter = 2
 theme = ExtResource("2_bdh6n")
 
@@ -31,10 +31,11 @@ vertical_alignment = 1
 
 [node name="Fertilize All" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 142.0
-offset_right = 167.0
-offset_bottom = 182.0
+offset_left = 98.0
+offset_top = 143.0
+offset_right = 179.0
+offset_bottom = 183.0
+scale = Vector2(0.75, 0.75)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 15
 text = "Fertilize All

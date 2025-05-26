@@ -20,9 +20,9 @@ var poop_group: Node2D
 var poop_detection_area: Area2D
 var food_group: Node2D
 
-var common_poops_collected: int = 0
+var common_poops_collected: int = 100
 var common_food_amount: float = INF
-var common_carrot_amount: int = 20
+var common_carrot_amount: int = 0
 
 var golden_poops_collected: int = 0
 var golden_poop_chance: float = 1.0
@@ -73,7 +73,7 @@ var farm_auto_collect_time: float = 20.0	# Time it takes to auto collect on the 
 
 
 # Base Upgrade Costs
-const littleguy_count_upgrade_cost_base: int = 0
+const littleguy_count_upgrade_cost_base: int = 25
 const littleguy_speed_upgrade_cost_base: int = 0
 const littleguy_max_food_pool_upgrade_cost_base: int = 0
 const poop_time_upgrade_cost_base: int = 0
