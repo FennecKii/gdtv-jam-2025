@@ -5,9 +5,10 @@
 
 [resource]
 script = ExtResource("1_iwbsw")
+limit = 3
 type = 4
 sound = ExtResource("2_60ydr")
-volume = -7.0
+volume = -8.0
 pitch_scale = 1.0
 pitch_randomness = 0.15
 metadata/_custom_type_script = "uid://vvejq8j8aw8a"

@@ -5,9 +5,10 @@
 
 [resource]
 script = ExtResource("1_15yx1")
+limit = 3
 type = 3
 sound = ExtResource("2_lku5r")
-volume = -10.0
+volume = -12.0
 pitch_scale = 0.9
 pitch_randomness = 0.1
 metadata/_custom_type_script = "uid://vvejq8j8aw8a"

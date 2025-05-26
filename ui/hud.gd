@@ -526,7 +526,7 @@ func _on_increase_poop_chance_pressed() -> void:
 	if Global.poop_chance_upgrade_count < Global.poop_chance_upgrade_max:
 		if Global.common_poops_collected >= Global.poop_chance_upgrade_cost:
 			Global.common_poops_collected -= Global.poop_chance_upgrade_cost
-			Global.poop_chance += 1.2*Global.poop_chance/(Global.poop_chance_upgrade_max - Global.poop_chance_upgrade_count + 1.25)
+			Global.poop_chance += 1.05*Global.poop_chance/(Global.poop_chance_upgrade_max - Global.poop_chance_upgrade_count + 1.2)
 			Global.poop_chance_upgrade_count += 1
 			Global.poop_chance_upgrade_cost += Global.poop_chance_upgrade_cost_base * int(ceilf(Global.poop_chance_upgrade_count/10.0))
 	if Global.poop_chance_upgrade_count == Global.poop_chance_upgrade_max:

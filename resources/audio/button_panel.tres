@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_ev12x")
+limit = 2
 type = 10
 sound = ExtResource("2_rew33")
 volume = -1.0

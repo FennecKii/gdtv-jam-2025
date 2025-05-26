@@ -125,16 +125,19 @@ func play_music_loop(type: MusicResource.MusicType, loop_begin: float = 0, loop_
 func play_sfx_at_location(location: Vector2, type: SoundResource.SoundType) -> void:
 	if sound_effect_dict.has(type):
 		var sound_effect: SoundResource = sound_effect_dict[type]
-		var new_2D_audio: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
-		new_2D_audio.position = location
-		new_2D_audio.bus = "SFX"
-		new_2D_audio.stream = sound_effect.sound
-		new_2D_audio.volume_db = sound_effect.volume
-		new_2D_audio.pitch_scale = sound_effect.pitch_scale
-		new_2D_audio.pitch_scale += Global.rng.randf_range(-sound_effect.pitch_randomness, sound_effect.pitch_randomness )
-		new_2D_audio.finished.connect(new_2D_audio.queue_free)
-		audio_players.add_child(new_2D_audio)
-		new_2D_audio.play()
+		if sound_effect.has_open_limit():
+			sound_effect.change_audio_count(1)
+			var new_2D_audio: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
+			new_2D_audio.position = location
+			new_2D_audio.bus = "SFX"
+			new_2D_audio.stream = sound_effect.sound
+			new_2D_audio.volume_db = sound_effect.volume
+			new_2D_audio.pitch_scale = sound_effect.pitch_scale
+			new_2D_audio.pitch_scale += Global.rng.randf_range(-sound_effect.pitch_randomness, sound_effect.pitch_randomness )
+			new_2D_audio.finished.connect(sound_effect.on_audio_finished)
+			new_2D_audio.finished.connect(new_2D_audio.queue_free)
+			audio_players.add_child(new_2D_audio)
+			new_2D_audio.play()
 	else:
 		push_error("Audio Manager failed to find type ", type)
 
@@ -142,15 +145,18 @@ func play_sfx_at_location(location: Vector2, type: SoundResource.SoundType) -> v
 func play_sfx_global(type: SoundResource.SoundType) -> void:
 	if sound_effect_dict.has(type):
 		var sound_effect: SoundResource = sound_effect_dict[type]
-		var new_audio: AudioStreamPlayer = AudioStreamPlayer.new()
-		new_audio.bus = "SFX"
-		new_audio.stream = sound_effect.sound
-		new_audio.volume_db = sound_effect.volume
-		new_audio.pitch_scale = sound_effect.pitch_scale
-		new_audio.pitch_scale += Global.rng.randf_range(-sound_effect.pitch_randomness, sound_effect.pitch_randomness )
-		new_audio.finished.connect(new_audio.queue_free)
-		audio_players.add_child(new_audio)
-		new_audio.play()
+		if sound_effect.has_open_limit():
+			sound_effect.change_audio_count(1)
+			var new_audio: AudioStreamPlayer = AudioStreamPlayer.new()
+			new_audio.bus = "SFX"
+			new_audio.stream = sound_effect.sound
+			new_audio.volume_db = sound_effect.volume
+			new_audio.pitch_scale = sound_effect.pitch_scale
+			new_audio.pitch_scale += Global.rng.randf_range(-sound_effect.pitch_randomness, sound_effect.pitch_randomness )
+			new_audio.finished.connect(sound_effect.on_audio_finished)
+			new_audio.finished.connect(new_audio.queue_free)
+			audio_players.add_child(new_audio)
+			new_audio.play()
 	else:
 		push_error("Audio Manager failed to find type ", type)
 

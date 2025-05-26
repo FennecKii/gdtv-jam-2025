@@ -176,7 +176,7 @@ func _update_state_action() -> void:
 			AudioManager.play_sfx_global(randi_range(SoundResource.SoundType.FART_1, SoundResource.SoundType.FART_3))
 		if randf_range(0, 1) <= Global.poop_chance * poop_multiplier + int(carrot_pool/2.0):
 			if Global.poop_chance * poop_multiplier + int(carrot_pool/2.0) >= 1:
-				for i in range(int(floori(Global.poop_chance * poop_multiplier + int(carrot_pool/3.0)))):
+				for i in range(int(floori(Global.poop_chance * poop_multiplier + int(carrot_pool/10.0)))):
 					_poop()
 			else:
 				_poop()
@@ -226,7 +226,7 @@ func _on_food_collected(area: Area2D, is_carrot: bool, _tile_coord: Vector2i) ->
 		collecting = false
 	if is_carrot:
 		carrot_pool += 1
-		poop_multiplier += 1.5
+		poop_multiplier += 1.0
 
 
 func _on_collection_safety_timer_timeout() -> void:

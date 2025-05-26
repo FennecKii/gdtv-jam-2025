@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_8aydp")
+limit = 3
 type = 9
 sound = ExtResource("2_b7cmo")
 volume = 2.0
