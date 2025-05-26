@@ -173,9 +173,9 @@ func _update_state_action() -> void:
 			guaranteed_poop = false
 			guaranteed_poops = 0
 			food_pool = 0
-		if randf_range(0, 1) <= Global.poop_chance * poop_multiplier + carrot_pool/2:
-			if Global.poop_chance * poop_multiplier + carrot_pool/2 >= 1:
-				for i in range(int(floori(Global.poop_chance * poop_multiplier + carrot_pool/3))):
+		if randf_range(0, 1) <= Global.poop_chance * poop_multiplier + int(carrot_pool/2.0):
+			if Global.poop_chance * poop_multiplier + int(carrot_pool/2.0) >= 1:
+				for i in range(int(floori(Global.poop_chance * poop_multiplier + int(carrot_pool/3.0)))):
 					_poop()
 			else:
 				_poop()
