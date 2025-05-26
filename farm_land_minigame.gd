@@ -92,11 +92,11 @@ func _spawn_carrot(spawn_position) -> void:
 
 func _on_fertilize_all_pressed() -> void:
 	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
-	if Global.common_poops_collected >= 30:
+	if Global.common_poops_collected >= 100:
 		fertilize_all_timer.start()
 		for carrot_crop in carrot_crop_instances:
 			carrot_crop.grow_carrot()
-		Global.common_poops_collected -= 30
+		Global.common_poops_collected -= 100
 
 
 func _on_fertilize_all_mouse_entered() -> void:

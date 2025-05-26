@@ -25,17 +25,18 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 61.0
-offset_top = -235.0
-offset_right = -61.0
+offset_left = 19.0
+offset_top = -236.0
+offset_right = -19.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Upper Elements" type="HBoxContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 302.0
+offset_left = 278.0
 offset_top = -32.0
-offset_right = 899.0
+offset_right = 1015.0
 
 [node name="Foods Amount" type="HBoxContainer" parent="Panel/Upper Elements"]
 layout_mode = 2
@@ -56,7 +57,7 @@ theme_override_font_sizes/font_size = 28
 text = ": 0"
 
 [node name="Carrot" type="HBoxContainer" parent="Panel/Upper Elements/Foods Amount"]
-custom_minimum_size = Vector2(110, 0)
+custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 
 [node name="CarrotTexture" type="TextureRect" parent="Panel/Upper Elements/Foods Amount/Carrot"]
@@ -94,7 +95,7 @@ theme_override_font_sizes/font_size = 28
 text = ": 0"
 
 [node name="Poop" type="HBoxContainer" parent="Panel/Upper Elements/Poop Amount"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 
 [node name="PoopTexture" type="TextureRect" parent="Panel/Upper Elements/Poop Amount/Poop"]
@@ -211,6 +212,19 @@ text = "0/5  |  Current Stat"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Carrot Threshold" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Carrot Threshold
+Cost: 100"
+
+[node name="Carrot Threshold Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Little Guy Resting" type="VBoxContainer" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid"]
 layout_mode = 2
 
@@ -234,6 +248,19 @@ text = "Rest Time
 Cost: 5"
 
 [node name="Little Guy Rest Time Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Golden Poop Chance" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Golden Poop Chance
+Cost: 1000"
+
+[node name="Golden Poop Chance Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0/5  |  Current Stat"
@@ -527,10 +554,14 @@ vertical_alignment = 1
 [connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping/Increase Poop Chance" to="." method="_on_increase_poop_chance_pressed"]
 [connection signal="mouse_entered" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping/Decrease Poop Time" to="." method="_on_button_mouse_hovered"]
 [connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping/Decrease Poop Time" to="." method="_on_decrease_poop_time_pressed"]
+[connection signal="mouse_entered" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping/Carrot Threshold" to="." method="_on_button_mouse_hovered"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping/Carrot Threshold" to="." method="_on_carrot_threshold_pressed"]
 [connection signal="mouse_entered" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting/Decrease Rest Chance" to="." method="_on_button_mouse_hovered"]
 [connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting/Decrease Rest Chance" to="." method="_on_decrease_rest_chance_pressed"]
 [connection signal="mouse_entered" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting/Decrease Rest Time" to="." method="_on_button_mouse_hovered"]
 [connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting/Decrease Rest Time" to="." method="_on_decrease_rest_time_pressed"]
+[connection signal="mouse_entered" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting/Golden Poop Chance" to="." method="_on_button_mouse_hovered"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting/Golden Poop Chance" to="." method="_on_golden_poop_chance_pressed"]
 [connection signal="mouse_entered" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries/Auto Feed Fries" to="." method="_on_button_mouse_hovered"]
 [connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries/Auto Feed Fries" to="." method="_on_auto_feed_fries_pressed"]
 [connection signal="mouse_entered" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries/Increase Food Spawn Amount" to="." method="_on_button_mouse_hovered"]
