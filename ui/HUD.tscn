@@ -147,6 +147,7 @@ layout_mode = 2
 [node name="Add Little Guy" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Stats"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Add 1 Little Guy to feeding area"
 text = "Little Guy +1
 Cost: 10"
 
@@ -160,6 +161,8 @@ vertical_alignment = 1
 [node name="Increase Little Guy Speed" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Stats"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Increase speed that Little Guy 
+collects food"
 text = "Little Guy Speed
 Cost: 10"
 
@@ -173,6 +176,10 @@ vertical_alignment = 1
 [node name="Food Threshold" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Stats"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Decrease by 1, the amount 
+of food that Little Guy 
+needs to eat before a 
+guaranteed poop"
 text = "Food Threshold
 Cost: 100"
 
@@ -189,6 +196,8 @@ layout_mode = 2
 [node name="Increase Poop Chance" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Increase probability for Little Guy
+to poop while in POOPING state"
 text = "Poop Chance
 Cost: 2"
 
@@ -202,6 +211,8 @@ vertical_alignment = 1
 [node name="Decrease Poop Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Decrease the time it takes
+for Little Guy to poop"
 text = "Poop Time
 Cost: 5"
 
@@ -215,6 +226,11 @@ vertical_alignment = 1
 [node name="Carrot Threshold" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Decrease by 1, the amount 
+of Carrots Little Guy needs to 
+eat before having 
+the chance to poop 
+Golden Poop"
 text = "Carrot Threshold
 Cost: 100"
 
@@ -231,6 +247,9 @@ layout_mode = 2
 [node name="Decrease Rest Chance" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Decrease probability that 
+Little Guy needs to rest 
+when collecting food "
 text = "Rest Chance
 Cost: 10"
 
@@ -244,6 +263,9 @@ vertical_alignment = 1
 [node name="Decrease Rest Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Decrease time Little Guy 
+takes a rest when in 
+RESTING state"
 text = "Rest Time
 Cost: 5"
 
@@ -257,6 +279,9 @@ vertical_alignment = 1
 [node name="Golden Poop Chance" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Increase probability that
+Little Guy poops Golden Poop 
+only if Carrot Threshold is met"
 text = "Golden Poop Chance
 Cost: 1000"
 
@@ -291,6 +316,8 @@ layout_mode = 2
 [node name="Auto Feed Fries" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Auto spawn Fries into 
+the feeding area"
 text = "Auto Feed Fries
 Cost: 100"
 
@@ -304,6 +331,9 @@ vertical_alignment = 1
 [node name="Increase Food Spawn Amount" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Increase by 1, the amount
+of Fries spawned each 
+Fry spawn"
 text = "Feed Fries +1
 Cost: 25"
 
@@ -317,6 +347,8 @@ vertical_alignment = 1
 [node name="Decrease Food Spawn Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Decrease time between
+sucessive Fry spawns"
 text = "Feed Fries Time
 Cost: 15"
 
@@ -333,6 +365,9 @@ layout_mode = 2
 [node name="Auto Feed Carrot" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Carrot"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Auto spawn Carrots into 
+the feeding area 
+(only if you have Carrots to feed!)"
 text = "Auto Feed Carrot
 Cost: 100"
 
@@ -346,6 +381,9 @@ vertical_alignment = 1
 [node name="Auto Feed Carrot Amount" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Carrot"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Increase by 1, the amount
+of Carrots spawned each
+Carrot spawn"
 text = "Feed Carrot +1
 Cost: 100"
 
@@ -359,6 +397,8 @@ vertical_alignment = 1
 [node name="Auto Feed Carrot Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Carrot"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Decrease time between
+sucessive Carrot spawns"
 text = "Feed Carrot Time
 Cost: 100"
 
@@ -375,6 +415,7 @@ layout_mode = 2
 [node name="Auto Collect Poop" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Poop"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Auto collect Poop Little Guy poops"
 text = "Auto Collect Poop
 Cost: 100"
 
@@ -388,6 +429,9 @@ vertical_alignment = 1
 [node name="Auto Collect Poop Amount" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Poop"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Increase by 1, the amount 
+of Poop collected every
+Poop collection"
 text = "Collect Poop +1
 Cost: 100"
 
@@ -401,6 +445,8 @@ vertical_alignment = 1
 [node name="Auto Collect Poop Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Poop"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Decrease the time between 
+sucessive Poop collections"
 text = "Collect Poop Time
 Cost: 100"
 
@@ -417,6 +463,7 @@ layout_mode = 2
 [node name="Auto Collect Carrot" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Carrot"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Auto collect Carrots from the Farm"
 text = "Auto Collect Carrot
 Cost: 100"
 
@@ -430,6 +477,9 @@ vertical_alignment = 1
 [node name="Auto Collect Carrot Amount" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Carrot"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Increase by 1, the amount 
+of Carrots collected each
+Carrot collection"
 text = "Collect Carrot +1
 Cost: 100"
 
@@ -443,6 +493,8 @@ vertical_alignment = 1
 [node name="Auto Collect Carrot Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Carrot"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Decrease the time between 
+sucessive Carrot collections"
 text = "Collect Carrot Time
 Cost: 100"
 
@@ -459,6 +511,8 @@ layout_mode = 2
 [node name="Auto Fertilize" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Fertilize"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Automatically Fertilize
+Farm with poop"
 text = "Auto Fertilize
 Cost: 100"
 
@@ -472,6 +526,9 @@ vertical_alignment = 1
 [node name="Auto Fertilize Amount" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Fertilize"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Increase by 1, the amount 
+of crops Fertilized 
+each Fertilization"
 text = "Auto Fertilize +1
 Cost: 100"
 
@@ -485,6 +542,8 @@ vertical_alignment = 1
 [node name="Auto Fertilize Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Fertilize"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Decrease time between 
+sucessive Fertilizations"
 text = "Auto Fertilize Time
 Cost: 100"
 
@@ -518,6 +577,9 @@ layout_mode = 2
 [node name="Carrot Growth Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Misc Upgrades/Upgrades Grid/Other"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Decrease time for
+Carrots to grow 
+in your farm"
 text = "Carrot Growth Time
 Cost: 100"
 

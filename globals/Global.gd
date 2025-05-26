@@ -64,9 +64,9 @@ var common_carrot_grabbed: bool = false
 # Little guy parameters
 var littleguy_count: int = 1
 var littleguy_speed: float = 75.0			# Little guy speed
-var littleguy_max_food_pool: int = 20		# Max food little guy can eat before guaranteed poop
+var littleguy_max_food_pool: int = 10		# Max food little guy can eat before guaranteed poop
 var poop_time: float = 6.0					# Time it takes for little guy to poop when in poop state
-var poop_chance: float = 0.77				# Chance for little guy to poop when in poop state
+var poop_chance: float = 0.6				# Chance for little guy to poop when in poop state
 var rest_time: float = 6.0					# Time it takes for little guy to rest when in rest state
 var rest_chance: float = 0.25				# Chance for little guy to take a rest when in collect state
 
@@ -121,7 +121,7 @@ const farm_auto_collect_time_upgrade_cost_base: int = 3
 # Upgrade Maximums
 const littleguy_count_upgrade_max: int = 70
 const littleguy_speed_upgrade_max: int = 7
-const littleguy_max_food_pool_upgrade_max: int = 15
+const littleguy_max_food_pool_upgrade_max: int = 5
 const poop_time_upgrade_max: int = 17
 const poop_chance_upgrade_max: int = 15
 const rest_time_upgrade_max: int = 20
@@ -257,9 +257,9 @@ func _initialized_values() -> void:
 	
 	littleguy_count = 1
 	littleguy_speed = 75.0
-	littleguy_max_food_pool = 20
+	littleguy_max_food_pool = 10
 	poop_time = 6.0
-	poop_chance = 0.77
+	poop_chance = 0.6
 	rest_time = 6.0
 	rest_chance = 0.25
 	poop_auto_collect = false
