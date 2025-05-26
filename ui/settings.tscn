@@ -45,19 +45,23 @@ layout_mode = 2
 
 [node name="Settings" type="Label" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/outline_size = 24
-theme_override_font_sizes/font_size = 64
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 48
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
 
 [node name="Buttons" type="VBoxContainer" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Master" type="Label" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons"]
 layout_mode = 2
-theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
 text = "Master"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -70,8 +74,8 @@ max_value = 20.0
 
 [node name="Music" type="Label" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons"]
 layout_mode = 2
-theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
 text = "Music"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -84,8 +88,8 @@ max_value = 20.0
 
 [node name="SFX" type="Label" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons"]
 layout_mode = 2
-theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
 text = "SFX"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -98,8 +102,8 @@ max_value = 20.0
 
 [node name="Poop" type="Label" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons"]
 layout_mode = 2
-theme_override_constants/outline_size = 20
-theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
 text = "Poop SFX"
 horizontal_alignment = 1
 vertical_alignment = 1
