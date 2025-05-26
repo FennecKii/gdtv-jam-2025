@@ -45,7 +45,7 @@ func _on_mouse_detection_mouse_exited() -> void:
 	can_pickup = false
 
 
-func _on_little_guy_detection_body_entered(body: Node2D) -> void:
-	if body.is_in_group("little guy"):
-		SignalBus.food_collected.emit(body, tile_coord)
+func _on_little_guy_detection_area_entered(area: Area2D) -> void:
+	if area.is_in_group("little guy"):
+		SignalBus.food_collected.emit(area, true, tile_coord)
 		queue_free()

@@ -356,7 +356,7 @@ func _on_add_little_guy_pressed() -> void:
 	if Global.littleguy_count_upgrade_count == Global.littleguy_count_upgrade_max:
 		add_little_guy.disabled = true
 		return
-	Global.littleguy_count_upgrade_cost += Global.littleguy_count_upgrade_cost * Global.littleguy_count_upgrade_count
+	Global.littleguy_count_upgrade_cost += Global.littleguy_count_upgrade_cost_base * Global.littleguy_count_upgrade_count
 
 
 func _on_increase_little_guy_speed_pressed() -> void:
@@ -368,7 +368,7 @@ func _on_increase_little_guy_speed_pressed() -> void:
 	if Global.littleguy_speed_upgrade_count == Global.littleguy_speed_upgrade_max:
 		increase_little_guy_speed.disabled = true
 		return
-	Global.littleguy_speed_upgrade_cost += Global.littleguy_speed_upgrade_cost * Global.littleguy_speed_upgrade_count
+	Global.littleguy_speed_upgrade_cost += Global.littleguy_speed_upgrade_cost_base * Global.littleguy_speed_upgrade_count
 
 
 func _on_food_threshold_pressed() -> void:
@@ -380,7 +380,7 @@ func _on_food_threshold_pressed() -> void:
 	if Global.littleguy_max_food_pool_upgrade_count == Global.littleguy_max_food_pool_upgrade_max:
 		food_threshold.disabled = true
 		return
-	Global.littleguy_max_food_pool_upgrade_cost += Global.littleguy_max_food_pool_upgrade_cost * Global.littleguy_max_food_pool_upgrade_count
+	Global.littleguy_max_food_pool_upgrade_cost += Global.littleguy_max_food_pool_upgrade_cost_base * Global.littleguy_max_food_pool_upgrade_count
 
 
 func _on_increase_poop_chance_pressed() -> void:
@@ -392,7 +392,7 @@ func _on_increase_poop_chance_pressed() -> void:
 	if Global.poop_chance_upgrade_count == Global.poop_chance_upgrade_max:
 		increase_poop_chance.disabled = true
 		return
-	Global.poop_chance_upgrade_cost += Global.poop_chance_upgrade_cost * Global.poop_chance_upgrade_count
+	Global.poop_chance_upgrade_cost += Global.poop_chance_upgrade_cost_base * Global.poop_chance_upgrade_count
 
 
 func _on_decrease_poop_time_pressed() -> void:
@@ -404,7 +404,7 @@ func _on_decrease_poop_time_pressed() -> void:
 	if Global.poop_time_upgrade_count == Global.poop_time_upgrade_max:
 		decrease_poop_time.disabled = true
 		return
-	Global.poop_time_upgrade_cost += Global.poop_time_upgrade_cost * Global.poop_time_upgrade_count
+	Global.poop_time_upgrade_cost += Global.poop_time_upgrade_cost_base * Global.poop_time_upgrade_count
 
 
 func _on_decrease_rest_chance_pressed() -> void:
@@ -416,19 +416,19 @@ func _on_decrease_rest_chance_pressed() -> void:
 	if Global.rest_chance_upgrade_count == Global.rest_chance_upgrade_max:
 		decrease_rest_chance.disabled = true
 		return
-	Global.rest_chance_upgrade_cost += Global.rest_chance_upgrade_cost * Global.rest_chance_upgrade_count
+	Global.rest_chance_upgrade_cost += Global.rest_chance_upgrade_cost_base * Global.rest_chance_upgrade_count
 
 
 func _on_decrease_rest_time_pressed() -> void:
 	if Global.rest_time_upgrade_count < Global.rest_time_upgrade_max:
 		if Global.common_poops_collected >= Global.rest_time_upgrade_cost:
 			Global.common_poops_collected -= Global.rest_time_upgrade_cost
-			Global.rest_time -= Global.time_chance/(Global.rest_time_upgrade_max - Global.rest_time_upgrade_count + 2)
+			Global.rest_time -= Global.rest_time/(Global.rest_time_upgrade_max - Global.rest_time_upgrade_count + 2)
 			Global.rest_time_upgrade_count += 1
 	if Global.rest_time_upgrade_count == Global.rest_time_upgrade_max:
 		decrease_rest_time.disabled = true
 		return
-	Global.rest_time_upgrade_cost += Global.rest_time_upgrade_cost * Global.rest_time_upgrade_count
+	Global.rest_time_upgrade_cost += Global.rest_time_upgrade_cost_base * Global.rest_time_upgrade_count
 
 
 func _on_auto_feed_fries_pressed() -> void:
@@ -440,7 +440,7 @@ func _on_auto_feed_fries_pressed() -> void:
 	if Global.food_spawn_auto_upgrade_count == Global.food_spawn_auto_upgrade_max:
 		auto_feed_fries.disabled = true
 		return
-	Global.food_spawn_auto_upgrade_cost += Global.food_spawn_auto_upgrade_cost * Global.food_spawn_auto_upgrade_count
+	Global.food_spawn_auto_upgrade_cost += Global.food_spawn_auto_upgrade_cost_base * Global.food_spawn_auto_upgrade_count
 
 
 func _on_increase_food_spawn_amount_pressed() -> void:
@@ -452,7 +452,7 @@ func _on_increase_food_spawn_amount_pressed() -> void:
 	if Global.food_spawn_amount_upgrade_count == Global.food_spawn_amount_upgrade_max:
 		increase_food_spawn_amount.disabled = true
 		return
-	Global.food_spawn_amount_upgrade_cost += Global.food_spawn_amount_upgrade_cost * Global.food_spawn_amount_upgrade_count
+	Global.food_spawn_amount_upgrade_cost += Global.food_spawn_amount_upgrade_cost_base * Global.food_spawn_amount_upgrade_count
 
 
 func _on_decrease_food_spawn_time_pressed() -> void:
@@ -464,7 +464,7 @@ func _on_decrease_food_spawn_time_pressed() -> void:
 	if Global.food_spawn_time_upgrade_count == Global.food_spawn_time_upgrade_max:
 		decrease_food_spawn_time.disabled = true
 		return
-	Global.food_spawn_time_upgrade_cost += Global.food_spawn_time_upgrade_cost * Global.food_spawn_time_upgrade_count
+	Global.food_spawn_time_upgrade_cost += Global.food_spawn_time_upgrade_cost_base * Global.food_spawn_time_upgrade_count
 
 
 func _on_auto_feed_carrot_pressed() -> void:
@@ -476,7 +476,7 @@ func _on_auto_feed_carrot_pressed() -> void:
 	if Global.carrot_spawn_auto_upgrade_count == Global.carrot_spawn_auto_upgrade_max:
 		auto_feed_carrot.disabled = true
 		return
-	Global.carrot_spawn_auto_upgrade_cost += Global.carrot_spawn_auto_upgrade_cost * Global.carrot_spawn_auto_upgrade_count
+	Global.carrot_spawn_auto_upgrade_cost += Global.carrot_spawn_auto_upgrade_cost_base * Global.carrot_spawn_auto_upgrade_count
 
 
 func _on_auto_feed_carrot_amount_pressed() -> void:
@@ -488,7 +488,7 @@ func _on_auto_feed_carrot_amount_pressed() -> void:
 	if Global.carrot_spawn_amount_upgrade_count == Global.carrot_spawn_amount_upgrade_max:
 		auto_feed_carrot_amount.disabled = true
 		return
-	Global.carrot_spawn_amount_upgrade_cost += Global.carrot_spawn_amount_upgrade_cost * Global.carrot_spawn_amount_upgrade_count
+	Global.carrot_spawn_amount_upgrade_cost += Global.carrot_spawn_amount_upgrade_cost_base * Global.carrot_spawn_amount_upgrade_count
 
 
 func _on_auto_feed_carrot_time_pressed() -> void:
@@ -500,7 +500,7 @@ func _on_auto_feed_carrot_time_pressed() -> void:
 	if Global.carrot_spawn_time_upgrade_count == Global.carrot_spawn_time_upgrade_max:
 		auto_feed_carrot_time.disabled = true
 		return
-	Global.carrot_spawn_time_upgrade_cost += Global.carrot_spawn_time_upgrade_cost * Global.carrot_spawn_time_upgrade_count
+	Global.carrot_spawn_time_upgrade_cost += Global.carrot_spawn_time_upgrade_cost_base * Global.carrot_spawn_time_upgrade_count
 
 
 func _on_auto_collect_poop_pressed() -> void:
@@ -512,7 +512,7 @@ func _on_auto_collect_poop_pressed() -> void:
 	if Global.poop_auto_collect_upgrade_count == Global.poop_auto_collect_upgrade_max:
 		auto_collect_poop.disabled = true
 		return
-	Global.poop_auto_collect_upgrade_cost += Global.poop_auto_collect_upgrade_cost * Global.poop_auto_collect_upgrade_count
+	Global.poop_auto_collect_upgrade_cost += Global.poop_auto_collect_upgrade_cost_base * Global.poop_auto_collect_upgrade_count
 
 
 func _on_auto_collect_poop_amount_pressed() -> void:
@@ -524,7 +524,7 @@ func _on_auto_collect_poop_amount_pressed() -> void:
 	if Global.poop_auto_collect_amount_upgrade_count == Global.poop_auto_collect_amount_upgrade_max:
 		auto_collect_poop_amount.disabled = true
 		return
-	Global.poop_auto_collect_amount_upgrade_cost += Global.poop_auto_collect_amount_upgrade_cost * Global.poop_auto_collect_amount_upgrade_count
+	Global.poop_auto_collect_amount_upgrade_cost += Global.poop_auto_collect_amount_upgrade_cost_base * Global.poop_auto_collect_amount_upgrade_count
 
 
 func _on_auto_collect_poop_time_pressed() -> void:
@@ -536,7 +536,7 @@ func _on_auto_collect_poop_time_pressed() -> void:
 	if Global.poop_auto_collect_time_upgrade_count == Global.poop_auto_collect_time_upgrade_max:
 		auto_collect_poop_time.disabled = true
 		return
-	Global.poop_auto_collect_time_upgrade_cost += Global.poop_auto_collect_time_upgrade_cost * Global.poop_auto_collect_time_upgrade_count
+	Global.poop_auto_collect_time_upgrade_cost += Global.poop_auto_collect_time_upgrade_cost_base * Global.poop_auto_collect_time_upgrade_count
 
 
 func _on_auto_collect_carrot_pressed() -> void:
@@ -548,7 +548,7 @@ func _on_auto_collect_carrot_pressed() -> void:
 	if Global.farm_auto_collect_upgrade_count == Global.farm_auto_collect_upgrade_max:
 		auto_collect_carrot.disabled = true
 		return
-	Global.farm_auto_collect_upgrade_cost += Global.farm_auto_collect_upgrade_cost * Global.farm_auto_collect_upgrade_count
+	Global.farm_auto_collect_upgrade_cost += Global.farm_auto_collect_upgrade_cost_base * Global.farm_auto_collect_upgrade_count
 
 
 func _on_auto_collect_carrot_amount_pressed() -> void:
@@ -560,7 +560,7 @@ func _on_auto_collect_carrot_amount_pressed() -> void:
 	if Global.farm_auto_collect_amount_upgrade_count == Global.farm_auto_collect_amount_upgrade_max:
 		auto_collect_carrot_amount.disabled = true
 		return
-	Global.farm_auto_collect_amount_upgrade_cost += Global.farm_auto_collect_amount_upgrade_cost * Global.farm_auto_collect_amount_upgrade_count
+	Global.farm_auto_collect_amount_upgrade_cost += Global.farm_auto_collect_amount_upgrade_cost_base * Global.farm_auto_collect_amount_upgrade_count
 
 
 func _on_auto_collect_carrot_time_pressed() -> void:
@@ -572,7 +572,7 @@ func _on_auto_collect_carrot_time_pressed() -> void:
 	if Global.farm_auto_collect_time_upgrade_count == Global.farm_auto_collect_time_upgrade_max:
 		auto_collect_carrot_time.disabled = true
 		return
-	Global.farm_auto_collect_time_upgrade_cost += Global.farm_auto_collect_time_upgrade_cost * Global.farm_auto_collect_time_upgrade_count
+	Global.farm_auto_collect_time_upgrade_cost += Global.farm_auto_collect_time_upgrade_cost_base * Global.farm_auto_collect_time_upgrade_count
 
 
 func _on_auto_fertilize_pressed() -> void:
@@ -584,7 +584,7 @@ func _on_auto_fertilize_pressed() -> void:
 	if Global.farm_auto_fertilize_upgrade_count == Global.farm_auto_fertilize_upgrade_max:
 		auto_fertilize.disabled = true
 		return
-	Global.farm_auto_fertilize_upgrade_cost += Global.farm_auto_fertilize_upgrade_cost * Global.farm_auto_fertilize_upgrade_count
+	Global.farm_auto_fertilize_upgrade_cost += Global.farm_auto_fertilize_upgrade_cost_base * Global.farm_auto_fertilize_upgrade_count
 
 
 func _on_auto_fertilize_amount_pressed() -> void:
@@ -596,7 +596,7 @@ func _on_auto_fertilize_amount_pressed() -> void:
 	if Global.farm_auto_fertilize_amount_upgrade_count == Global.farm_auto_fertilize_amount_upgrade_max:
 		auto_fertilize_amount.disabled = true
 		return
-	Global.farm_auto_fertilize_amount_upgrade_cost += Global.farm_auto_fertilize_amount_upgrade_cost * Global.farm_auto_fertilize_amount_upgrade_count
+	Global.farm_auto_fertilize_amount_upgrade_cost += Global.farm_auto_fertilize_amount_upgrade_cost_base * Global.farm_auto_fertilize_amount_upgrade_count
 
 
 func _on_auto_fertilize_time_pressed() -> void:
@@ -608,7 +608,7 @@ func _on_auto_fertilize_time_pressed() -> void:
 	if Global.farm_auto_fertilize_time_upgrade_count == Global.farm_auto_fertilize_time_upgrade_max:
 		auto_fertilize_time.disabled = true
 		return
-	Global.farm_auto_fertilize_time_upgrade_cost += Global.farm_auto_fertilize_time_upgrade_cost * Global.farm_auto_fertilize_time_upgrade_count
+	Global.farm_auto_fertilize_time_upgrade_cost += Global.farm_auto_fertilize_time_upgrade_cost_base * Global.farm_auto_fertilize_time_upgrade_count
 
 
 func _on_carrot_growth_time_pressed() -> void:
@@ -620,4 +620,4 @@ func _on_carrot_growth_time_pressed() -> void:
 	if Global.carrot_growth_time_upgrade_count == Global.carrot_growth_time_upgrade_max:
 		carrot_growth_time.disabled = true
 		return
-	Global.carrot_growth_time_upgrade_cost += Global.carrot_growth_time_upgrade_cost * Global.carrot_growth_time_upgrade_count
+	Global.carrot_growth_time_upgrade_cost += Global.carrot_growth_time_upgrade_cost_base * Global.carrot_growth_time_upgrade_count

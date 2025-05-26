@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://r24vfslkhd5i"]
+[gd_scene load_steps=12 format=3 uid="uid://r24vfslkhd5i"]
 
 [ext_resource type="Texture2D" uid="uid://4mv6lqlh4kfl" path="res://little guy/assets/Little_Guy_Idle-Sheet.png" id="1_5wie2"]
 [ext_resource type="Script" uid="uid://b0cgj3rdmj041" path="res://little guy/little_guy.gd" id="1_ue54g"]
@@ -48,6 +48,9 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yo3nh"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fat7f"]
+radius = 6.0
+
 [node name="Little Guy" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_mask = 2
@@ -68,21 +71,31 @@ theme = ExtResource("2_fat7f")
 
 [node name="State" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = -39.0
-offset_top = -42.0
-offset_right = 39.0
-offset_bottom = -26.0
+offset_left = -40.0
+offset_top = -37.69
+offset_right = 40.0
+offset_bottom = -21.69
 text = "State"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Food Collected" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = -41.0
-offset_top = -58.0
-offset_right = 41.0
-offset_bottom = -42.0
+offset_left = -42.0
+offset_top = -53.69
+offset_right = 42.0
+offset_bottom = -37.69
 text = "Food Ate: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Carrot Collected" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -54.0
+offset_top = -69.69
+offset_right = 54.0
+offset_bottom = -53.69
+text = "Carrots Ate: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -96,3 +109,11 @@ offset = Vector2(0, -10)
 position = Vector2(0, -4)
 scale = Vector2(0.57571, 0.591952)
 shape = SubResource("CircleShape2D_yo3nh")
+
+[node name="Item Detection" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item Detection"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_fat7f")

@@ -15,6 +15,7 @@ var poop_instances: Array[Node]
 @onready var food_group: Node2D = $"Y-Sort/Food Group"
 @onready var poop_group: Node2D = $"Y-Sort/Poop Group"
 @onready var auto_collect_timer: Timer = $"Auto Collect Timer"
+@onready var golden_poop_group: Node2D = $"Y-Sort/Golden Poop Group"
 
 
 func _ready() -> void:
@@ -25,6 +26,7 @@ func _ready() -> void:
 	carrot_timer.wait_time = Global.carrot_spawn_time
 	Global.food_group = food_group
 	Global.poop_group = poop_group
+	Global.golden_poop_group = golden_poop_group
 	SignalBus.add_little_guy.connect(_on_add_little_guy)
 
 

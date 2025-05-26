@@ -40,5 +40,7 @@ y_sort_enabled = true
 [node name="Poop Group" type="Node2D" parent="Y-Sort"]
 y_sort_enabled = true
 
+[node name="Golden Poop Group" type="Node2D" parent="Y-Sort"]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

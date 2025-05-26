@@ -64,11 +64,11 @@ func _spawn_carrot_crop(crop_position: Vector2) -> void:
 
 
 func _on_farm_pressed() -> void:
-	var tween: Tween = create_tween().parallel()
 	if visible == false:
 		border_layer.scale = Vector2.ZERO
 		dirt_layer.scale = Vector2.ZERO
 		carrot_crops.scale = Vector2.ZERO
+		var tween: Tween = create_tween().parallel()
 		tween.tween_property(border_layer, "scale", Vector2.ONE, 0.225).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(dirt_layer, "scale", Vector2.ONE, 0.225).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(carrot_crops, "scale", Vector2.ONE, 0.225).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_IN_OUT)

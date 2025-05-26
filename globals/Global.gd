@@ -24,6 +24,10 @@ var common_poops_collected: int = 0
 var common_food_amount: float = INF
 var common_carrot_amount: int = 0
 
+var golden_poop_chance: float = 0.001
+var golden_poop_group: Node2D
+const carrot_pool_max: int = 20
+
 # UI interaction
 var cursor_interacted: bool = false
 var cursor_grabbing: bool = false

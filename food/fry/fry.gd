@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 		add_to_group("food")
 
 
-func _on_little_guy_detection_body_entered(body: Node2D) -> void:
-	if body.is_in_group("little guy"):
-		SignalBus.food_collected.emit(body, tile_coord)
+func _on_little_guy_detection_area_entered(area: Area2D) -> void:
+	if area.is_in_group("little guy"):
+		SignalBus.food_collected.emit(area, false, tile_coord)
 		queue_free()

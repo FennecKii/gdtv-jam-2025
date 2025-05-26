@@ -1,6 +1,6 @@
 extends Node
 
-signal food_collected(littleguy_node: Node2D, tile_coord: Vector2i)
+signal food_collected(littleguy_area: Area2D, is_carrot: bool, tile_coord: Vector2i)
 signal poop_collected
 signal add_little_guy
 signal farm_pressed
