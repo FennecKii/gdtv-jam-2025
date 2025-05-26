@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-#TODO poop is the currency :)
 
 enum State {
 	COLLECT,
@@ -38,6 +37,7 @@ var is_golden_poop_chance: bool = false
 @onready var food_collision: CollisionShape2D = $"Item Detection/CollisionShape2D"
 @onready var food_detection_area: Area2D = $"Item Detection"
 @onready var carrot_collected_label: Label = $"Control/Carrot Collected"
+@onready var collection_safety_timer: Timer = $"Collection Safety Timer"
 
 
 func _ready() -> void:
@@ -104,17 +104,20 @@ func _update_state(delta: float) -> void:
 		if randf_range(0, 1) <= Global.rest_chance * delta:
 			previous_state = current_state
 			current_state = State.REST
+			collection_safety_timer.stop()
 			food_collision.disabled = true
 
 	if current_state == State.COLLECT and not food_found:
 		previous_state = current_state
 		current_state = State.WAIT
+		collection_safety_timer.stop()
 		food_collision.disabled = true
 		return
 
 	if current_state == State.COLLECT and collected:
 		previous_state = current_state
 		current_state = State.POOP
+		collection_safety_timer.stop()
 		food_collision.disabled = true
 		return
 
@@ -145,6 +148,7 @@ func _update_state_action() -> void:
 		current_state = previous_state
 		previous_state = State.REST
 	elif current_state == State.COLLECT and not collecting:
+		collection_safety_timer.start(15.0 - Global.littleguy_speed/100)
 		state_label.text = "COLLECTING"
 		collecting = true
 		collected = false
@@ -217,3 +221,9 @@ func _on_food_collected(area: Area2D, is_carrot: bool, _tile_coord: Vector2i) ->
 		collecting = false
 	if is_carrot:
 		carrot_pool += 1
+
+
+func _on_collection_safety_timer_timeout() -> void:
+	if current_state == State.COLLECT:
+		previous_state = current_state
+		current_state = State.REST

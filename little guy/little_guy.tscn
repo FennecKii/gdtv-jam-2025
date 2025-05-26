@@ -99,6 +99,10 @@ text = "Carrots Ate: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Collection Safety Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4rir4")
 animation = &"idle"
@@ -117,3 +121,5 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item Detection"]
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_fat7f")
+
+[connection signal="timeout" from="Collection Safety Timer" to="." method="_on_collection_safety_timer_timeout"]
