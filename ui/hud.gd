@@ -190,162 +190,185 @@ func _update_label_colors() -> void:
 	# Button Color
 	if add_little_guy.disabled:
 		add_little_guy.self_modulate = Color.WHITE
+		add_little_guy_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.littleguy_count_upgrade_cost:
-		add_little_guy.self_modulate = Color.GREEN
+		add_little_guy.self_modulate = Color.LIME_GREEN
 	else:
 		add_little_guy.self_modulate = Color.INDIAN_RED
 	
 	if increase_little_guy_speed.disabled:
 		increase_little_guy_speed.self_modulate = Color.WHITE
+		little_guy_speed_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.littleguy_speed_upgrade_cost:
-		increase_little_guy_speed.self_modulate = Color.GREEN
+		increase_little_guy_speed.self_modulate = Color.LIME_GREEN
 	else:
 		increase_little_guy_speed.self_modulate = Color.INDIAN_RED
 	
 	if food_threshold.disabled:
 		food_threshold.self_modulate = Color.WHITE
+		little_guy_threshold_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.littleguy_max_food_pool_upgrade_cost:
-		food_threshold.self_modulate = Color.GREEN
+		food_threshold.self_modulate = Color.LIME_GREEN
 	else:
 		food_threshold.self_modulate = Color.INDIAN_RED
 	
 	if increase_poop_chance.disabled:
 		increase_poop_chance.self_modulate = Color.WHITE
+		little_guy_poop_chance_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.poop_chance_upgrade_cost:
-		increase_poop_chance.self_modulate = Color.GREEN
+		increase_poop_chance.self_modulate = Color.LIME_GREEN
 	else:
 		increase_poop_chance.self_modulate = Color.INDIAN_RED
 	
 	if decrease_poop_time.disabled:
 		decrease_poop_time.self_modulate = Color.WHITE
+		little_guy_poop_time_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.poop_time_upgrade_cost:
-		decrease_poop_time.self_modulate = Color.GREEN
+		decrease_poop_time.self_modulate = Color.LIME_GREEN
 	else:
 		decrease_poop_time.self_modulate = Color.INDIAN_RED
 	
 	if decrease_rest_chance.disabled:
 		decrease_rest_chance.self_modulate = Color.WHITE
+		little_guy_rest_chance_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.rest_chance_upgrade_cost:
-		decrease_rest_chance.self_modulate = Color.GREEN
+		decrease_rest_chance.self_modulate = Color.LIME_GREEN
 	else:
 		decrease_rest_chance.self_modulate = Color.INDIAN_RED
 	
 	if decrease_rest_time.disabled:
 		decrease_rest_time.self_modulate = Color.WHITE
+		little_guy_rest_time_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.rest_time_upgrade_cost:
-		decrease_rest_time.self_modulate = Color.GREEN
+		decrease_rest_time.self_modulate = Color.LIME_GREEN
 	else:
 		decrease_rest_time.self_modulate = Color.INDIAN_RED
 	
 	if auto_feed_fries.disabled:
 		auto_feed_fries.self_modulate = Color.WHITE
+		auto_feed_fries_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.food_spawn_auto_upgrade_cost:
-		auto_feed_fries.self_modulate = Color.GREEN
+		auto_feed_fries.self_modulate = Color.LIME_GREEN
 	else:
 		auto_feed_fries.self_modulate = Color.INDIAN_RED
 	
 	if increase_food_spawn_amount.disabled:
 		increase_food_spawn_amount.self_modulate = Color.WHITE
+		feed_fries_amount_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.food_spawn_amount_upgrade_cost:
-		increase_food_spawn_amount.self_modulate = Color.GREEN
+		increase_food_spawn_amount.self_modulate = Color.LIME_GREEN
 	else:
 		increase_food_spawn_amount.self_modulate = Color.INDIAN_RED
 	
 	if decrease_food_spawn_time.disabled:
 		decrease_food_spawn_time.self_modulate = Color.WHITE
+		feed_fries_time_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.food_spawn_time_upgrade_cost:
-		decrease_food_spawn_time.self_modulate = Color.GREEN
+		decrease_food_spawn_time.self_modulate = Color.LIME_GREEN
 	else:
 		decrease_food_spawn_time.self_modulate = Color.INDIAN_RED
 	
 	if auto_feed_carrot.disabled:
 		auto_feed_carrot.self_modulate = Color.WHITE
+		auto_feed_carrot_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.carrot_spawn_auto_upgrade_cost:
-		auto_feed_carrot.self_modulate = Color.GREEN
+		auto_feed_carrot.self_modulate = Color.LIME_GREEN
 	else:
 		auto_feed_carrot.self_modulate = Color.INDIAN_RED
 	
 	if auto_feed_carrot_amount.disabled:
 		auto_feed_carrot_amount.self_modulate = Color.WHITE
+		feed_carrot_amount_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.carrot_spawn_amount_upgrade_cost:
-		auto_feed_carrot_amount.self_modulate = Color.GREEN
+		auto_feed_carrot_amount.self_modulate = Color.LIME_GREEN
 	else:
 		auto_feed_carrot_amount.self_modulate = Color.INDIAN_RED
 	
 	if auto_feed_carrot_time.disabled:
 		auto_feed_carrot_time.self_modulate = Color.WHITE
+		feed_carrot_time_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.carrot_spawn_time_upgrade_cost:
-		auto_feed_carrot_time.self_modulate = Color.GREEN
+		auto_feed_carrot_time.self_modulate = Color.LIME_GREEN
 	else:
 		auto_feed_carrot_time.self_modulate = Color.INDIAN_RED
 	
 	if auto_collect_poop.disabled:
 		auto_collect_poop.self_modulate = Color.WHITE
+		auto_collect_poop_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.poop_auto_collect_upgrade_cost:
-		auto_collect_poop.self_modulate = Color.GREEN
+		auto_collect_poop.self_modulate = Color.LIME_GREEN
 	else:
 		auto_collect_poop.self_modulate = Color.INDIAN_RED
 	
 	if auto_collect_poop_amount.disabled:
 		auto_collect_poop_amount.self_modulate = Color.WHITE
+		collect_poop_amount_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.poop_auto_collect_amount_upgrade_cost:
-		auto_collect_poop_amount.self_modulate = Color.GREEN
+		auto_collect_poop_amount.self_modulate = Color.LIME_GREEN
 	else:
 		auto_collect_poop_amount.self_modulate = Color.INDIAN_RED
 	
 	if auto_collect_poop_time.disabled:
 		auto_collect_poop_time.self_modulate = Color.WHITE
+		collect_poop_time_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.poop_auto_collect_time_upgrade_cost:
-		auto_collect_poop_time.self_modulate = Color.GREEN
+		auto_collect_poop_time.self_modulate = Color.LIME_GREEN
 	else:
 		auto_collect_poop_time.self_modulate = Color.INDIAN_RED
 	
 	if auto_collect_carrot.disabled:
 		auto_collect_carrot.self_modulate = Color.WHITE
+		auto_collect_carrot_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.farm_auto_collect_upgrade_cost:
-		auto_collect_carrot.self_modulate = Color.GREEN
+		auto_collect_carrot.self_modulate = Color.LIME_GREEN
 	else:
 		auto_collect_carrot.self_modulate = Color.INDIAN_RED
 	
 	if auto_collect_carrot_amount.disabled:
 		auto_collect_carrot_amount.self_modulate = Color.WHITE
+		collect_carrot_amount_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.farm_auto_collect_amount_upgrade_cost:
-		auto_collect_carrot_amount.self_modulate = Color.GREEN
+		auto_collect_carrot_amount.self_modulate = Color.LIME_GREEN
 	else:
 		auto_collect_carrot_amount.self_modulate = Color.INDIAN_RED
 	
 	if auto_collect_carrot_time.disabled:
 		auto_collect_carrot_time.self_modulate = Color.WHITE
+		collect_carrot_time_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.farm_auto_collect_time_upgrade_cost:
-		auto_collect_carrot_time.self_modulate = Color.GREEN
+		auto_collect_carrot_time.self_modulate = Color.LIME_GREEN
 	else:
 		auto_collect_carrot_time.self_modulate = Color.INDIAN_RED
 	
 	if auto_fertilize.disabled:
 		auto_fertilize.self_modulate = Color.WHITE
+		auto_fertilize_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.farm_auto_fertilize_upgrade_cost:
-		auto_fertilize.self_modulate = Color.GREEN
+		auto_fertilize.self_modulate = Color.LIME_GREEN
 	else:
 		auto_fertilize.self_modulate = Color.INDIAN_RED
 	
 	if auto_fertilize_amount.disabled:
 		auto_fertilize_amount.self_modulate = Color.WHITE
+		fertilize_amount_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.farm_auto_fertilize_amount_upgrade_cost:
-		auto_fertilize_amount.self_modulate = Color.GREEN
+		auto_fertilize_amount.self_modulate = Color.LIME_GREEN
 	else:
 		auto_fertilize_amount.self_modulate = Color.INDIAN_RED
 	
 	if auto_fertilize_time.disabled:
 		auto_fertilize_time.self_modulate = Color.WHITE
+		fertilize_time_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.farm_auto_fertilize_time_upgrade_cost:
-		auto_fertilize_time.self_modulate = Color.GREEN
+		auto_fertilize_time.self_modulate = Color.LIME_GREEN
 	else:
 		auto_fertilize_time.self_modulate = Color.INDIAN_RED
 	
 	if carrot_growth_time.disabled:
 		carrot_growth_time.self_modulate = Color.WHITE
+		carrot_growth_time_data_label.self_modulate = Color.MEDIUM_PURPLE
 	elif Global.common_poops_collected >= Global.carrot_growth_time_upgrade_cost:
-		carrot_growth_time.self_modulate = Color.GREEN
+		carrot_growth_time.self_modulate = Color.LIME_GREEN
 	else:
 		carrot_growth_time.self_modulate = Color.INDIAN_RED
 
