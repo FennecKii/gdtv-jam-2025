@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 enum State {
 	COLLECT,
 	POOP,
@@ -29,6 +28,7 @@ var pooping: bool = false
 var food_found: bool = false
 var guaranteed_poop: bool = false
 var is_golden_poop_chance: bool = false
+var poop_multiplier: float = 1
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_label: Label = $Control/State
@@ -173,7 +173,7 @@ func _update_state_action() -> void:
 			guaranteed_poop = false
 			guaranteed_poops = 0
 			food_pool = 0
-		if randf_range(0, 1) <= Global.poop_chance:
+		if randf_range(0, 1) <= Global.poop_chance * poop_multiplier:
 			if Global.poop_chance >= 1:
 				for i in range(int(floori(Global.poop_chance))):
 					_poop()
@@ -181,6 +181,7 @@ func _update_state_action() -> void:
 				_poop()
 			pooped = true
 			food_pool = 0
+			poop_multiplier = 1
 		if is_golden_poop_chance:
 			for i in range(int(floori(float(carrot_pool) / Global.carrot_pool_max))):
 				if randf_range(0, 1) <= Global.golden_poop_chance:
@@ -221,6 +222,7 @@ func _on_food_collected(area: Area2D, is_carrot: bool, _tile_coord: Vector2i) ->
 		collecting = false
 	if is_carrot:
 		carrot_pool += 1
+		poop_multiplier = 2.5
 
 
 func _on_collection_safety_timer_timeout() -> void:
