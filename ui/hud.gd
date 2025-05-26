@@ -65,9 +65,9 @@ extends Control
 var upgrades_panel_down: bool = false
 
 func _ready() -> void:
+	_update_buttons()
 	_update_labels()
 	_update_label_colors()
-	_update_buttons()
 	_on_hide_upgrades_pressed()
 	SignalBus.poop_collected.connect(_on_poop_connected)
 	common_foods_label.text = str(": %s" %Global.common_food_amount)
