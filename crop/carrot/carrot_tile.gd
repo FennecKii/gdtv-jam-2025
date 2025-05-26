@@ -17,6 +17,7 @@ func _on_poop_detection_area_entered(area: Area2D) -> void:
 
 func _on_poop_detection_mouse_entered() -> void:
 	self_modulate = lerp(self_modulate, Color.GREEN, 1)
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_HOVER)
 
 
 func _on_poop_detection_mouse_exited() -> void:

@@ -115,7 +115,11 @@ theme_override_styles/normal = ExtResource("6_q0pcl")
 text = "Close
 "
 
+[connection signal="mouse_entered" from="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons/MasterVolume" to="." method="_on_button_entered"]
 [connection signal="value_changed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons/MasterVolume" to="." method="_on_master_volume_changed"]
+[connection signal="mouse_entered" from="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons/MusicVolume" to="." method="_on_button_entered"]
 [connection signal="value_changed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons/MusicVolume" to="." method="_on_music_volume_changed"]
+[connection signal="mouse_entered" from="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons/SFXVolume" to="." method="_on_button_entered"]
 [connection signal="value_changed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons/SFXVolume" to="." method="_on_sfx_volume_changed"]
+[connection signal="mouse_entered" from="CenterContainer/Panel/CenterContainer/VBoxContainer/Close" to="." method="_on_button_entered"]
 [connection signal="pressed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/Close" to="." method="_on_close_pressed"]

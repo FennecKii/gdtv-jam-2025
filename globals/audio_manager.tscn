@@ -1,9 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfqanfqm3smn3"]
+[gd_scene load_steps=17 format=3 uid="uid://bfqanfqm3smn3"]
 
 [ext_resource type="Script" uid="uid://dyddxr22462uf" path="res://globals/audio_manager.gd" id="1_exsf0"]
+[ext_resource type="Script" uid="uid://cybuvukl8ffdm" path="res://globals/MusicResource.gd" id="2_3uslp"]
+[ext_resource type="Resource" uid="uid://cyhdqsttboj8x" path="res://resources/audio/background_track.tres" id="3_vc3qd"]
+[ext_resource type="Script" uid="uid://vvejq8j8aw8a" path="res://globals/SoundResource.gd" id="4_krgn2"]
+[ext_resource type="Resource" uid="uid://c7qvhtnj6457j" path="res://resources/audio/fart_1.tres" id="5_1kfho"]
+[ext_resource type="Resource" uid="uid://c8srt8ocf47vp" path="res://resources/audio/fart_2.tres" id="6_o7jvs"]
+[ext_resource type="Resource" uid="uid://bumdol6apqot" path="res://resources/audio/fart_3.tres" id="7_w3yws"]
+[ext_resource type="Resource" uid="uid://dmmxfdkvv4ipa" path="res://resources/audio/grab.tres" id="8_bngg2"]
+[ext_resource type="Resource" uid="uid://bwynukyjbi04d" path="res://resources/audio/release_1.tres" id="9_qbogh"]
+[ext_resource type="Resource" uid="uid://d0p4dfbj65rft" path="res://resources/audio/release_2.tres" id="10_xvcex"]
+[ext_resource type="Resource" uid="uid://l0cv21k3mfhn" path="res://resources/audio/button_press.tres" id="11_j4m11"]
+[ext_resource type="Resource" uid="uid://yjqoop0iydiu" path="res://resources/audio/button_hover.tres" id="12_ohqg0"]
+[ext_resource type="Resource" uid="uid://b87bco1x0twe1" path="res://resources/audio/button_scroll.tres" id="13_h2bwp"]
+[ext_resource type="Resource" uid="uid://q76jfos044xw" path="res://resources/audio/button_start.tres" id="14_ngs4k"]
+[ext_resource type="Resource" uid="uid://f20tsfxe51ns" path="res://resources/audio/button_panel.tres" id="15_b170s"]
+[ext_resource type="Resource" uid="uid://c7cnd7n8x6awy" path="res://resources/audio/golden_fart.tres" id="16_krgn2"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_exsf0")
+music_tracks = Array[ExtResource("2_3uslp")]([ExtResource("3_vc3qd")])
+sound_effects = Array[ExtResource("4_krgn2")]([ExtResource("5_1kfho"), ExtResource("6_o7jvs"), ExtResource("7_w3yws"), ExtResource("8_bngg2"), ExtResource("9_qbogh"), ExtResource("10_xvcex"), ExtResource("11_j4m11"), ExtResource("12_ohqg0"), ExtResource("13_h2bwp"), ExtResource("14_ngs4k"), ExtResource("15_b170s"), ExtResource("16_krgn2")])
 
 [node name="Main Background Music" type="AudioStreamPlayer" parent="."]
 

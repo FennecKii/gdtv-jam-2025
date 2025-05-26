@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundResource" load_steps=3 format=3 uid="uid://dmmxfdkvv4ipa"]
+
+[ext_resource type="Script" uid="uid://vvejq8j8aw8a" path="res://globals/SoundResource.gd" id="1_15yx1"]
+[ext_resource type="AudioStream" uid="uid://7qat6yhl0pc5" path="res://audio/sfx/gameplay/grab.wav" id="2_lku5r"]
+
+[resource]
+script = ExtResource("1_15yx1")
+type = 3
+sound = ExtResource("2_lku5r")
+volume = -10.0
+pitch_scale = 0.9
+pitch_randomness = 0.1
+metadata/_custom_type_script = "uid://vvejq8j8aw8a"

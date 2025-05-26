@@ -1,5 +1,11 @@
 extends Node
 
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+
+var master_volume: float = 0
+var music_volume: float = -6
+var sfx_volume: float = -6
+
 @onready var littleguy_scene: PackedScene = preload("res://little guy/little_guy.tscn")
 @onready var poop_scene: PackedScene = preload("res://poop/poop.tscn")
 @onready var fry_scene: PackedScene = preload("res://food/fry/fry.tscn")
@@ -20,12 +26,12 @@ var poop_group: Node2D
 var poop_detection_area: Area2D
 var food_group: Node2D
 
-var common_poops_collected: int = 0
+var common_poops_collected: int = 100
 var common_food_amount: float = INF
-var common_carrot_amount: int = 0
+var common_carrot_amount: int = 20
 
 var golden_poops_collected: int = 0
-var golden_poop_chance: float = 0.0001
+var golden_poop_chance: float = 1
 var golden_poop_group: Node2D
 const carrot_pool_max: int = 10
 

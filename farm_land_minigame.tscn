@@ -68,4 +68,5 @@ position = Vector2(0, -64)
 [node name="Carrots" type="Node2D" parent="Y-sort"]
 position = Vector2(0, -64)
 
+[connection signal="mouse_entered" from="Panel/Fertilize All" to="." method="_on_fertilize_all_mouse_entered"]
 [connection signal="pressed" from="Panel/Fertilize All" to="." method="_on_fertilize_all_pressed"]

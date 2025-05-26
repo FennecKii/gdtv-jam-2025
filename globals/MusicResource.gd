@@ -3,7 +3,7 @@ extends Resource
 
 
 enum MusicType {
-	
+	BACKGROUND_TRACK
 }
 
 

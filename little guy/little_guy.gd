@@ -173,6 +173,7 @@ func _update_state_action() -> void:
 			guaranteed_poop = false
 			guaranteed_poops = 0
 			food_pool = 0
+			AudioManager.play_sfx_global(randi_range(SoundResource.SoundType.FART_1, SoundResource.SoundType.FART_3))
 		if randf_range(0, 1) <= Global.poop_chance * poop_multiplier + int(carrot_pool/2.0):
 			if Global.poop_chance * poop_multiplier + int(carrot_pool/2.0) >= 1:
 				for i in range(int(floori(Global.poop_chance * poop_multiplier + int(carrot_pool/3.0)))):
@@ -182,6 +183,7 @@ func _update_state_action() -> void:
 			pooped = true
 			food_pool = 0
 			poop_multiplier = 1
+			AudioManager.play_sfx_global(randi_range(SoundResource.SoundType.FART_1, SoundResource.SoundType.FART_3))
 		if is_golden_poop_chance:
 			for i in range(int(floori(float(carrot_pool) / Global.carrot_pool_max))):
 				if randf_range(0, 1) <= Global.golden_poop_chance:
@@ -189,6 +191,7 @@ func _update_state_action() -> void:
 			pooped = true
 			is_golden_poop_chance = false
 			carrot_pool = 0
+			AudioManager.play_sfx_global(SoundResource.SoundType.GOLDEN_POOP)
 
 
 func _poop() -> void:

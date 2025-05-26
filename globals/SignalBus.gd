@@ -6,3 +6,4 @@ signal add_little_guy
 signal farm_pressed
 signal carrot_fertilized(detection: Area2D)
 signal spawn_carrot(spawn_position: Vector2)
+signal settings_entered

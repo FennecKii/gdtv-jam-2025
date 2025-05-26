@@ -2,7 +2,18 @@ class_name SoundResource
 extends Resource
 
 enum SoundType {
-	
+	FART_1,
+	FART_2,
+	FART_3,
+	GRAB,
+	RELEASE_1,
+	RELEASE_2,
+	BUTTON_PRESS,
+	BUTTON_HOVER,
+	BUTTON_SCROLL,
+	BUTTON_START,
+	BUTTON_PANEL,
+	GOLDEN_POOP
 }
 
 @export var type: SoundType

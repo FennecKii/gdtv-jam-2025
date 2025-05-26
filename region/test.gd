@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
 			var poop: Node = poop_instances.pick_random()
 			poop.queue_free()
 			Global.common_poops_collected += 1
+		AudioManager.play_sfx_global(SoundResource.SoundType.RELEASE_2)
 	
 	if Global.food_spawn_auto:
 		_process_food()
@@ -97,6 +98,7 @@ func _update_carrot_timer() -> void:
 func _grab_item() -> void:
 	if Global.cursor_interacted and Input.is_action_just_pressed("Click"):
 		if Global.cursor_common_poop_interacted and Global.common_poops_collected > 0:
+			AudioManager.play_sfx_global(SoundResource.SoundType.GRAB)
 			Global.common_poops_collected -= 1
 			Global.common_poop_grabbed = true
 			common_poop_instance = Global.poop_scene.instantiate()
@@ -106,12 +108,14 @@ func _grab_item() -> void:
 			Global.poop_detection_area = common_poop_instance.detection_area
 			poop_group.add_child(common_poop_instance)
 		elif Global.cursor_common_food_interacted:
+			AudioManager.play_sfx_global(SoundResource.SoundType.GRAB)
 			Global.common_food_grabbed = true
 			common_food_instance = Global.fry_scene.instantiate()
 			common_food_instance.global_position = get_global_mouse_position()
 			common_food_instance.detectable = false
 			food_group.add_child(common_food_instance)
 		elif Global.cursor_common_carrot_interacted and Global.common_carrot_amount > 0:
+			AudioManager.play_sfx_global(SoundResource.SoundType.GRAB)
 			Global.common_carrot_amount -= 1
 			Global.common_carrot_grabbed = true
 			common_carrot_instance = Global.carrot_scene.instantiate()
@@ -126,29 +130,35 @@ func _release_item() -> void:
 			Global.play_squash_stretch(common_poop_instance)
 			common_poop_instance.detectable = true
 			Global.common_poop_grabbed = false
+			AudioManager.play_sfx_global(SoundResource.SoundType.FART_1)
 		elif Global.cursor_interacted and Global.common_poop_grabbed:
 			if Global.cursor_common_poop_interacted:
 				common_poop_instance.queue_free()
 				Global.common_poops_collected += 1
 				Global.common_poop_grabbed = false
+				AudioManager.play_sfx_global(SoundResource.SoundType.FART_1)
 		if not Global.cursor_interacted and Global.common_food_grabbed and common_food_instance:
 			Global.play_squash_stretch(common_food_instance)
 			common_food_instance.detectable = true
 			Global.common_food_grabbed = false
+			AudioManager.play_sfx_global(SoundResource.SoundType.RELEASE_1)
 		elif Global.cursor_interacted and Global.common_food_grabbed:
 			if Global.cursor_common_food_interacted:
 				common_food_instance.queue_free()
 				Global.common_food_grabbed = false
+				AudioManager.play_sfx_global(SoundResource.SoundType.RELEASE_2)
 		if not Global.cursor_interacted and Global.common_carrot_grabbed and common_carrot_instance:
 			Global.play_squash_stretch(common_carrot_instance)
 			common_carrot_instance.detectable = true
 			common_carrot_instance.mouse_detectable = false
 			Global.common_carrot_grabbed = false
+			AudioManager.play_sfx_global(SoundResource.SoundType.RELEASE_1)
 		elif Global.cursor_interacted and Global.common_carrot_grabbed:
 			if Global.cursor_common_carrot_interacted:
 				common_carrot_instance.queue_free()
 				Global.common_carrot_amount += 1
 				Global.common_carrot_grabbed = false
+				AudioManager.play_sfx_global(SoundResource.SoundType.RELEASE_2)
 		Global.cursor_grabbing = false
 
 

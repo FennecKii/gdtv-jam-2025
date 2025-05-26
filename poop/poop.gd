@@ -20,6 +20,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if can_pickup and Input.is_action_just_pressed("Click"):
 		Global.common_poops_collected += 1
+		AudioManager.play_sfx_global(SoundResource.SoundType.RELEASE_2)
 		SignalBus.poop_collected.emit()
 		queue_free()
 	

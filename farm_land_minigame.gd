@@ -54,6 +54,7 @@ func _process(_delta: float) -> void:
 			var carrot: Node = carrot_instances.pick_random()
 			carrot.queue_free()
 			Global.common_carrot_amount += 1
+		AudioManager.play_sfx_global(SoundResource.SoundType.RELEASE_2)
 
 func _spawn_carrot_crop(crop_position: Vector2) -> void:
 	var carrot_crop_instance: CarrotCrop = Global.carrot_crop_scene.instantiate()
@@ -90,8 +91,13 @@ func _spawn_carrot(spawn_position) -> void:
 
 
 func _on_fertilize_all_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.common_poops_collected >= 30:
 		fertilize_all_timer.start()
 		for carrot_crop in carrot_crop_instances:
 			carrot_crop.grow_carrot()
 		Global.common_poops_collected -= 30
+
+
+func _on_fertilize_all_mouse_entered() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_HOVER)

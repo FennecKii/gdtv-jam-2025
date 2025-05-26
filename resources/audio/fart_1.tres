@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundResource" load_steps=3 format=3 uid="uid://c7qvhtnj6457j"]
+
+[ext_resource type="Script" uid="uid://vvejq8j8aw8a" path="res://globals/SoundResource.gd" id="1_o76wl"]
+[ext_resource type="AudioStream" uid="uid://ccc51n8b4tmkx" path="res://audio/sfx/gameplay/fart 1.wav" id="2_mceo7"]
+
+[resource]
+script = ExtResource("1_o76wl")
+type = 0
+sound = ExtResource("2_mceo7")
+volume = 1.0
+pitch_scale = 1.0
+pitch_randomness = 0.2
+metadata/_custom_type_script = "uid://vvejq8j8aw8a"

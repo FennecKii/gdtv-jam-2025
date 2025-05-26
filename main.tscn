@@ -18,8 +18,10 @@ script = ExtResource("1_272bh")
 [node name="CanvasLayer2" parent="." instance=ExtResource("3_lquwl")]
 z_index = -1
 z_as_relative = false
-offset_left = -356.0
-offset_top = -212.0
+offset_left = -492.0
+offset_top = -287.0
+offset_right = 1325.0
+offset_bottom = 754.0
 
 [node name="Test" parent="." instance=ExtResource("1_ig7tw")]
 
@@ -52,6 +54,7 @@ theme_override_styles/normal = ExtResource("7_w48qg")
 text = "Menu"
 
 [node name="Cursor" parent="CanvasLayer" instance=ExtResource("3_1bvp3")]
+position = Vector2(654, 329)
 scale = Vector2(2, 2)
 
 [connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/Panel/CenterContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]

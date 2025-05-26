@@ -93,7 +93,11 @@ visible = false
 layout_mode = 1
 
 [node name="Cursor" parent="." instance=ExtResource("4_rmr83")]
+position = Vector2(635, 356)
 
+[connection signal="mouse_entered" from="Buttons/VBoxContainer/Play" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="Buttons/VBoxContainer/Settings" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="Buttons/VBoxContainer/Quit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

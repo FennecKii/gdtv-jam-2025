@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SoundResource" load_steps=3 format=3 uid="uid://f20tsfxe51ns"]
+
+[ext_resource type="Script" uid="uid://vvejq8j8aw8a" path="res://globals/SoundResource.gd" id="1_ev12x"]
+[ext_resource type="AudioStream" uid="uid://bd1drkbcb87ap" path="res://audio/sfx/ui/panel.wav" id="2_rew33"]
+
+[resource]
+script = ExtResource("1_ev12x")
+type = 10
+sound = ExtResource("2_rew33")
+volume = -1.0
+pitch_scale = 0.9
+pitch_randomness = 0.02
+metadata/_custom_type_script = "uid://vvejq8j8aw8a"

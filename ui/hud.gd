@@ -92,6 +92,7 @@ func _on_poop_connected() -> void:
 
 func _on_hide_upgrades_pressed() -> void:
 	var tween: Tween = create_tween()
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PANEL)
 	if not upgrades_panel_down:
 		tween.tween_property(upgrades_panel, "position", upgrades_panel_down_position, 0.25).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_IN_OUT)
 		upgrades_panel_down = true
@@ -103,10 +104,12 @@ func _on_hide_upgrades_pressed() -> void:
 
 
 func _on_farm_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PANEL)
 	SignalBus.farm_pressed.emit()
 
 
 func _on_mouse_interaction_entered() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_HOVER)
 	Global.cursor_interacted = true 
 
 
@@ -448,6 +451,7 @@ func _update_label_colors() -> void:
 
 
 func _on_add_little_guy_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.littleguy_count_upgrade_count < Global.littleguy_count_upgrade_max:
 		if Global.common_poops_collected >= Global.littleguy_count_upgrade_cost:
 			Global.common_poops_collected -= Global.littleguy_count_upgrade_cost
@@ -461,6 +465,7 @@ func _on_add_little_guy_pressed() -> void:
 
 
 func _on_increase_little_guy_speed_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.littleguy_speed_upgrade_count < Global.littleguy_speed_upgrade_max:
 		if Global.common_poops_collected >= Global.littleguy_speed_upgrade_cost:
 			Global.common_poops_collected -= Global.littleguy_speed_upgrade_cost
@@ -473,6 +478,7 @@ func _on_increase_little_guy_speed_pressed() -> void:
 
 
 func _on_food_threshold_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.littleguy_max_food_pool_upgrade_count < Global.littleguy_max_food_pool_upgrade_max:
 		if Global.common_poops_collected >= Global.littleguy_max_food_pool_upgrade_cost:
 			Global.common_poops_collected -= Global.littleguy_max_food_pool_upgrade_cost
@@ -485,6 +491,7 @@ func _on_food_threshold_pressed() -> void:
 
 
 func _on_increase_poop_chance_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.poop_chance_upgrade_count < Global.poop_chance_upgrade_max:
 		if Global.common_poops_collected >= Global.poop_chance_upgrade_cost:
 			Global.common_poops_collected -= Global.poop_chance_upgrade_cost
@@ -497,6 +504,7 @@ func _on_increase_poop_chance_pressed() -> void:
 
 
 func _on_decrease_poop_time_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.poop_time_upgrade_count < Global.poop_time_upgrade_max:
 		if Global.common_poops_collected >= Global.poop_time_upgrade_cost:
 			Global.common_poops_collected -= Global.poop_time_upgrade_cost
@@ -509,6 +517,7 @@ func _on_decrease_poop_time_pressed() -> void:
 
 
 func _on_decrease_rest_chance_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.rest_chance_upgrade_count < Global.rest_chance_upgrade_max:
 		if Global.common_poops_collected >= Global.rest_chance_upgrade_cost:
 			Global.common_poops_collected -= Global.rest_chance_upgrade_cost
@@ -521,6 +530,7 @@ func _on_decrease_rest_chance_pressed() -> void:
 
 
 func _on_decrease_rest_time_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.rest_time_upgrade_count < Global.rest_time_upgrade_max:
 		if Global.common_poops_collected >= Global.rest_time_upgrade_cost:
 			Global.common_poops_collected -= Global.rest_time_upgrade_cost
@@ -533,6 +543,7 @@ func _on_decrease_rest_time_pressed() -> void:
 
 
 func _on_auto_feed_fries_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.food_spawn_auto_upgrade_count < Global.food_spawn_auto_upgrade_max:
 		if Global.common_poops_collected >= Global.food_spawn_auto_upgrade_cost:
 			Global.common_poops_collected -= Global.food_spawn_auto_upgrade_cost
@@ -545,6 +556,7 @@ func _on_auto_feed_fries_pressed() -> void:
 
 
 func _on_increase_food_spawn_amount_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.food_spawn_amount_upgrade_count < Global.food_spawn_amount_upgrade_max:
 		if Global.common_poops_collected >= Global.food_spawn_amount_upgrade_cost:
 			Global.common_poops_collected -= Global.food_spawn_amount_upgrade_cost
@@ -557,6 +569,7 @@ func _on_increase_food_spawn_amount_pressed() -> void:
 
 
 func _on_decrease_food_spawn_time_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.food_spawn_time_upgrade_count < Global.food_spawn_time_upgrade_max:
 		if Global.common_poops_collected >= Global.food_spawn_time_upgrade_cost:
 			Global.common_poops_collected -= Global.food_spawn_time_upgrade_cost
@@ -569,6 +582,7 @@ func _on_decrease_food_spawn_time_pressed() -> void:
 
 
 func _on_auto_feed_carrot_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.carrot_spawn_auto_upgrade_count < Global.carrot_spawn_auto_upgrade_max:
 		if Global.common_poops_collected >= Global.carrot_spawn_auto_upgrade_cost:
 			Global.common_poops_collected -= Global.carrot_spawn_auto_upgrade_cost
@@ -581,6 +595,7 @@ func _on_auto_feed_carrot_pressed() -> void:
 
 
 func _on_auto_feed_carrot_amount_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.carrot_spawn_amount_upgrade_count < Global.carrot_spawn_amount_upgrade_max:
 		if Global.common_poops_collected >= Global.carrot_spawn_amount_upgrade_cost:
 			Global.common_poops_collected -= Global.carrot_spawn_amount_upgrade_cost
@@ -593,6 +608,7 @@ func _on_auto_feed_carrot_amount_pressed() -> void:
 
 
 func _on_auto_feed_carrot_time_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.carrot_spawn_time_upgrade_count < Global.carrot_spawn_time_upgrade_max:
 		if Global.common_poops_collected >= Global.carrot_spawn_time_upgrade_cost:
 			Global.common_poops_collected -= Global.carrot_spawn_time_upgrade_cost
@@ -605,6 +621,7 @@ func _on_auto_feed_carrot_time_pressed() -> void:
 
 
 func _on_auto_collect_poop_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.poop_auto_collect_upgrade_count < Global.poop_auto_collect_upgrade_max:
 		if Global.common_poops_collected >= Global.poop_auto_collect_upgrade_cost:
 			Global.common_poops_collected -= Global.poop_auto_collect_upgrade_cost
@@ -617,6 +634,7 @@ func _on_auto_collect_poop_pressed() -> void:
 
 
 func _on_auto_collect_poop_amount_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.poop_auto_collect_amount_upgrade_count < Global.poop_auto_collect_amount_upgrade_max:
 		if Global.common_poops_collected >= Global.poop_auto_collect_amount_upgrade_cost:
 			Global.common_poops_collected -= Global.poop_auto_collect_amount_upgrade_cost
@@ -629,6 +647,7 @@ func _on_auto_collect_poop_amount_pressed() -> void:
 
 
 func _on_auto_collect_poop_time_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.poop_auto_collect_time_upgrade_count < Global.poop_auto_collect_time_upgrade_max:
 		if Global.common_poops_collected >= Global.poop_auto_collect_time_upgrade_cost:
 			Global.common_poops_collected -= Global.poop_auto_collect_time_upgrade_cost
@@ -641,6 +660,7 @@ func _on_auto_collect_poop_time_pressed() -> void:
 
 
 func _on_auto_collect_carrot_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.farm_auto_collect_upgrade_count < Global.farm_auto_collect_upgrade_max:
 		if Global.common_poops_collected >= Global.farm_auto_collect_upgrade_cost:
 			Global.common_poops_collected -= Global.farm_auto_collect_upgrade_cost
@@ -653,6 +673,7 @@ func _on_auto_collect_carrot_pressed() -> void:
 
 
 func _on_auto_collect_carrot_amount_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.farm_auto_collect_amount_upgrade_count < Global.farm_auto_collect_amount_upgrade_max:
 		if Global.common_poops_collected >= Global.farm_auto_collect_amount_upgrade_cost:
 			Global.common_poops_collected -= Global.farm_auto_collect_amount_upgrade_cost
@@ -665,6 +686,7 @@ func _on_auto_collect_carrot_amount_pressed() -> void:
 
 
 func _on_auto_collect_carrot_time_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.farm_auto_collect_time_upgrade_count < Global.farm_auto_collect_time_upgrade_max:
 		if Global.common_poops_collected >= Global.farm_auto_collect_time_upgrade_cost:
 			Global.common_poops_collected -= Global.farm_auto_collect_time_upgrade_cost
@@ -677,6 +699,7 @@ func _on_auto_collect_carrot_time_pressed() -> void:
 
 
 func _on_auto_fertilize_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.farm_auto_fertilize_upgrade_count < Global.farm_auto_fertilize_upgrade_max:
 		if Global.common_poops_collected >= Global.farm_auto_fertilize_upgrade_cost:
 			Global.common_poops_collected -= Global.farm_auto_fertilize_upgrade_cost
@@ -689,6 +712,7 @@ func _on_auto_fertilize_pressed() -> void:
 
 
 func _on_auto_fertilize_amount_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.farm_auto_fertilize_amount_upgrade_count < Global.farm_auto_fertilize_amount_upgrade_max:
 		if Global.common_poops_collected >= Global.farm_auto_fertilize_amount_upgrade_cost:
 			Global.common_poops_collected -= Global.farm_auto_fertilize_amount_upgrade_cost
@@ -701,6 +725,7 @@ func _on_auto_fertilize_amount_pressed() -> void:
 
 
 func _on_auto_fertilize_time_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.farm_auto_fertilize_time_upgrade_count < Global.farm_auto_fertilize_time_upgrade_max:
 		if Global.common_poops_collected >= Global.farm_auto_fertilize_time_upgrade_cost:
 			Global.common_poops_collected -= Global.farm_auto_fertilize_time_upgrade_cost
@@ -713,6 +738,7 @@ func _on_auto_fertilize_time_pressed() -> void:
 
 
 func _on_carrot_growth_time_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_PRESS)
 	if Global.carrot_growth_time_upgrade_count < Global.carrot_growth_time_upgrade_max:
 		if Global.common_poops_collected >= Global.carrot_growth_time_upgrade_cost:
 			Global.common_poops_collected -= Global.carrot_growth_time_upgrade_cost
@@ -722,3 +748,6 @@ func _on_carrot_growth_time_pressed() -> void:
 	if Global.carrot_growth_time_upgrade_count == Global.carrot_growth_time_upgrade_max:
 		carrot_growth_time.disabled = true
 		return
+
+func _on_button_mouse_hovered() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_HOVER)
