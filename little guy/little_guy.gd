@@ -187,6 +187,7 @@ func _update_state_action() -> void:
 		if is_golden_poop_chance:
 			for i in range(int(floori(float(carrot_pool) / Global.carrot_pool_max))):
 				if randf_range(0, 1) <= Global.golden_poop_chance:
+					print("pooping golden")
 					_poop_golden()
 			pooped = true
 			is_golden_poop_chance = false

@@ -6,6 +6,9 @@ var master_volume: float = 0
 var music_volume: float = -6
 var sfx_volume: float = -6
 
+var game_won: bool = false
+var infinite_mode: bool = false
+
 @onready var littleguy_scene: PackedScene = preload("res://little guy/little_guy.tscn")
 @onready var poop_scene: PackedScene = preload("res://poop/poop.tscn")
 @onready var fry_scene: PackedScene = preload("res://food/fry/fry.tscn")
@@ -26,7 +29,7 @@ var poop_group: Node2D
 var poop_detection_area: Area2D
 var food_group: Node2D
 
-var common_poops_collected: float = INF
+var common_poops_collected: int = 0
 var common_food_amount: float = INF
 var common_carrot_amount: int = 0
 
@@ -43,7 +46,7 @@ const carrot_pool_upgrade_cost_base: int = 100
 var carrot_pool_upgrade_cost: int = 100
 var carrot_pool_upgrade_count: int = 0
 const carrot_pool_upgrade_max: int = 6
-var carrot_pool_max: int = 15
+var carrot_pool_max: int = 20
 
 # UI interaction
 var cursor_interacted: bool = false
@@ -60,9 +63,9 @@ var common_carrot_grabbed: bool = false
 # Little guy parameters
 var littleguy_count: int = 1
 var littleguy_speed: float = 75.0			# Little guy speed
-var littleguy_max_food_pool: int = 15		# Max food little guy can eat before guaranteed poop
+var littleguy_max_food_pool: int = 25		# Max food little guy can eat before guaranteed poop
 var poop_time: float = 6.5					# Time it takes for little guy to poop when in poop state
-var poop_chance: float = 0.75				# Chance for little guy to poop when in poop state
+var poop_chance: float = 0.075				# Chance for little guy to poop when in poop state
 var rest_time: float = 6.0					# Time it takes for little guy to rest when in rest state
 var rest_chance: float = 0.25				# Chance for little guy to take a rest when in collect state
 
@@ -115,7 +118,7 @@ const farm_auto_collect_time_upgrade_cost_base: int = 4
 
 
 # Upgrade Maximums
-const littleguy_count_upgrade_max: int = 100
+const littleguy_count_upgrade_max: int = 70
 const littleguy_speed_upgrade_max: int = 7
 const littleguy_max_food_pool_upgrade_max: int = 10
 const poop_time_upgrade_max: int = 20
@@ -126,11 +129,11 @@ const poop_auto_collect_upgrade_max: int = 1
 const poop_auto_collect_amount_upgrade_max: int = 750
 const poop_auto_collect_time_upgrade_max: int = 20
 const food_spawn_auto_upgrade_max: int = 1
-const food_spawn_time_upgrade_max: int = 20
-const food_spawn_amount_upgrade_max: int = 100
+const food_spawn_time_upgrade_max: int = 17
+const food_spawn_amount_upgrade_max: int = 90
 const carrot_spawn_auto_upgrade_max: int = 1
-const carrot_spawn_time_upgrade_max: int = 20
-const carrot_spawn_amount_upgrade_max: int = 100
+const carrot_spawn_time_upgrade_max: int = 17
+const carrot_spawn_amount_upgrade_max: int = 90
 const carrot_growth_time_upgrade_max: int = 10
 const farm_auto_fertilize_upgrade_max: int = 1
 const farm_auto_fertilize_amount_upgrade_max: int = 80
@@ -219,6 +222,8 @@ func _initialized_values() -> void:
 	farm_auto_fertilize_amount_upgrade_count = 0
 	farm_auto_fertilize_time_upgrade_count = 0
 	farm_auto_collect_upgrade_count = 0
+	golden_poop_chance_upgrade_count = 0
+	carrot_pool_upgrade_count = 0
 	
 	# Upgrade Costs
 	littleguy_count_upgrade_cost = littleguy_count_upgrade_cost_base
@@ -244,6 +249,34 @@ func _initialized_values() -> void:
 	farm_auto_collect_upgrade_cost = farm_auto_collect_upgrade_cost_base
 	farm_auto_collect_amount_upgrade_cost = farm_auto_collect_amount_upgrade_cost_base
 	farm_auto_collect_time_upgrade_cost = farm_auto_collect_time_upgrade_cost_base
+	golden_poop_chance_upgrade_cost = golden_poop_chance_upgrade_cost_base
+	carrot_pool_upgrade_cost = carrot_pool_upgrade_cost_base
+	
+	littleguy_count = 1
+	littleguy_speed = 75.0
+	littleguy_max_food_pool = 25
+	poop_time = 6.5
+	poop_chance = 0.075
+	rest_time = 6.0
+	rest_chance = 0.25
+	poop_auto_collect = false
+	poop_auto_collect_amount = 1
+	poop_auto_collect_time = 6.0
+	food_spawn_auto = false
+	food_spawn_time = 12.0
+	food_spawn_amount = 1
+	carrot_spawn_auto = false
+	carrot_spawn_time = 12.0
+	carrot_spawn_amount = 1
+	carrot_growth_time = 9.5
+	farm_auto_fertilize = false
+	farm_auto_fertilize_amount = 1
+	farm_auto_fertilize_time = 15.0
+	farm_auto_collect = false
+	farm_auto_collect_amount = 1
+	farm_auto_collect_time = 10.0
+	golden_poop_chance = 0.00135
+	carrot_pool_max = 20
 
  
 func play_squash_stretch(object: Node):

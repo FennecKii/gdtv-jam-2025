@@ -28,6 +28,8 @@ func _ready() -> void:
 	Global.poop_group = poop_group
 	Global.golden_poop_group = golden_poop_group
 	SignalBus.add_little_guy.connect(_on_add_little_guy)
+	for i in range(Global.littleguy_count - 1):
+		spawner_component.spawn_littleguy()
 
 
 func _process(delta: float) -> void:

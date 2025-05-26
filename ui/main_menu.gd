@@ -26,3 +26,13 @@ func _on_quit_pressed() -> void:
 
 func _on_button_mouse_entered() -> void:
 	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_HOVER)
+
+
+func _on_infinite_pressed() -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_START)
+	Global.infinite_mode = true
+	Global.common_poops_collected = 1000000000000
+	Global.common_carrot_amount = 0
+	Global.golden_poops_collected = 0
+	Global._initialized_values()
+	get_tree().change_scene_to_file("res://main.tscn")

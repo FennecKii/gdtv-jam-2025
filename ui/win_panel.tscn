@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhmyxyjk7656y"]
+
+[ext_resource type="Theme" uid="uid://bytvax30knbwy" path="res://resources/themes/main_menu_theme.tres" id="1_hd5ya"]
+[ext_resource type="Script" uid="uid://chu0winyf34sp" path="res://ui/win_panel.gd" id="2_ia7pm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hd5ya"]
+bg_color = Color(0.588235, 0.882353, 0.690196, 0.921569)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="Win Panel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hd5ya")
+script = ExtResource("2_ia7pm")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(325, 400)
+layout_mode = 2
+offset_left = 449.0
+offset_top = 160.0
+offset_right = 830.0
+offset_bottom = 560.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hd5ya")
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
+text = "Good Job
+You found the Golden Poop!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Panel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Message" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Thank you for playing Dooty Duty.
+Sorry for all the bugs and performance issues :(
+I couldn't hash them out in time for this game jam.
+I hope you enjoyed playing!
+Please let me know if you have any feedback for me."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="Panel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Main Menu" type="Button" parent="Panel/CenterContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Main Menu"
+
+[connection signal="mouse_entered" from="Panel/CenterContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_mouse_entered"]
+[connection signal="pressed" from="Panel/CenterContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]

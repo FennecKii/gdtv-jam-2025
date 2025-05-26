@@ -75,6 +75,14 @@ text = "PLAY"
 [node name="Control" type="Control" parent="Buttons/VBoxContainer"]
 layout_mode = 2
 
+[node name="Infinite" type="Button" parent="Buttons/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Infinite"
+
+[node name="Control2" type="Control" parent="Buttons/VBoxContainer"]
+layout_mode = 2
+
 [node name="Settings" type="Button" parent="Buttons/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -97,6 +105,8 @@ position = Vector2(635, 356)
 
 [connection signal="mouse_entered" from="Buttons/VBoxContainer/Play" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="Buttons/VBoxContainer/Infinite" to="." method="_on_button_mouse_entered"]
+[connection signal="pressed" from="Buttons/VBoxContainer/Infinite" to="." method="_on_infinite_pressed"]
 [connection signal="mouse_entered" from="Buttons/VBoxContainer/Settings" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Buttons/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="mouse_entered" from="Buttons/VBoxContainer/Quit" to="." method="_on_button_mouse_entered"]
