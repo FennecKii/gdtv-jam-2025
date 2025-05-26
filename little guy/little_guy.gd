@@ -67,7 +67,7 @@ func _handle_movement(delta: float) -> void:
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, slip_factor * delta)
 
-	if (next_food_position - global_position).length() <= 1:
+	if (next_food_position - global_position).length() <= Global.littleguy_speed/100:
 		collision.disabled = false
 	else:
 		collision.disabled = true
@@ -150,22 +150,24 @@ func _update_state_action() -> void:
 		if guaranteed_poop:
 			guaranteed_poops = int(food_pool / Global.littleguy_max_food_pool)
 			for i in range(guaranteed_poops):
-				var poop_instance: Node = Global.poop_scene.instantiate()
-				poop_instance.global_position = global_position
-				poop_instance.detectable = true
-				Global.poop_group.add_child(poop_instance)
+				_poop()
 			pooped = true
 			guaranteed_poop = false
 			guaranteed_poops = 0
 			food_pool = 0
 		elif randf_range(0, 1) <= Global.poop_chance:
-			var poop_instance: Node = Global.poop_scene.instantiate()
-			poop_instance.global_position = global_position
-			poop_instance.detectable = true
-			Global.poop_group.add_child(poop_instance)
+			_poop()
 			pooped = true
 			guaranteed_poops = 0
 			food_pool = 0
+
+
+func _poop() -> void:
+	var poop_instance: Node = Global.poop_scene.instantiate()
+	var rand_angle: float = randf_range(0, 2*PI)
+	poop_instance.global_position = global_position + Vector2(2*10*cos(rand_angle), 10*sin(rand_angle))
+	poop_instance.detectable = true
+	Global.poop_group.add_child(poop_instance)
 
 
 func _get_food() -> Node:

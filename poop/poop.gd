@@ -17,7 +17,7 @@ func _ready() -> void:
 	SignalBus.carrot_fertilized.connect(_on_carrot_fertilized)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if can_pickup and Input.is_action_just_pressed("Click"):
 		Global.common_poops_collected += 1
 		SignalBus.poop_collected.emit()

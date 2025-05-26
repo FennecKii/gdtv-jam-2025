@@ -12,32 +12,57 @@ dirt_tilemap_layer = NodePath("Y-sort/Dirt Layer")
 y_sort_node = NodePath("Y-sort")
 
 [node name="Panel" type="Panel" parent="."]
-self_modulate = Color(4.945, 13.641, 9.728, 1)
 offset_left = -128.0
-offset_top = -99.0
-offset_right = 129.0
-offset_bottom = 72.0
+offset_top = -144.0
+offset_right = 128.0
+offset_bottom = 41.0
 mouse_filter = 2
 theme = ExtResource("2_bdh6n")
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 108.0
-offset_top = 15.0
+offset_top = 8.0
 offset_right = 148.0
-offset_bottom = 31.0
+offset_bottom = 24.0
 text = "Farm"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Fertilize All" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 142.0
+offset_right = 167.0
+offset_bottom = 182.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 15
+text = "Fertilize All
+Cost: 30"
+
+[node name="AutoFertilizeTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AutoCollectTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FertilizeAllTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Y-sort" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Border Layer" parent="Y-sort" instance=ExtResource("1_d7ib4")]
+position = Vector2(0, -64)
 tile_map_data = PackedByteArray("AAD///r/AQAGAAEAAAD+//v/AQAGAAEAAAD+//z/AQAGAAEAAAD9//3/AQAGAAEAAAD9//7/AQAGAAEAAAD9/wAAAQAGAAEAAAD9/wEAAQAGAAEAAAD+/wIAAQAGAAEAAAD+/wMAAQAGAAEAAAD//wQAAQAGAAEAAAAAAAQAAQAGAAEAAAAAAAMAAQAGAAEAAAABAAIAAQAGAAEAAAABAAEAAQAGAAEAAAACAAAAAQAGAAEAAAACAP7/AQAGAAEAAAABAP3/AQAGAAEAAAABAPz/AQAGAAEAAAAAAPv/AQAGAAEAAAAAAPr/AQAGAAEAAAA=")
 
 [node name="Dirt Layer" parent="Y-sort" instance=ExtResource("1_d7ib4")]
+position = Vector2(0, -64)
 tile_map_data = PackedByteArray("AAD/////BAAAAAAAAAD///7/BAAAAAAAAAD///3/BAAAAAAAAAAAAP7/BAAAAAAAAAAAAP//BAAAAAAAAAAAAAAABAAAAAAAAAD//wEABAAAAAAAAAD//wAABAAAAAAAAAD+////BAAAAAAAAAD+//7/BAAAAAAAAAD+//3/BAAAAAAAAAD///z/BAAAAAAAAAD///v/BAAAAAAAAAAAAPz/BAAAAAAAAAAAAP3/BAAAAAAAAAABAAAABAAAAAAAAAAAAAEABAAAAAAAAAAAAAIABAAAAAAAAAD//wMABAAAAAAAAAD//wIABAAAAAAAAAD+/wEABAAAAAAAAAD+/wAABAAAAAAAAAD9////BAAAAAAAAAABAP7/BAAAAAAAAAABAP//BAAAAAAAAAA=")
 
 [node name="Carrot Crops" type="Node2D" parent="Y-sort"]
 y_sort_enabled = true
+
+[node name="Carrots" type="Node2D" parent="Y-sort"]
+
+[connection signal="pressed" from="Panel/Fertilize All" to="." method="_on_fertilize_all_pressed"]

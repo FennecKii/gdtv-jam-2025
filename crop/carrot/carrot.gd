@@ -3,6 +3,7 @@ extends Node2D
 @export var tile_coord: Vector2i
 @export var grabbed: bool = false
 @export var detectable: bool = false
+@export var mouse_detectable: bool = true
 
 var can_pickup: bool = false
 
@@ -18,7 +19,7 @@ func _ready() -> void:
 		Global.play_squash_stretch(self)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if can_pickup and Input.is_action_just_pressed("Click"):
 		Global.common_carrot_amount += 1
 		queue_free()
@@ -27,6 +28,11 @@ func _process(delta: float) -> void:
 		little_guy_detection.disabled = false
 	elif not detectable:
 		little_guy_detection.disabled = true
+	
+	if mouse_detectable:
+		mouse_detection.disabled = false
+	elif not mouse_detectable:
+		mouse_detection.disabled = true
 	
 	if detectable:
 		add_to_group("food")

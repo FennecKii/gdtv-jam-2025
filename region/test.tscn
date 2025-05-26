@@ -19,6 +19,9 @@ one_shot = true
 [node name="Carrot Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Auto Collect Timer" type="Timer" parent="."]
+one_shot = true
+
 [node name="Y-Sort" type="Node2D" parent="."]
 y_sort_enabled = true
 

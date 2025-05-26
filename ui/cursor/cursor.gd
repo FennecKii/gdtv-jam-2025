@@ -31,7 +31,7 @@ func _update_cursor_default(delta: float) -> void:
 		rotation_degrees = lerp(rotation_degrees, 0.0, mouse_accel * delta)
 
 
-func _update_cursor_interacted(delta: float) -> void:
+func _update_cursor_interacted(_delta: float) -> void:
 	if Input.is_action_pressed("Click"):
 		Global.cursor_grabbing = true
 		frame = 2

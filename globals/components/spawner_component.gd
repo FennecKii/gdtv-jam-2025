@@ -19,7 +19,7 @@ func _ready() -> void:
 	SignalBus.food_collected.connect(_on_food_collected)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 

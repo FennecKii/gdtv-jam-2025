@@ -19,97 +19,84 @@ theme = ExtResource("1_wxbmk")
 script = ExtResource("1_aaqae")
 
 [node name="Panel" type="Panel" parent="."]
-self_modulate = Color(100, 100, 100, 1)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 271.0
-offset_top = -155.0
-offset_right = -271.0
+offset_left = 57.0
+offset_top = -235.0
+offset_right = -57.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Panel2" type="Panel" parent="Panel"]
+[node name="Upper Elements" type="HBoxContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 62.0
+offset_left = 233.0
 offset_top = -32.0
-offset_right = 300.0
+offset_right = 746.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel2"]
-layout_mode = 0
-offset_left = 1.0
-offset_right = 193.0
-offset_bottom = 32.0
-
-[node name="Food" type="HBoxContainer" parent="Panel/Panel2/HBoxContainer"]
-custom_minimum_size = Vector2(110, 0)
+[node name="Foods Amount" type="HBoxContainer" parent="Panel/Upper Elements"]
 layout_mode = 2
 
-[node name="FoodTexture" type="TextureRect" parent="Panel/Panel2/HBoxContainer/Food"]
+[node name="Food" type="HBoxContainer" parent="Panel/Upper Elements/Foods Amount"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+
+[node name="FoodTexture" type="TextureRect" parent="Panel/Upper Elements/Foods Amount/Food"]
 layout_mode = 2
 texture = ExtResource("4_pfnlp")
 
-[node name="Foods" type="Label" parent="Panel/Panel2/HBoxContainer/Food"]
+[node name="Foods" type="Label" parent="Panel/Upper Elements/Foods Amount/Food"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = ": 0"
 
-[node name="Carrot" type="HBoxContainer" parent="Panel/Panel2/HBoxContainer"]
+[node name="Carrot" type="HBoxContainer" parent="Panel/Upper Elements/Foods Amount"]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 
-[node name="CarrotTexture" type="TextureRect" parent="Panel/Panel2/HBoxContainer/Carrot"]
+[node name="CarrotTexture" type="TextureRect" parent="Panel/Upper Elements/Foods Amount/Carrot"]
 layout_mode = 2
 texture = ExtResource("4_pom5v")
 
-[node name="Carrot" type="Label" parent="Panel/Panel2/HBoxContainer/Carrot"]
+[node name="Carrot" type="Label" parent="Panel/Upper Elements/Foods Amount/Carrot"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = ": 0"
 
-[node name="Panel" type="Panel" parent="Panel"]
+[node name="Hide Upgrades" type="Button" parent="Panel/Upper Elements"]
+unique_name_in_owner = true
 layout_mode = 2
-offset_left = 448.0
-offset_top = -32.0
-offset_right = 573.0
+theme_override_font_sizes/font_size = 24
+text = "Hide Upgrades"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/Panel"]
-layout_mode = 0
-offset_right = 176.0
-offset_bottom = 32.0
-
-[node name="Poop" type="HBoxContainer" parent="Panel/Panel/HBoxContainer2"]
+[node name="Poop Amount" type="HBoxContainer" parent="Panel/Upper Elements"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="PoopTexture" type="TextureRect" parent="Panel/Panel/HBoxContainer2/Poop"]
+[node name="Poop" type="HBoxContainer" parent="Panel/Upper Elements/Poop Amount"]
+layout_mode = 2
+
+[node name="PoopTexture" type="TextureRect" parent="Panel/Upper Elements/Poop Amount/Poop"]
 layout_mode = 2
 texture = ExtResource("2_jd13s")
 
-[node name="Poops" type="Label" parent="Panel/Panel/HBoxContainer2/Poop"]
+[node name="Poops" type="Label" parent="Panel/Upper Elements/Poop Amount/Poop"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = ": 0"
 
-[node name="Farm" type="Button" parent="Panel"]
+[node name="Farm" type="Button" parent="Panel/Upper Elements"]
 layout_mode = 2
-offset_left = 627.0
-offset_top = -32.0
-offset_right = 699.0
 theme_override_font_sizes/font_size = 24
 text = "Farm
 "
 
-[node name="Hide Upgrades" type="Button" parent="Panel"]
-layout_mode = 2
-offset_left = 303.0
-offset_top = -32.0
-offset_right = 445.0
-theme_override_font_sizes/font_size = 24
-text = "Hide Upgrades"
-
-[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+[node name="Upgrade Elements" type="CenterContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,96 +104,420 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="Panel/CenterContainer"]
+[node name="GridContainer" type="GridContainer" parent="Panel/Upgrade Elements"]
 layout_mode = 2
 theme = ExtResource("1_wxbmk")
-columns = 10
+columns = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer/GridContainer"]
+[node name="Little Guy Upgrades" type="VBoxContainer" parent="Panel/Upgrade Elements/GridContainer"]
 layout_mode = 2
 
-[node name="Add Little Guy" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer"]
+[node name="Little Guy Upgrades" type="Label" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Little Guy Upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Upgrades Grid" type="GridContainer" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades"]
+layout_mode = 2
+columns = 3
+
+[node name="Little Guy Stats" type="VBoxContainer" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid"]
+layout_mode = 2
+
+[node name="Add Little Guy" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Stats"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Little Guy +1
 Cost: 10"
 
-[node name="Increase Little Guy Speed" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer"]
+[node name="Add Little Guy Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Stats"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Increase Speed
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Increase Little Guy Speed" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Little Guy Speed
 Cost: 10"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/CenterContainer/GridContainer"]
+[node name="Little Guy Speed Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Food Threshold" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Food Threshold
+Cost: 100"
+
+[node name="Little Guy Threshold Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Stats"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Little Guy Pooping" type="VBoxContainer" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid"]
 layout_mode = 2
 
-[node name="Increase Poop Chance" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer2"]
+[node name="Increase Poop Chance" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Poop Chance
 Cost: 2"
 
-[node name="Decrease Poop Time" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer2"]
+[node name="Little Guy Poop Chance Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Decrease Poop Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Poop Time
 Cost: 5"
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="Panel/CenterContainer/GridContainer"]
+[node name="Little Guy Poop Time Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Little Guy Resting" type="VBoxContainer" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid"]
 layout_mode = 2
 
-[node name="Decrease Rest Chance" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer3"]
+[node name="Decrease Rest Chance" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Rest Chance
 Cost: 10"
 
-[node name="Decrease Rest Time" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer3"]
+[node name="Little Guy Rest Chance Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Decrease Rest Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Rest Time
 Cost: 5"
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="Panel/CenterContainer/GridContainer"]
+[node name="Little Guy Rest Time Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="Control" parent="Panel/Upgrade Elements/GridContainer"]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="Increase Food Spawn Amount" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer4"]
+[node name="Automation Upgrades" type="VBoxContainer" parent="Panel/Upgrade Elements/GridContainer"]
 layout_mode = 2
-text = "Food Spawn +1
+
+[node name="Automation Upgrades" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Automation Upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Upgrades Grid" type="GridContainer" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades"]
+layout_mode = 2
+columns = 5
+
+[node name="Auto Feed Fries" type="VBoxContainer" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid"]
+layout_mode = 2
+
+[node name="Auto Feed Fries" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Auto Feed Fries
+Cost: 100"
+
+[node name="Auto Feed Fries Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Increase Food Spawn Amount" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Feed Fries +1
 Cost: 25"
 
-[node name="Decrease Food Spawn Time" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer4"]
+[node name="Feed Fries Amount Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Food Spawn Time
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Decrease Food Spawn Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Feed Fries Time
 Cost: 15"
 
-[node name="VBoxContainer5" type="VBoxContainer" parent="Panel/CenterContainer/GridContainer"]
+[node name="Feed Fries Time Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Auto Feed Carrot" type="VBoxContainer" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="Panel/CenterContainer/GridContainer/VBoxContainer5"]
-custom_minimum_size = Vector2(0, 30)
+[node name="Auto Feed Carrot" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Carrot"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Auto Feed Carrot
+Cost: 100"
+
+[node name="Auto Feed Carrot Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Carrot"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Auto Feed Carrot Amount" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Carrot"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Feed Carrot +1
+Cost: 100"
+
+[node name="Feed Carrot Amount Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Carrot"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Auto Feed Carrot Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Carrot"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Feed Carrot Time
+Cost: 100"
+
+[node name="Feed Carrot Time Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Carrot"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Auto Collect Poop" type="VBoxContainer" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/CenterContainer/GridContainer/VBoxContainer5"]
+[node name="Auto Collect Poop" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Poop"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Auto Collect Poop
+Cost: 100"
+
+[node name="Auto Collect Poop Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Poop"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Auto Collect Poop Amount" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Poop"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Collect Poop +1
+Cost: 100"
+
+[node name="Collect Poop Amount Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Poop"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Auto Collect Poop Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Poop"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Collect Poop Time
+Cost: 100"
+
+[node name="Collect Poop Time Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Poop"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Auto Collect Carrot" type="VBoxContainer" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid"]
 layout_mode = 2
 
-[node name="Auto Collect" type="Button" parent="Panel/CenterContainer/GridContainer/VBoxContainer5/HBoxContainer"]
+[node name="Auto Collect Carrot" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Carrot"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Auto Collect"
+text = "Auto Collect Carrot
+Cost: 100"
 
-[connection signal="mouse_entered" from="Panel/Panel2/HBoxContainer/Food" to="." method="_on_mouse_interaction_entered"]
-[connection signal="mouse_entered" from="Panel/Panel2/HBoxContainer/Food" to="." method="_on_common_food_mouse_entered"]
-[connection signal="mouse_exited" from="Panel/Panel2/HBoxContainer/Food" to="." method="_on_mouse_interaction_exited"]
-[connection signal="mouse_exited" from="Panel/Panel2/HBoxContainer/Food" to="." method="_on_common_food_mouse_exited"]
-[connection signal="mouse_entered" from="Panel/Panel2/HBoxContainer/Carrot" to="." method="_on_mouse_interaction_entered"]
-[connection signal="mouse_entered" from="Panel/Panel2/HBoxContainer/Carrot" to="." method="_on_common_carrot_mouse_entered"]
-[connection signal="mouse_exited" from="Panel/Panel2/HBoxContainer/Carrot" to="." method="_on_mouse_interaction_exited"]
-[connection signal="mouse_exited" from="Panel/Panel2/HBoxContainer/Carrot" to="." method="_on_common_carrot_mouse_exited"]
-[connection signal="mouse_entered" from="Panel/Panel/HBoxContainer2/Poop" to="." method="_on_mouse_interaction_entered"]
-[connection signal="mouse_entered" from="Panel/Panel/HBoxContainer2/Poop" to="." method="_on_common_poop_mouse_entered"]
-[connection signal="mouse_exited" from="Panel/Panel/HBoxContainer2/Poop" to="." method="_on_mouse_interaction_exited"]
-[connection signal="mouse_exited" from="Panel/Panel/HBoxContainer2/Poop" to="." method="_on_common_poop_mouse_exited"]
-[connection signal="pressed" from="Panel/Farm" to="." method="_on_farm_pressed"]
-[connection signal="pressed" from="Panel/Hide Upgrades" to="." method="_on_hide_upgrades_pressed"]
-[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer/Add Little Guy" to="." method="_on_add_little_guy_pressed"]
-[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer/Increase Little Guy Speed" to="." method="_on_increase_little_guy_speed_pressed"]
-[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer2/Increase Poop Chance" to="." method="_on_increase_poop_chance_pressed"]
-[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer2/Decrease Poop Time" to="." method="_on_decrease_poop_time_pressed"]
-[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer3/Decrease Rest Chance" to="." method="_on_decrease_rest_chance_pressed"]
-[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer3/Decrease Rest Time" to="." method="_on_decrease_rest_time_pressed"]
-[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer4/Increase Food Spawn Amount" to="." method="_on_increase_food_spawn_amount_pressed"]
-[connection signal="pressed" from="Panel/CenterContainer/GridContainer/VBoxContainer4/Decrease Food Spawn Time" to="." method="_on_decrease_food_spawn_time_pressed"]
+[node name="Auto Collect Carrot Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Carrot"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Auto Collect Carrot Amount" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Carrot"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Collect Carrot +1
+Cost: 100"
+
+[node name="Collect Carrot Amount Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Carrot"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Auto Collect Carrot Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Carrot"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Collect Carrot Time
+Cost: 100"
+
+[node name="Collect Carrot Time Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Carrot"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Auto Fertilize" type="VBoxContainer" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid"]
+layout_mode = 2
+
+[node name="Auto Fertilize" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Fertilize"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Auto Fertilize
+Cost: 100"
+
+[node name="Auto Fertilize Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Fertilize"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Auto Fertilize Amount" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Fertilize"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Auto Fertilize +1
+Cost: 100"
+
+[node name="Fertilize Amount Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Fertilize"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Auto Fertilize Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Fertilize"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Auto Fertilize Time
+Cost: 100"
+
+[node name="Fertilize Time Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Fertilize"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator2" type="Control" parent="Panel/Upgrade Elements/GridContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="Misc Upgrades" type="VBoxContainer" parent="Panel/Upgrade Elements/GridContainer"]
+layout_mode = 2
+
+[node name="Misc Upgrades" type="Label" parent="Panel/Upgrade Elements/GridContainer/Misc Upgrades"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Misc"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Upgrades Grid" type="GridContainer" parent="Panel/Upgrade Elements/GridContainer/Misc Upgrades"]
+layout_mode = 2
+
+[node name="Other" type="VBoxContainer" parent="Panel/Upgrade Elements/GridContainer/Misc Upgrades/Upgrades Grid"]
+layout_mode = 2
+
+[node name="Carrot Growth Time" type="Button" parent="Panel/Upgrade Elements/GridContainer/Misc Upgrades/Upgrades Grid/Other"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Carrot Growth Time
+Cost: 100"
+
+[node name="Carrot Growth Time Data Label" type="Label" parent="Panel/Upgrade Elements/GridContainer/Misc Upgrades/Upgrades Grid/Other"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/5  |  Current Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="Panel/Upper Elements/Foods Amount/Food" to="." method="_on_mouse_interaction_entered"]
+[connection signal="mouse_entered" from="Panel/Upper Elements/Foods Amount/Food" to="." method="_on_common_food_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/Upper Elements/Foods Amount/Food" to="." method="_on_mouse_interaction_exited"]
+[connection signal="mouse_exited" from="Panel/Upper Elements/Foods Amount/Food" to="." method="_on_common_food_mouse_exited"]
+[connection signal="mouse_entered" from="Panel/Upper Elements/Foods Amount/Carrot" to="." method="_on_mouse_interaction_entered"]
+[connection signal="mouse_entered" from="Panel/Upper Elements/Foods Amount/Carrot" to="." method="_on_common_carrot_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/Upper Elements/Foods Amount/Carrot" to="." method="_on_mouse_interaction_exited"]
+[connection signal="mouse_exited" from="Panel/Upper Elements/Foods Amount/Carrot" to="." method="_on_common_carrot_mouse_exited"]
+[connection signal="pressed" from="Panel/Upper Elements/Hide Upgrades" to="." method="_on_hide_upgrades_pressed"]
+[connection signal="mouse_entered" from="Panel/Upper Elements/Poop Amount/Poop" to="." method="_on_mouse_interaction_entered"]
+[connection signal="mouse_entered" from="Panel/Upper Elements/Poop Amount/Poop" to="." method="_on_common_poop_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/Upper Elements/Poop Amount/Poop" to="." method="_on_mouse_interaction_exited"]
+[connection signal="mouse_exited" from="Panel/Upper Elements/Poop Amount/Poop" to="." method="_on_common_poop_mouse_exited"]
+[connection signal="pressed" from="Panel/Upper Elements/Farm" to="." method="_on_farm_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Stats/Add Little Guy" to="." method="_on_add_little_guy_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Stats/Increase Little Guy Speed" to="." method="_on_increase_little_guy_speed_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Stats/Food Threshold" to="." method="_on_food_threshold_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping/Increase Poop Chance" to="." method="_on_increase_poop_chance_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Pooping/Decrease Poop Time" to="." method="_on_decrease_poop_time_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting/Decrease Rest Chance" to="." method="_on_decrease_rest_chance_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Resting/Decrease Rest Time" to="." method="_on_decrease_rest_time_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries/Auto Feed Fries" to="." method="_on_auto_feed_fries_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries/Increase Food Spawn Amount" to="." method="_on_increase_food_spawn_amount_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Fries/Decrease Food Spawn Time" to="." method="_on_decrease_food_spawn_time_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Carrot/Auto Feed Carrot" to="." method="_on_auto_feed_carrot_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Carrot/Auto Feed Carrot Amount" to="." method="_on_auto_feed_carrot_amount_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Feed Carrot/Auto Feed Carrot Time" to="." method="_on_auto_feed_carrot_time_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Poop/Auto Collect Poop" to="." method="_on_auto_collect_poop_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Poop/Auto Collect Poop Amount" to="." method="_on_auto_collect_poop_amount_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Poop/Auto Collect Poop Time" to="." method="_on_auto_collect_poop_time_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Carrot/Auto Collect Carrot" to="." method="_on_auto_collect_carrot_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Carrot/Auto Collect Carrot Amount" to="." method="_on_auto_collect_carrot_amount_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Collect Carrot/Auto Collect Carrot Time" to="." method="_on_auto_collect_carrot_time_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Fertilize/Auto Fertilize" to="." method="_on_auto_fertilize_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Fertilize/Auto Fertilize Amount" to="." method="_on_auto_fertilize_amount_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Automation Upgrades/Upgrades Grid/Auto Fertilize/Auto Fertilize Time" to="." method="_on_auto_fertilize_time_pressed"]
+[connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Misc Upgrades/Upgrades Grid/Other/Carrot Growth Time" to="." method="_on_carrot_growth_time_pressed"]

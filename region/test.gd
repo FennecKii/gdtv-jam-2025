@@ -8,11 +8,13 @@ var carrot_spawned: bool = false
 var common_poop_instance: Node
 var common_food_instance: Node
 var common_carrot_instance: Node
+var poop_instances: Array[Node]
 
 @onready var food_timer: Timer = $"Food Timer"
 @onready var carrot_timer: Timer = $"Carrot Timer"
 @onready var food_group: Node2D = $"Y-Sort/Food Group"
 @onready var poop_group: Node2D = $"Y-Sort/Poop Group"
+@onready var auto_collect_timer: Timer = $"Auto Collect Timer"
 
 
 func _ready() -> void:
@@ -21,8 +23,6 @@ func _ready() -> void:
 		assert(spawner_component, "%s not found." %spawner_component)
 	food_timer.wait_time = Global.food_spawn_time
 	carrot_timer.wait_time = Global.carrot_spawn_time
-	food_timer.start()
-	carrot_timer.start()
 	Global.food_group = food_group
 	Global.poop_group = poop_group
 	SignalBus.add_little_guy.connect(_on_add_little_guy)
@@ -31,12 +31,21 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	food_timer.wait_time = Global.food_spawn_time
 	carrot_timer.wait_time = Global.carrot_spawn_time
+	auto_collect_timer.wait_time = Global.poop_auto_collect_time
+	poop_instances = poop_group.get_children()
+	
+	if Global.poop_auto_collect and len(poop_instances) > 0 and auto_collect_timer.is_stopped():
+		auto_collect_timer.start()
+		for i in range(min(len(poop_instances), Global.poop_auto_collect_amount)):
+			var poop: Node = poop_instances.pick_random()
+			poop.queue_free()
+			Global.common_poops_collected += 1
 	
 	if Global.food_spawn_auto:
 		_process_food()
 		_update_timer()
 	
-	if Global.carrot_spawn_auto:
+	if Global.carrot_spawn_auto and Global.common_carrot_amount > 0:
 		_process_carrot()
 		_update_carrot_timer()
 	
@@ -70,7 +79,7 @@ func _process_carrot() -> void:
 	if carrot_spawned:
 		return
 	elif not carrot_spawned:
-		for carrot_count in range(Global.carrot_spawn_amount):
+		for carrot_count in range(min(Global.common_carrot_amount, Global.carrot_spawn_amount)):
 			spawner_component.spawn_carrot()
 		carrot_spawned = true
 		carrot_timer.start()
@@ -131,6 +140,7 @@ func _release_item() -> void:
 		if not Global.cursor_interacted and Global.common_carrot_grabbed and common_carrot_instance:
 			Global.play_squash_stretch(common_carrot_instance)
 			common_carrot_instance.detectable = true
+			common_carrot_instance.mouse_detectable = false
 			Global.common_carrot_grabbed = false
 		elif Global.cursor_interacted and Global.common_carrot_grabbed:
 			if Global.cursor_common_carrot_interacted:

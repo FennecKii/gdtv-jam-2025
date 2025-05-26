@@ -72,11 +72,9 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtbu8"]
-bg_color = Color(1, 1, 1, 0.607843)
+bg_color = Color(0.904674, 0.818017, 0.702773, 0.784314)
 corner_radius_top_left = 7
 corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
 
 [resource]
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
@@ -106,6 +104,6 @@ Button/styles/pressed = SubResource("StyleBoxFlat_dagba")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 16
-Label/font_sizes/font_size = 28
+Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_x2ak3")
 Panel/styles/panel = SubResource("StyleBoxFlat_xtbu8")

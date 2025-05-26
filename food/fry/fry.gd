@@ -11,7 +11,7 @@ func _ready() -> void:
 		Global.play_squash_stretch(self)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if detectable:
 		add_to_group("food")
 
