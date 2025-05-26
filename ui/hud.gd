@@ -65,6 +65,9 @@ extends Control
 var upgrades_panel_down: bool = false
 
 func _ready() -> void:
+	_update_labels()
+	_update_label_colors()
+	_update_buttons()
 	_on_hide_upgrades_pressed()
 	SignalBus.poop_collected.connect(_on_poop_connected)
 	common_foods_label.text = str(": %s" %Global.common_food_amount)
@@ -133,6 +136,77 @@ func _on_common_carrot_mouse_entered() -> void:
 
 func _on_common_carrot_mouse_exited() -> void:
 	Global.cursor_common_carrot_interacted = false
+
+
+func _update_buttons() -> void:
+	if Global.littleguy_count_upgrade_count == Global.littleguy_count_upgrade_max:
+		add_little_guy.disabled = true
+	
+	if Global.littleguy_speed_upgrade_count == Global.littleguy_speed_upgrade_max:
+			increase_little_guy_speed.disabled = true
+	
+	if Global.littleguy_max_food_pool_upgrade_count == Global.littleguy_max_food_pool_upgrade_max:
+			food_threshold.disabled = true
+	
+	if Global.poop_chance_upgrade_count == Global.poop_chance_upgrade_max:
+			increase_poop_chance.disabled = true
+	
+	if Global.poop_time_upgrade_count == Global.poop_time_upgrade_max:
+			decrease_poop_time.disabled = true
+	
+	if Global.rest_chance_upgrade_count == Global.rest_chance_upgrade_max:
+			decrease_rest_chance.disabled = true
+	
+	if Global.rest_time_upgrade_count == Global.rest_time_upgrade_max:
+			decrease_rest_time.disabled = true
+	
+	if Global.food_spawn_auto_upgrade_count == Global.food_spawn_auto_upgrade_max:
+			auto_feed_fries.disabled = true
+	
+	if Global.food_spawn_amount_upgrade_count == Global.food_spawn_amount_upgrade_max:
+			increase_food_spawn_amount.disabled = true
+	
+	if Global.food_spawn_time_upgrade_count == Global.food_spawn_time_upgrade_max:
+			decrease_food_spawn_time.disabled = true
+	
+	if Global.carrot_spawn_auto_upgrade_count == Global.carrot_spawn_auto_upgrade_max:
+			auto_feed_carrot.disabled = true
+	
+	if Global.carrot_spawn_amount_upgrade_count == Global.carrot_spawn_amount_upgrade_max:
+			auto_feed_carrot_amount.disabled = true
+	
+	if Global.carrot_spawn_time_upgrade_count == Global.carrot_spawn_time_upgrade_max:
+			auto_feed_carrot_time.disabled = true
+	
+	if Global.poop_auto_collect_upgrade_count == Global.poop_auto_collect_upgrade_max:
+			auto_collect_poop.disabled = true
+	
+	if Global.poop_auto_collect_amount_upgrade_count == Global.poop_auto_collect_amount_upgrade_max:
+			auto_collect_poop_amount.disabled = true
+	
+	if Global.poop_auto_collect_time_upgrade_count == Global.poop_auto_collect_time_upgrade_max:
+			auto_collect_poop_time.disabled = true
+	
+	if Global.farm_auto_collect_upgrade_count == Global.farm_auto_collect_upgrade_max:
+			auto_collect_carrot.disabled = true
+	
+	if Global.farm_auto_collect_amount_upgrade_count == Global.farm_auto_collect_amount_upgrade_max:
+			auto_collect_carrot_amount.disabled = true
+	
+	if Global.farm_auto_collect_time_upgrade_count == Global.farm_auto_collect_time_upgrade_max:
+			auto_collect_carrot_time.disabled = true
+	
+	if Global.farm_auto_fertilize_upgrade_count == Global.farm_auto_fertilize_upgrade_max:
+			auto_fertilize.disabled = true
+	
+	if Global.farm_auto_fertilize_amount_upgrade_count == Global.farm_auto_fertilize_amount_upgrade_max:
+			auto_fertilize_amount.disabled = true
+	
+	if Global.farm_auto_fertilize_time_upgrade_count == Global.farm_auto_fertilize_time_upgrade_max:
+			auto_fertilize_time.disabled = true
+	
+	if Global.carrot_growth_time_upgrade_count == Global.carrot_growth_time_upgrade_max:
+			carrot_growth_time.disabled = true
 
 
 func _update_labels() -> void:

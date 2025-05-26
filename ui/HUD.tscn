@@ -501,8 +501,8 @@ text = "0/5  |  Current Stat"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="mouse_entered" from="Panel/Upper Elements/Foods Amount/Food" to="." method="_on_mouse_interaction_entered"]
 [connection signal="mouse_entered" from="Panel/Upper Elements/Foods Amount/Food" to="." method="_on_common_food_mouse_entered"]
+[connection signal="mouse_entered" from="Panel/Upper Elements/Foods Amount/Food" to="." method="_on_mouse_interaction_entered"]
 [connection signal="mouse_exited" from="Panel/Upper Elements/Foods Amount/Food" to="." method="_on_mouse_interaction_exited"]
 [connection signal="mouse_exited" from="Panel/Upper Elements/Foods Amount/Food" to="." method="_on_common_food_mouse_exited"]
 [connection signal="mouse_entered" from="Panel/Upper Elements/Foods Amount/Carrot" to="." method="_on_mouse_interaction_entered"]
@@ -510,10 +510,10 @@ vertical_alignment = 1
 [connection signal="mouse_exited" from="Panel/Upper Elements/Foods Amount/Carrot" to="." method="_on_mouse_interaction_exited"]
 [connection signal="mouse_exited" from="Panel/Upper Elements/Foods Amount/Carrot" to="." method="_on_common_carrot_mouse_exited"]
 [connection signal="pressed" from="Panel/Upper Elements/Hide Upgrades" to="." method="_on_hide_upgrades_pressed"]
-[connection signal="mouse_entered" from="Panel/Upper Elements/Poop Amount/Poop" to="." method="_on_mouse_interaction_entered"]
 [connection signal="mouse_entered" from="Panel/Upper Elements/Poop Amount/Poop" to="." method="_on_common_poop_mouse_entered"]
-[connection signal="mouse_exited" from="Panel/Upper Elements/Poop Amount/Poop" to="." method="_on_mouse_interaction_exited"]
+[connection signal="mouse_entered" from="Panel/Upper Elements/Poop Amount/Poop" to="." method="_on_mouse_interaction_entered"]
 [connection signal="mouse_exited" from="Panel/Upper Elements/Poop Amount/Poop" to="." method="_on_common_poop_mouse_exited"]
+[connection signal="mouse_exited" from="Panel/Upper Elements/Poop Amount/Poop" to="." method="_on_mouse_interaction_exited"]
 [connection signal="pressed" from="Panel/Upper Elements/Farm" to="." method="_on_farm_pressed"]
 [connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Stats/Add Little Guy" to="." method="_on_add_little_guy_pressed"]
 [connection signal="pressed" from="Panel/Upgrade Elements/GridContainer/Little Guy Upgrades/Upgrades Grid/Little Guy Stats/Increase Little Guy Speed" to="." method="_on_increase_little_guy_speed_pressed"]

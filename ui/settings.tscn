@@ -1,0 +1,121 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctojqj8f4icba"]
+
+[ext_resource type="Script" uid="uid://caisrhwhly4ww" path="res://ui/settings.gd" id="1_7kwmf"]
+[ext_resource type="Theme" uid="uid://bytvax30knbwy" path="res://resources/themes/main_menu_theme.tres" id="1_pcnwc"]
+[ext_resource type="StyleBox" uid="uid://bnaodse5lljgk" path="res://resources/themes/settings_button_focus.tres" id="3_evr87"]
+[ext_resource type="StyleBox" uid="uid://cvxjbhhuhvsqa" path="res://resources/themes/settings_button_hover.tres" id="4_045ga"]
+[ext_resource type="StyleBox" uid="uid://famjxx8d5arm" path="res://resources/themes/settings_button_pressed.tres" id="5_jxi54"]
+[ext_resource type="StyleBox" uid="uid://dr1maxj5gjxmc" path="res://resources/themes/settings_button_normal.tres" id="6_q0pcl"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("1_pcnwc")
+script = ExtResource("1_7kwmf")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(325, 400)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="Settings" type="Label" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 24
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 40
+text = "Master"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolume" type="HSlider" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -20.0
+max_value = 20.0
+
+[node name="Music" type="Label" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 40
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolume" type="HSlider" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -20.0
+max_value = 20.0
+
+[node name="SFX" type="Label" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 40
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXVolume" type="HSlider" parent="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -20.0
+max_value = 20.0
+
+[node name="Control2" type="Control" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Close" type="Button" parent="CenterContainer/Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = ExtResource("3_evr87")
+theme_override_styles/hover = ExtResource("4_045ga")
+theme_override_styles/pressed = ExtResource("5_jxi54")
+theme_override_styles/normal = ExtResource("6_q0pcl")
+text = "Close
+"
+
+[connection signal="value_changed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons/MasterVolume" to="." method="_on_master_volume_changed"]
+[connection signal="value_changed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons/MusicVolume" to="." method="_on_music_volume_changed"]
+[connection signal="value_changed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/Buttons/SFXVolume" to="." method="_on_sfx_volume_changed"]
+[connection signal="pressed" from="CenterContainer/Panel/CenterContainer/VBoxContainer/Close" to="." method="_on_close_pressed"]

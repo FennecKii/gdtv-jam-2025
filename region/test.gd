@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 	
 	_grab_item()
 	_release_item()
-	if Global.cursor_grabbing and Global.common_poop_grabbed:
+	if Global.cursor_grabbing and Global.common_poop_grabbed and common_poop_instance:
 		common_poop_instance.global_position = lerp(common_poop_instance.global_position, get_global_mouse_position(), 17 * delta)
 	if Global.cursor_grabbing and Global.common_food_grabbed and common_food_instance:
 		common_food_instance.global_position = lerp(common_food_instance.global_position, get_global_mouse_position() + Vector2(0, 10), 17 * delta)

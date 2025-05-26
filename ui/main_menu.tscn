@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqbnw855ngpps"]
+[gd_scene load_steps=6 format=3 uid="uid://bqbnw855ngpps"]
 
 [ext_resource type="Theme" uid="uid://bytvax30knbwy" path="res://resources/themes/main_menu_theme.tres" id="1_0dkrt"]
 [ext_resource type="PackedScene" uid="uid://bst36ket1s1ms" path="res://ui/space_shader_background.tscn" id="1_t7e0r"]
 [ext_resource type="Script" uid="uid://ccqnxkvq0nyag" path="res://ui/main_menu.gd" id="2_wk0pr"]
+[ext_resource type="PackedScene" uid="uid://ctojqj8f4icba" path="res://ui/settings.tscn" id="4_8uxxo"]
 [ext_resource type="PackedScene" uid="uid://hu3v1yubkx76" path="res://ui/cursor/cursor.tscn" id="4_rmr83"]
 
 [node name="Main Menu" type="Control"]
@@ -86,6 +87,10 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "QUIT"
+
+[node name="Settings" parent="." instance=ExtResource("4_8uxxo")]
+visible = false
+layout_mode = 1
 
 [node name="Cursor" parent="." instance=ExtResource("4_rmr83")]
 
