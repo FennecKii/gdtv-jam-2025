@@ -4,15 +4,18 @@ extends Control
 @onready var master_volume: HSlider = %MasterVolume
 @onready var music_volume: HSlider = %MusicVolume
 @onready var sfx_volume: HSlider = %SFXVolume
+@onready var poop_volume: HSlider = %PoopVolume
 
 
 func _ready() -> void:
 	AudioServer.set_bus_volume_db(0, Global.master_volume)
 	AudioServer.set_bus_volume_db(1, Global.music_volume)
 	AudioServer.set_bus_volume_db(2, Global.sfx_volume)
+	AudioServer.set_bus_volume_db(3, Global.poop_volume)
 	master_volume.value = Global.master_volume
 	music_volume.value = Global.music_volume
 	sfx_volume.value = Global.sfx_volume
+	poop_volume.value = Global.poop_volume
 	SignalBus.settings_entered.connect(_on_settings_entered)
 
 
@@ -59,7 +62,18 @@ func _on_settings_entered() -> void:
 	AudioServer.set_bus_volume_db(0, Global.master_volume)
 	AudioServer.set_bus_volume_db(1, Global.music_volume)
 	AudioServer.set_bus_volume_db(2, Global.sfx_volume)
+	AudioServer.set_bus_volume_db(3, Global.poop_volume)
 	master_volume.value = Global.master_volume
 	music_volume.value = Global.music_volume
 	sfx_volume.value = Global.sfx_volume
-	
+	poop_volume.value = Global.poop_volume
+
+
+func _on_poop_volume_value_changed(value: float) -> void:
+	AudioManager.play_sfx_global(SoundResource.SoundType.BUTTON_SCROLL)
+	if value == -20.0:
+		AudioServer.set_bus_mute(3, true)
+	else:
+		AudioServer.set_bus_mute(3, false)
+	AudioServer.set_bus_volume_db(3, value)
+	Global.poop_volume = value

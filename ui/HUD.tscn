@@ -528,6 +528,17 @@ text = "0/5  |  Current Stat"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Control" type="Control" parent="Panel/Upgrade Elements/GridContainer/Misc Upgrades/Upgrades Grid/Other"]
+custom_minimum_size = Vector2(0, 103)
+layout_mode = 2
+
+[node name="Settings" type="Label" parent="Panel/Upgrade Elements/GridContainer/Misc Upgrades/Upgrades Grid/Other"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.744451, 0.51709, 0.308396, 1)
+text = "Settings: Press ESC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="mouse_entered" from="Panel/Upper Elements/Foods Amount/Food" to="." method="_on_common_food_mouse_entered"]
 [connection signal="mouse_entered" from="Panel/Upper Elements/Foods Amount/Food" to="." method="_on_mouse_interaction_entered"]
 [connection signal="mouse_exited" from="Panel/Upper Elements/Foods Amount/Food" to="." method="_on_mouse_interaction_exited"]

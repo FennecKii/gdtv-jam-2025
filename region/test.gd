@@ -135,13 +135,13 @@ func _release_item() -> void:
 			Global.play_squash_stretch(common_poop_instance)
 			common_poop_instance.detectable = true
 			Global.common_poop_grabbed = false
-			AudioManager.play_sfx_global(SoundResource.SoundType.FART_1)
+			AudioManager.play_poop_sfx_global(SoundResource.SoundType.FART_1)
 		elif Global.cursor_interacted and Global.common_poop_grabbed:
 			if Global.cursor_common_poop_interacted:
 				common_poop_instance.queue_free()
 				Global.common_poops_collected += 1
 				Global.common_poop_grabbed = false
-				AudioManager.play_sfx_global(SoundResource.SoundType.FART_1)
+				AudioManager.play_poop_sfx_global(SoundResource.SoundType.FART_1)
 		if not Global.cursor_interacted and Global.common_food_grabbed and common_food_instance:
 			Global.play_squash_stretch(common_food_instance)
 			common_food_instance.detectable = true

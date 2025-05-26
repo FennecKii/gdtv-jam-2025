@@ -3,8 +3,9 @@ extends Node
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 var master_volume: float = 0
-var music_volume: float = -12
+var music_volume: float = -13
 var sfx_volume: float = -10
+var poop_volume: float = -12
 
 var game_won: bool = false
 var infinite_mode: bool = false
@@ -92,27 +93,27 @@ var farm_auto_collect_time: float = 9.0	# Time it takes to auto collect on the f
 
 
 # Base Upgrade Costs
-const littleguy_count_upgrade_cost_base: int = 3
-const littleguy_speed_upgrade_cost_base: int = 5
+const littleguy_count_upgrade_cost_base: int = 2
+const littleguy_speed_upgrade_cost_base: int = 4
 const littleguy_max_food_pool_upgrade_cost_base: int = 3
 const poop_time_upgrade_cost_base: int = 2
 const poop_chance_upgrade_cost_base: int = 2
 const rest_time_upgrade_cost_base: int = 2
 const rest_chance_upgrade_cost_base: int = 2
-const poop_auto_collect_upgrade_cost_base: int = 10
+const poop_auto_collect_upgrade_cost_base: int = 8
 const poop_auto_collect_amount_upgrade_cost_base: int = 3
 const poop_auto_collect_time_upgrade_cost_base: int = 3
-const food_spawn_auto_upgrade_cost_base: int = 5
+const food_spawn_auto_upgrade_cost_base: int = 4
 const food_spawn_time_upgrade_cost_base: int = 3
 const food_spawn_amount_upgrade_cost_base: int = 3
-const carrot_spawn_auto_upgrade_cost_base: int = 15
+const carrot_spawn_auto_upgrade_cost_base: int = 11
 const carrot_spawn_time_upgrade_cost_base: int = 4
 const carrot_spawn_amount_upgrade_cost_base: int = 4
-const carrot_growth_time_upgrade_cost_base: int = 7
+const carrot_growth_time_upgrade_cost_base: int = 8
 const farm_auto_fertilize_upgrade_cost_base: int = 12
 const farm_auto_fertilize_amount_upgrade_cost_base: int = 4
 const farm_auto_fertilize_time_upgrade_cost_base: int = 4
-const farm_auto_collect_upgrade_cost_base: int = 15
+const farm_auto_collect_upgrade_cost_base: int = 13
 const farm_auto_collect_amount_upgrade_cost_base: int = 3
 const farm_auto_collect_time_upgrade_cost_base: int = 3
 
