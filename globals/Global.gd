@@ -65,7 +65,7 @@ var littleguy_count: int = 1
 var littleguy_speed: float = 75.0			# Little guy speed
 var littleguy_max_food_pool: int = 25		# Max food little guy can eat before guaranteed poop
 var poop_time: float = 6.5					# Time it takes for little guy to poop when in poop state
-var poop_chance: float = 0.075				# Chance for little guy to poop when in poop state
+var poop_chance: float = 0.25				# Chance for little guy to poop when in poop state
 var rest_time: float = 6.0					# Time it takes for little guy to rest when in rest state
 var rest_chance: float = 0.25				# Chance for little guy to take a rest when in collect state
 
@@ -256,7 +256,7 @@ func _initialized_values() -> void:
 	littleguy_speed = 75.0
 	littleguy_max_food_pool = 25
 	poop_time = 6.5
-	poop_chance = 0.075
+	poop_chance = 0.25
 	rest_time = 6.0
 	rest_chance = 0.25
 	poop_auto_collect = false
