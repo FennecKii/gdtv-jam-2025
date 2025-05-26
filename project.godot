@@ -23,6 +23,7 @@ buses/default_bus_layout="res://resources/audio/default_bus_layout.tres"
 
 Global="*res://globals/Global.gd"
 SignalBus="*res://globals/SignalBus.gd"
+AudioManager="*res://globals/audio_manager.tscn"
 
 [display]
 
