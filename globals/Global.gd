@@ -222,6 +222,8 @@ func _initialized_values() -> void:
 	farm_auto_fertilize_amount_upgrade_count = 0
 	farm_auto_fertilize_time_upgrade_count = 0
 	farm_auto_collect_upgrade_count = 0
+	farm_auto_collect_amount_upgrade_count = 0
+	farm_auto_collect_time_upgrade_count = 0
 	golden_poop_chance_upgrade_count = 0
 	carrot_pool_upgrade_count = 0
 	
