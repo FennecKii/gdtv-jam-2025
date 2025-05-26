@@ -35,7 +35,7 @@ func _on_food_collected(_little_guy: Node2D, _is_carrot: bool, tile_coord: Vecto
 
 
 func spawn_food() -> void:
-	if len(food_pool) > 750:
+	if len(food_pool) > 400:
 		return
 	var spawn_coord: Vector2i = tilemap_coords.pick_random()
 	food_pool.append(spawn_coord)
@@ -51,7 +51,7 @@ func spawn_food() -> void:
 
 func spawn_carrot() -> void:
 	var spawn_coord: Vector2i = tilemap_coords.pick_random()
-	if len(food_pool) > 750:
+	if len(food_pool) > 400:
 		return
 	if Global.common_carrot_amount > 0:
 		Global.common_carrot_amount -= 1

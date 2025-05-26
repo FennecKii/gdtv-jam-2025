@@ -50,6 +50,8 @@ func _process(_delta: float) -> void:
 	
 	if Global.farm_auto_collect and len(carrot_instances) > 0 and auto_collect_timer.is_stopped():
 		auto_collect_timer.start()
+		if len(carrot_instances) > 300:
+			return
 		for i in range(min(len(carrot_instances), Global.farm_auto_collect_amount)):
 			var carrot: Node = carrot_instances.pick_random()
 			carrot.queue_free()

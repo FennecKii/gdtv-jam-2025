@@ -501,7 +501,7 @@ func _on_increase_little_guy_speed_pressed() -> void:
 		if Global.common_poops_collected >= Global.littleguy_speed_upgrade_cost:
 			Global.common_poops_collected -= Global.littleguy_speed_upgrade_cost
 			Global.littleguy_speed_upgrade_count += 1
-			Global.littleguy_speed += 70.0
+			Global.littleguy_speed += 75.0
 			Global.littleguy_speed_upgrade_cost += Global.littleguy_speed_upgrade_cost_base * int(ceilf(Global.littleguy_speed_upgrade_count/6.5))
 	if Global.littleguy_speed_upgrade_count == Global.littleguy_speed_upgrade_max:
 		increase_little_guy_speed.disabled = true
