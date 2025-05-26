@@ -53,6 +53,7 @@ extends Control
 
 
 @onready var common_poops_label: Label = %Poops
+@onready var golden_poops_label: Label = %GoldenPoops
 @onready var common_foods_label: Label = %Foods
 @onready var common_carrots_label: Label = %Carrot
 @onready var upgrades_panel: Panel = $Panel
@@ -69,12 +70,15 @@ func _ready() -> void:
 	common_foods_label.text = str(": %s" %Global.common_food_amount)
 	common_poops_label.text = str(": %s" %Global.common_poops_collected)
 	common_carrots_label.text = str(": %s" %Global.common_carrot_amount)
+	golden_poops_label.text = str(": %s" %Global.golden_poops_collected)
 
 
 func _process(_delta: float) -> void:
 	common_foods_label.text = str(": %s" %Global.common_food_amount)
 	common_poops_label.text = str(": %s" %Global.common_poops_collected)
 	common_carrots_label.text = str(": %s" %Global.common_carrot_amount)
+	golden_poops_label.text = str(": %s" %Global.golden_poops_collected)
+
 	_update_labels()
 	_update_label_colors()
 

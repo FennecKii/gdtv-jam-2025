@@ -62,7 +62,9 @@ tile_map_data = PackedByteArray("AAD/////BAAAAAAAAAD///7/BAAAAAAAAAD///3/BAAAAAA
 
 [node name="Carrot Crops" type="Node2D" parent="Y-sort"]
 y_sort_enabled = true
+position = Vector2(0, -64)
 
 [node name="Carrots" type="Node2D" parent="Y-sort"]
+position = Vector2(0, -64)
 
 [connection signal="pressed" from="Panel/Fertilize All" to="." method="_on_fertilize_all_pressed"]

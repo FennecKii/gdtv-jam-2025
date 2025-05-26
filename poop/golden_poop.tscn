@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://brvn8jn80rq7t"]
+
+[ext_resource type="Texture2D" uid="uid://20nlqowfqape" path="res://poop/Golden_Poop-Sheet.png" id="1_qcys5"]
+[ext_resource type="Script" uid="uid://chtdwt8v7qv27" path="res://poop/golden_poop.gd" id="1_u25kb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u25kb"]
+atlas = ExtResource("1_qcys5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xewan"]
+atlas = ExtResource("1_qcys5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxpv3"]
+atlas = ExtResource("1_qcys5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnlkk"]
+atlas = ExtResource("1_qcys5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq0uc"]
+atlas = ExtResource("1_qcys5")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ey2xt"]
+atlas = ExtResource("1_qcys5")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62ts3"]
+atlas = ExtResource("1_qcys5")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tscof"]
+atlas = ExtResource("1_qcys5")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os0fd"]
+atlas = ExtResource("1_qcys5")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1uf8b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u25kb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xewan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxpv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnlkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eq0uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ey2xt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62ts3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tscof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os0fd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qcys5"]
+
+[node name="Golden Poop" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_u25kb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1uf8b")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -2)
+
+[node name="Mouse Detection" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 32768
+
+[node name="Mouse Detection" type="CollisionShape2D" parent="Mouse Detection"]
+scale = Vector2(0.556638, 0.413739)
+shape = SubResource("CircleShape2D_qcys5")
+
+[connection signal="mouse_entered" from="Mouse Detection" to="." method="_on_mouse_detection_mouse_entered"]
+[connection signal="mouse_exited" from="Mouse Detection" to="." method="_on_mouse_detection_mouse_exited"]

@@ -27,7 +27,7 @@ func _ready() -> void:
 	dirt_tiles = dirt_tilemap_layer.get_used_cells()
 	for tile in dirt_tiles:
 		var tile_position = dirt_tilemap_layer.to_global(dirt_tilemap_layer.map_to_local(tile))
-		_spawn_carrot_crop(tile_position)
+		_spawn_carrot_crop(tile_position + Vector2(0, 64))
 
 
 func _process(_delta: float) -> void:
@@ -84,7 +84,7 @@ func _on_spawn_carrot(spawn_position: Vector2) -> void:
 func _spawn_carrot(spawn_position) -> void:
 	var carrot_instance: Node = Global.carrot_scene.instantiate()
 	var rand_angle: float = randf_range(0, 2*PI)
-	carrot_instance.global_position = spawn_position + Vector2(2*4*cos(rand_angle), 4*sin(rand_angle))
+	carrot_instance.global_position = spawn_position + Vector2(2*4*cos(rand_angle), 4*sin(rand_angle)) + Vector2(0, 64)
 	Global.play_squash_stretch(carrot_instance)
 	carrots_node.add_child(carrot_instance)
 

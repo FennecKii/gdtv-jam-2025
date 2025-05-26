@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://jkrbnuakia71"]
+[gd_scene load_steps=7 format=3 uid="uid://jkrbnuakia71"]
 
 [ext_resource type="Script" uid="uid://dmqyymrsbdruw" path="res://ui/hud.gd" id="1_aaqae"]
 [ext_resource type="Theme" uid="uid://dudw4v7l7mn73" path="res://resources/themes/main_theme.tres" id="1_wxbmk"]
 [ext_resource type="Texture2D" uid="uid://dgw24flarvgs6" path="res://poop/Poop.png" id="2_jd13s"]
 [ext_resource type="Texture2D" uid="uid://jp7205db1clh" path="res://food/fry/Fry.png" id="4_pfnlp"]
 [ext_resource type="Texture2D" uid="uid://bix8rbl7s0jru" path="res://crop/carrot/Common Carrot.png" id="4_pom5v"]
+[ext_resource type="Texture2D" uid="uid://dnnv8g0kpde15" path="res://poop/Golden_Poop.png" id="6_pfnlp"]
 
 [node name="HUD Control" type="Control"]
 z_index = 1
@@ -32,9 +33,9 @@ grow_vertical = 0
 
 [node name="Upper Elements" type="HBoxContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 233.0
+offset_left = 302.0
 offset_top = -32.0
-offset_right = 746.0
+offset_right = 899.0
 
 [node name="Foods Amount" type="HBoxContainer" parent="Panel/Upper Elements"]
 layout_mode = 2
@@ -42,6 +43,7 @@ layout_mode = 2
 [node name="Food" type="HBoxContainer" parent="Panel/Upper Elements/Foods Amount"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="FoodTexture" type="TextureRect" parent="Panel/Upper Elements/Foods Amount/Food"]
 layout_mode = 2
@@ -77,7 +79,22 @@ text = "Hide Upgrades"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
+[node name="Golden Poop" type="HBoxContainer" parent="Panel/Upper Elements/Poop Amount"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="GoldenPoopTexture" type="TextureRect" parent="Panel/Upper Elements/Poop Amount/Golden Poop"]
+layout_mode = 2
+texture = ExtResource("6_pfnlp")
+
+[node name="GoldenPoops" type="Label" parent="Panel/Upper Elements/Poop Amount/Golden Poop"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = ": 0"
+
 [node name="Poop" type="HBoxContainer" parent="Panel/Upper Elements/Poop Amount"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
 [node name="PoopTexture" type="TextureRect" parent="Panel/Upper Elements/Poop Amount/Poop"]

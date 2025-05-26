@@ -29,7 +29,7 @@ var pooped: bool = false
 var pooping: bool = false
 var food_found: bool = false
 var guaranteed_poop: bool = false
-var golden_poop_chance: bool = false
+var is_golden_poop_chance: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_label: Label = $Control/State
@@ -64,7 +64,7 @@ func _process(delta: float) -> void:
 		guaranteed_poop = true
 	
 	if carrot_pool >= Global.carrot_pool_max:
-		golden_poop_chance = true
+		is_golden_poop_chance = true
 
 
 func _physics_process(delta: float) -> void:
@@ -177,11 +177,12 @@ func _update_state_action() -> void:
 				_poop()
 			pooped = true
 			food_pool = 0
-		if golden_poop_chance:
+		if is_golden_poop_chance:
 			for i in range(int(floori(float(carrot_pool) / Global.carrot_pool_max))):
 				if randf_range(0, 1) <= Global.golden_poop_chance:
 					_poop_golden()
 			pooped = true
+			is_golden_poop_chance = false
 			carrot_pool = 0
 
 

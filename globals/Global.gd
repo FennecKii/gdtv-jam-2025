@@ -5,7 +5,7 @@ extends Node
 @onready var fry_scene: PackedScene = preload("res://food/fry/fry.tscn")
 @onready var carrot_scene: PackedScene = preload("res://crop/carrot/carrot.tscn")
 @onready var carrot_crop_scene: PackedScene = preload("res://crop/carrot/carrot_tile.tscn")
-
+@onready var golden_poop_scene: PackedScene = preload("res://poop/golden_poop.tscn")
 
 const tileset_soft_collision_source_id: int = 0
 const tileset_soft_ground_source_id: int = 1
@@ -22,9 +22,10 @@ var food_group: Node2D
 
 var common_poops_collected: int = 0
 var common_food_amount: float = INF
-var common_carrot_amount: int = 0
+var common_carrot_amount: int = 20
 
-var golden_poop_chance: float = 0.001
+var golden_poops_collected: int = 0
+var golden_poop_chance: float = 1.0
 var golden_poop_group: Node2D
 const carrot_pool_max: int = 20
 
@@ -62,7 +63,7 @@ var carrot_spawn_time: float = 20.0			# Time it takes for carrot to spawn on the
 var carrot_spawn_amount: int = 1			# Number of carrot that spawns
 
 # Farm parameters
-var carrot_growth_time: float = 8.0			# Time for the carrot crops to grow after getting fertilized
+var carrot_growth_time: float = 10.0			# Time for the carrot crops to grow after getting fertilized
 var farm_auto_fertilize: bool = false		# If auto fertilizing is on
 var farm_auto_fertilize_amount: int = 1		# Number of crops to auto fertilize
 var farm_auto_fertilize_time: float = 20.0	# Time for it to auto fertilize
