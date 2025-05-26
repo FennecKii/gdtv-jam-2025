@@ -7,7 +7,6 @@ extends Control
 
 
 func _ready() -> void:
-	pass
 	AudioServer.set_bus_volume_db(0, Global.master_volume)
 	AudioServer.set_bus_volume_db(1, Global.music_volume)
 	AudioServer.set_bus_volume_db(2, Global.sfx_volume)

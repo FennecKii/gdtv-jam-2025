@@ -3,8 +3,8 @@ extends Node
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 var master_volume: float = 0
-var music_volume: float = -6
-var sfx_volume: float = -6
+var music_volume: float = -5
+var sfx_volume: float = -5
 
 var game_won: bool = false
 var infinite_mode: bool = false

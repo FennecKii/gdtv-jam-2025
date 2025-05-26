@@ -5,6 +5,9 @@ extends Control
 
 
 func _ready() -> void:
+	AudioServer.set_bus_volume_db(0, Global.master_volume)
+	AudioServer.set_bus_volume_db(1, Global.music_volume)
+	AudioServer.set_bus_volume_db(2, Global.sfx_volume)
 	AudioManager.play_background_track1(MusicResource.MusicType.BACKGROUND_TRACK)
 
 
