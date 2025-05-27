@@ -11,7 +11,7 @@ var next_food: Node
 
 var direction: Vector2
 var next_food_position: Vector2
-var slip_factor: float = 12
+var slip_factor: float = 20
 var food_pool: int = 0
 var carrot_pool: int = 0
 var guaranteed_poops: int = 0
@@ -77,7 +77,7 @@ func _handle_movement(delta: float) -> void:
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, slip_factor * delta)
 
-	if (next_food_position - global_position).length() <= Global.littleguy_speed/100:
+	if (next_food_position - global_position).length() <= Global.littleguy_speed/17:
 		food_collision.disabled = false
 	else:
 		food_collision.disabled = true
@@ -124,12 +124,14 @@ func _update_state(delta: float) -> void:
 	if current_state == State.POOP and not pooping:
 		previous_state = current_state
 		current_state = State.WAIT
+		collection_safety_timer.stop()
 		food_collision.disabled = true
 		return
 
 	if current_state == State.WAIT and food_found:
 		previous_state = current_state
 		current_state = State.COLLECT
+		collection_safety_timer.stop()
 		return
 
 
@@ -154,6 +156,7 @@ func _update_state_action() -> void:
 		collected = false
 		next_food = _get_food()
 		if next_food == null:
+			collection_safety_timer.stop()
 			previous_state = current_state
 			current_state = State.WAIT
 			return
