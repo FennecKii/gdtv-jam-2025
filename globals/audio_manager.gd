@@ -41,9 +41,11 @@ func play_background_track1(type: MusicResource.MusicType, loop_begin: float = 0
 	if background_track_1.stream == music_track_dict[type].sound:
 		background_track_1.play()
 	elif music_track_dict.has(type):
+		print("playing loop")
 		var music_track: MusicResource = music_track_dict[type]
 		background_track_1.bus = "Music"
 		background_track_1.stream = music_track.sound
+		background_track_1.stream.loop_mode = AudioStreamWAV.LoopMode.LOOP_FORWARD
 		background_track_1.stream.loop_begin = loop_begin * music_track.sound.mix_rate
 		if loop_end == -1:
 			background_track_1.stream.loop_end = music_track.sound.get_length() * music_track.sound.mix_rate
