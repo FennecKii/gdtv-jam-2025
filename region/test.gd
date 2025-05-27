@@ -38,8 +38,9 @@ func _process(delta: float) -> void:
 	auto_collect_timer.wait_time = Global.poop_auto_collect_time
 	poop_instances = poop_group.get_children()
 	
-	if len(poop_instances) > 400:
-		poop_instances[-1].queue_free()
+	if len(poop_instances) > 5000:
+		for i in range(0, 200):
+			poop_instances[i].queue_free()
 	
 	if Global.poop_auto_collect and len(poop_instances) > 0 and auto_collect_timer.is_stopped():
 		auto_collect_timer.start()

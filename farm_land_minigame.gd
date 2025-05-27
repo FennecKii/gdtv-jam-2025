@@ -43,6 +43,8 @@ func _process(_delta: float) -> void:
 	
 	if Global.farm_auto_fertilize and Global.common_poops_collected >= 0 and auto_fertilize_timer.is_stopped():
 		auto_fertilize_timer.start()
+		if len(carrot_instances) > 700:
+			return
 		for i in range(min(Global.farm_auto_fertilize_amount, Global.common_poops_collected)):
 			var carrot_crop = carrot_crop_instances.pick_random()
 			carrot_crop.grow_carrot()
@@ -50,8 +52,6 @@ func _process(_delta: float) -> void:
 	
 	if Global.farm_auto_collect and len(carrot_instances) > 0 and auto_collect_timer.is_stopped():
 		auto_collect_timer.start()
-		if len(carrot_instances) > 300:
-			return
 		for i in range(min(len(carrot_instances), Global.farm_auto_collect_amount)):
 			var carrot: Node = carrot_instances.pick_random()
 			carrot.queue_free()

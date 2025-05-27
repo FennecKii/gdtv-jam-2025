@@ -42,7 +42,7 @@ func spawn_food() -> void:
 	var spawn_position: Vector2 = tilemap_layer_ground.to_global(tilemap_layer_ground.map_to_local(spawn_coord))
 	var food_instance: Node2D = Global.fry_scene.instantiate()
 	var rand_angle: float = randf_range(0, 2*PI)
-	food_instance.global_position = spawn_position + Vector2(2*5*cos(rand_angle), 5*sin(rand_angle))
+	food_instance.global_position = spawn_position + Vector2(2*4*cos(rand_angle), 4*sin(rand_angle))
 	food_instance.tile_coord = spawn_coord
 	food_instance.detectable = true
 	food_group.add_child(food_instance)
@@ -59,7 +59,7 @@ func spawn_carrot() -> void:
 		var spawn_position: Vector2 = tilemap_layer_ground.to_global(tilemap_layer_ground.map_to_local(spawn_coord))
 		var food_instance: Node2D = Global.carrot_scene.instantiate()
 		var rand_angle: float = randf_range(0, 2*PI)
-		food_instance.global_position = spawn_position + Vector2(2*5*cos(rand_angle), 5*sin(rand_angle))
+		food_instance.global_position = spawn_position + Vector2(2*4*cos(rand_angle), 4*sin(rand_angle))
 		food_instance.tile_coord = spawn_coord
 		food_instance.detectable = true
 		food_group.add_child(food_instance)
