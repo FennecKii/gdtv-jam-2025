@@ -77,7 +77,7 @@ func _handle_movement(delta: float) -> void:
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, slip_factor * delta)
 
-	if (next_food_position - global_position).length() <= Global.littleguy_speed/17:
+	if (next_food_position - global_position).length() <= Global.littleguy_speed/17 and current_state != State.POOP:
 		food_collision.disabled = false
 	else:
 		food_collision.disabled = true
