@@ -140,11 +140,13 @@ func _update_state_action() -> void:
 		state_label.text = "WAITING"
 		next_food = _get_food()
 		direction = Vector2.ZERO
+		food_collision.disabled = true
 	elif current_state == State.REST and not resting:
 		state_label.text = "RESTING"
 		resting = true
 		collecting = false
 		direction = Vector2.ZERO
+		food_collision.disabled = true
 		await get_tree().create_timer(Global.rest_time).timeout
 		resting = false
 		current_state = previous_state
@@ -166,6 +168,7 @@ func _update_state_action() -> void:
 		state_label.text = "POOPING"
 		pooping = true
 		direction = Vector2.ZERO
+		food_collision.disabled = true
 		await get_tree().create_timer(Global.poop_time).timeout
 		pooping = false
 		if guaranteed_poop:
@@ -178,8 +181,8 @@ func _update_state_action() -> void:
 			food_pool = 0
 			AudioManager.play_poop_sfx_global(randi_range(SoundResource.SoundType.FART_1, SoundResource.SoundType.FART_3))
 		if randf_range(0, 1) <= Global.poop_chance * poop_multiplier + int(carrot_pool/2.0):
-			if Global.poop_chance * poop_multiplier + int(carrot_pool/2.0) >= 1:
-				for i in range(int(floori(Global.poop_chance * poop_multiplier + int(carrot_pool/10.0)))):
+			if Global.poop_chance * poop_multiplier + int(carrot_pool/7.0) >= 1:
+				for i in range(int(ceili(Global.poop_chance * poop_multiplier + int(carrot_pool/7.0)))):
 					_poop()
 			else:
 				_poop()
@@ -190,7 +193,6 @@ func _update_state_action() -> void:
 		if is_golden_poop_chance:
 			for i in range(int(floori(float(carrot_pool) / Global.carrot_pool_max))):
 				if randf_range(0, 1) <= Global.golden_poop_chance:
-					print("pooping golden")
 					_poop_golden()
 			pooped = true
 			is_golden_poop_chance = false

@@ -80,7 +80,7 @@ collision_layer = 8
 collision_mask = 16
 
 [node name="Mouse Detection" type="CollisionShape2D" parent="Mouse Detection"]
-scale = Vector2(0.752038, 0.630262)
+scale = Vector2(0.901913, 0.817445)
 shape = SubResource("CircleShape2D_16ku5")
 
 [connection signal="mouse_entered" from="Mouse Detection" to="." method="_on_mouse_detection_mouse_entered"]
